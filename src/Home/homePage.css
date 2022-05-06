@@ -1,0 +1,102 @@
+*{
+    margin:0;
+    padding:0;
+    border:0;
+}
+html{
+    font-size: 20px;
+}
+header{
+    display:flex;
+    justify-content: center;
+    position: fixed;
+    top:0;
+    width: 100%;
+}
+.header{
+    display: flex;
+    width:1200px;
+    justify-content: space-between;
+    align-items: center;
+}
+nav{
+    display: flex;
+}
+nav > li{
+    list-style: none;
+    margin-left: 15px;
+}
+.section-home{
+    display: grid;
+    justify-content: center;
+    margin-top: 56px;
+    background-color: #757575;
+}
+.section-home-info{
+    width:1200px;
+    height:320px;
+}
+h3{
+    margin:100px auto 5px auto;
+}
+.section-p{
+    margin-bottom: 20px;
+}
+.searchBar{
+    display:flex;
+    align-content: center;
+}
+input{
+    width:350px;
+    height:40px;
+    border-radius: 5px 0px 0px 5px;
+}
+.btn-search{
+
+    height:40px;
+}
+.search-icon{
+    height: 40px;
+    cursor: pointer;
+}
+
+article{
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.article{
+    width:1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.dishCard{
+    width:270px;
+    height:260px;
+    box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+figure{
+    background-color: #757575;
+    width:270px;
+    height:100px;
+}
+figcaption{
+    margin:5px auto;
+    padding-left: 10px;
+}
+.dishCard-time{
+    display:grid;
+    grid-template-columns: 90px 90px 90px;
+    padding-left: 10px;
+}
+footer{
+    background: #757575;
+    color:#FFFFFF;
+    width:100%;
+    height:5.2rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
