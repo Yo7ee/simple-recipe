@@ -1,7 +1,9 @@
-import "./index.css";
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./signin/signin.css"
 //利用 Babel 編譯器翻譯 React JSX 語法
-let app=<div>Simple Recipe</div>;
-ReactDOM.render(app, document.getElementById("root"));
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App/>)
 

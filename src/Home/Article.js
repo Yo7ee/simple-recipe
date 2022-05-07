@@ -2,8 +2,8 @@ import React from "react";
 
 function Article(){
     return (
-        <article>
-            <div className="article">
+        <article className="article-article">
+            <div className="article-cont">
                 <div className="dishCard">
                     <figure></figure>
                     <figcaption>雞胸肉</figcaption>

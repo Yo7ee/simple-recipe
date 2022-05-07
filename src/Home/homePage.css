@@ -22,9 +22,13 @@ header{
 nav{
     display: flex;
 }
-nav > li{
+nav > a> li{
     list-style: none;
     margin-left: 15px;
+}
+a{
+    text-decoration: none;
+    color: black;
 }
 .section-home{
     display: grid;
@@ -46,7 +50,7 @@ h3{
     display:flex;
     align-content: center;
 }
-input{
+.input-search{
     width:350px;
     height:40px;
     border-radius: 5px 0px 0px 5px;
@@ -60,12 +64,12 @@ input{
     cursor: pointer;
 }
 
-article{
+.article-article{
     display:flex;
     justify-content: center;
     margin-top: 20px;
 }
-.article{
+.article-cont{
     width:1200px;
     display: flex;
     flex-wrap: wrap;

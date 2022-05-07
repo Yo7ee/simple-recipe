@@ -1,0 +1,39 @@
+.signin-cont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width:250px;
+    height:200px;
+}
+.signin-head-cont{
+    width:100%;
+    display: grid;
+    grid-template-columns: 80px 100px 30px 30px;
+    grid-template-areas: ". title . cross";
+    align-items: center;
+}
+.signin-title{
+    grid-area: title;
+}
+.cross{
+    grid-area: cross;
+    cursor: pointer;
+}
+.form-signin{
+    display:grid;
+    row-gap: 5px;
+}
+.input-email{
+    width:130px;
+    height:30px;
+    border:solid 1px #757575;
+}
+.input-password{
+    width:130px;
+    height:30px;
+    border:solid 1px #757575;
+}
+.switch{
+    cursor: pointer;
+    margin-top: 5px;
+}
