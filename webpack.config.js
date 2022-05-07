@@ -28,6 +28,10 @@ module.exports={
                 test: /\.m?js$/,
                 exclude: /node_modules/,//排除node
                 loader: "babel-loader",//只有一個loader，所以不用use
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                loader: 'file-loader',
             }
         ]
     }
