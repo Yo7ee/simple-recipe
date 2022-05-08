@@ -22,7 +22,7 @@ header{
 nav{
     display: flex;
 }
-nav > a> li{
+nav > a> li, nav > li{
     list-style: none;
     margin-left: 15px;
 }

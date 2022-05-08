@@ -1,9 +1,24 @@
+.member-cont{
+    display: flex;
+    justify-content: center;
+}
 .signin-cont{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width:250px;
     height:200px;
+    margin-top: 56px;
+    border: solid 1px #757575;
+}
+.signup-cont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width:250px;
+    height:250px;
+    margin-top: 56px;
+    border: solid 1px #757575;
 }
 .signin-head-cont{
     width:100%;
@@ -23,17 +38,24 @@
     display:grid;
     row-gap: 5px;
 }
-.input-email{
+.input-name{
     width:130px;
     height:30px;
     border:solid 1px #757575;
 }
-.input-password{
+.input-signin{
     width:130px;
     height:30px;
     border:solid 1px #757575;
 }
-.switch{
-    cursor: pointer;
-    margin-top: 5px;
+/* .input-signin:valid{
+    border:solid 1px #36d30fb4;
+}
+.input-signin:invalid{
+    border:solid 1px red;
+} */
+.error-message{
+    text-align: center;
+    width: 100%;
+    color:red;
 }
