@@ -1,0 +1,62 @@
+.upload-title{
+    margin: 80px auto 30px auto;
+    text-align: center;
+}
+.upload-cont{
+    display: grid;
+    justify-content: center;
+}
+.dish-info-cont{
+    box-shadow: 1px 0.5px 10px 0px;
+    width:1200px;
+    margin-bottom: 50px;
+    display: grid;
+    row-gap: 20px;
+}
+.dish-cont-flex{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 20px;
+    column-gap: 20px;
+}
+.dish-cont-grid{
+    display: grid;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.input{
+    border:solid 1px #757575;
+    height:30px;
+}
+.dish-ingredient, .dish-direction{
+    width: 1000px;
+}
+.corss{
+    cursor: pointer;
+}
+.ingre-content, .step-content{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 60px;
+}
+.btn-cont{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.btn-add{
+    width:200px;
+    height:40px;
+    border:solid 1px red;
+}
+.btn-submit-cont{
+    width: 1100px;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+}
+.btn-submit{
+    width: 200px;
+    height:40px;
+}
