@@ -39,12 +39,12 @@
     row-gap: 5px;
 }
 .input-name{
-    width:130px;
+    width:100%;
     height:30px;
     border:solid 1px #757575;
 }
 .input-signin{
-    width:130px;
+    width:100%;
     height:30px;
     border:solid 1px #757575;
 }
@@ -54,6 +54,9 @@
 .input-signin:invalid{
     border:solid 1px red;
 } */
+button{
+    cursor: pointer;
+}
 .error-message{
     text-align: center;
     width: 100%;

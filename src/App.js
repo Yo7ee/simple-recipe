@@ -4,6 +4,7 @@ import Signin from "./signin/signin";
 import Signup from "./signin/signup";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Recipe from "./Recipe/Recipe";
+import UploadRecipe from "./Upload/UploadRecipe";
 
 function App(){
     return (
@@ -13,7 +14,7 @@ function App(){
                 <Route path="/" element={<HomePage/>}/>
                 <Route path="/signin" element={<Signin/>}/>
                 <Route path="/signup" element={<Signup/>}/>
-                <Route path="/recipe" element={<Recipe/>}/>
+                <Route path="/recipe/upload" element={<UploadRecipe/>}/>
             </Routes>
         </BrowserRouter>
         </>

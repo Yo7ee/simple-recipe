@@ -1,24 +1,26 @@
 import React, {useState} from "react";
 import auth from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import Header from "../Home/Header";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+
 
 const Signup = () =>{
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const handleSignup = (e) => {
         e.preventDefault();
-        console.log(email)
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential)=>{
-            const user = userCredential.user;
-            console.log(user)
+            updateProfile(userCredential.user, {
+                displayName:name
+            });
+            navigate(-2);//將使用者redirect到前兩個頁面
         })
         .catch((error)=>{
-            console.log(error.code)
             switch(error.code){
                 case "auth/invalid-email":
                     setErrorMessage("信箱格式不正確");
@@ -30,7 +32,6 @@ const Signup = () =>{
                     setErrorMessage("密碼需大於六位數");
                     break;
                 default:
-            console.log(errorMessage)
             }
         })
     }
@@ -56,5 +57,4 @@ const Signup = () =>{
     )
 }
 
-export default Signup;
-
+export default Signup; 
