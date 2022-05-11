@@ -28,6 +28,32 @@
     border:solid 1px #757575;
     height:30px;
 }
+.upload-img-cont{
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    cursor: pointer;
+    border:solid 1px #757575;
+}
+.input-dish-pic{
+    opacity: 0;
+    position: absolute;
+    width:100%;
+    height:100%;
+    cursor: pointer;
+}
+.upload-img{
+    width:100%;
+    height:100%;
+    z-index: 1;
+}
+.btn-upload-img{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%); /* 扣除本體後的置中 */
+}
 .dish-ingredient, .dish-direction{
     width: 1000px;
 }
