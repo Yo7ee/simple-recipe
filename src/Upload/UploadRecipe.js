@@ -1,36 +1,36 @@
-import React, {useState, useRef} from "react";
+import React, {useState} from "react";
 import Footer from "../Home/Footer";
 import Header from "../Home/Header";
 import "./UploadRecipe.css";
 import cross from "../icon/cross.png";
+import RecipeService from "../database";
+import {Timestamp} from "firebase/firestore";
+import auth from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 function UploadRecipe(){
     const [dishName, setDishName] = useState('');
     const [fileSrc, setFileSrc] = useState('');
     const handleUploadFile = (e) => {
+        e.preventDefault();
         const file = e.target.files.item(0)
-        console.log(file)
-        console.log(e.target.files)
-        const fileReader = new FileReader();//FileReader為瀏覽器內建類別，用途為讀取瀏覽器選中的檔案
-        console.log(fileReader)
-        fileReader.onload = function(){
-            setFileSrc(fileReader.result);
-        };
-        fileReader.readAsDataURL(file) //讀取完檔案後，變成URL
+        setFileSrc(file);
     };
+    
     const [preTime, setPreTime] = useState('');
     const [cookTime, setCookTime] = useState('');
 
-    const [inputFields, setInputFields] = useState([{ingre:''},])
+    //食材
+    const [inputFields, setInputFields] = useState([{ingre:''},]);
 
     const handleChangeInput = (index, e) => {
         const values = [...inputFields];
         values[index][e.target.name] = e.target.value;
         setInputFields(values);
     }
-
-    const handleAddIngre = () => {
-        setInputFields([...inputFields, {}])
+    const handleAddIngre = (e) => {
+        e.preventDefault();
+        setInputFields([...inputFields, {ingre:''}])
     }
     const handleDelIngre = (index) => {
         const values = [...inputFields];
@@ -39,12 +39,57 @@ function UploadRecipe(){
         console.log(values)
         setInputFields(values);
     }
+
+    //步驟
+    const [textareaFields, setTextareaFields] = useState([{stepContent:''}]);
+
+    const handleChangeTextarea = (index, e) => {
+        const values = [...textareaFields];
+        values[index][e.target.name] = e.target.value;
+        setTextareaFields(values);
+    }
+    const handleAddStep = (e) => {
+        e.preventDefault();
+        setTextareaFields([...textareaFields, {stepContent:''}]);
+    }
+    const handleDelStep = (index) => {
+        const values = [...textareaFields];
+        values.splice(index, 1);
+        setTextareaFields(values);
+    }
+    const navigate = useNavigate();
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        try{
+            const imageUrl = await RecipeService.getImgUrl(fileSrc);
+            console.log(imageUrl)
+            const item = {
+                dishName,
+                preTime,
+                cookTime,
+                "ingredients":inputFields,
+                "direction":textareaFields,
+                createdAt:Timestamp.now(),
+                author:{
+                    diplayName:auth.currentUser.displayName,
+                    uid:auth.currentUser.uid,
+                    email:auth.currentUser.email,
+                },
+                imageUrl:imageUrl,
+            }
+            await RecipeService.addDoc(item);
+            // navigate("/");
+        } catch(e){
+            console.log("Error adding Item " + e)
+        }
+    }
+
     return (
         <>
         <Header/>
         <div className="upload-cont">
             <h1 className="upload-title">新增食譜</h1>
-            <div className="dish-info-cont">
+            <form className="dish-info-cont" onSubmit={handleOnSubmit}>
                 <div className="dish-cont-flex">
                     <div className="dish-name">食譜名稱</div>
                     <input className="input dish-name-" type="text" onChange={(e)=>setDishName(e.target.value)}/>
@@ -53,12 +98,13 @@ function UploadRecipe(){
                     <div className="dish-pic">食譜照片</div>
                     {fileSrc ? (
                     <div className="upload-img-cont">
-                        <img className="upload-img" src={fileSrc}/>
+                        <img className="upload-img" src={URL.createObjectURL(fileSrc)}/>
                     </div>
-                    ) : (<label className="upload-img-cont">
-                    <input className="input-dish-pic" type="file" accept="image/*" onChange={handleUploadFile}/>
-                    <button className="btn-upload-img">點此上傳照片</button>
-                    </label>
+                    ) : (
+                    <div className="upload-img-cont">
+                        <label className="label-upload-img">點此上傳照片</label>
+                        <input className="input-dish-pic" type="file" accept="image/*" onChange={handleUploadFile}/>
+                    </div>
                     )}
                 </div>
                 <div className="dish-cont-flex">
@@ -81,30 +127,29 @@ function UploadRecipe(){
                         ))}
                     </div>
                     <div className="btn-cont">
-                        <button className="btn-add ingre" onClick={handleAddIngre}>新增食材</button>
+                        <button className="btn-add ingre" onClick={(e) => handleAddIngre(e)}>新增食材</button>
                     </div>
                 </div>
                 <div className="dish-cont-grid">
                     <div className="dish-direction">烹煮步驟</div>
                     <p className="upload-describe">請描述烹煮方法，包含溫度及烹煮時間</p>
-                    <div className="step">步驟1</div>
-                    <div className="step-content">
-                        <textarea className="input dish-direction"/>
-                        <img className="cross" src={cross}/>
-                    </div>
-                    <div className="step">步驟2</div>
-                    <div className="step-content">
-                        <textarea className="input dish-direction"/>
-                        <img className="cross" src={cross}/>
+                    <div className="step-content-cont">
+                        {textareaFields.map((textareaField, index) => (
+                            <div key={index} id={index} className="step-content">
+                                <div className="step">步驟{index+1}</div>
+                                <textarea className="input dish-direction" name="stepContent" value={textareaField.stepContent} onChange={(e) => handleChangeTextarea(index, e)}/>
+                                <img className="cross" onClick={() => handleDelStep(index)} src={cross}/>
+                            </div>
+                        ))}
                     </div>
                     <div className="btn-cont">
-                        <button className="btn-add step">新增步驟</button>
+                        <button className="btn-add step" onClick={(e) => handleAddStep(e)}>新增步驟</button>
                     </div>
                 </div>
                 <div className="btn-submit-cont">
                     <button className="btn-submit">送出食譜</button>
                 </div>
-            </div>
+            </form>
         </div>
         <Footer/>
         </>
