@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Home/homePage.css";
 import "./Recipe.css";
 import Header from "../Home/Header";
 import Footer from "../Home/Footer";
+import RecipeService from "../database";
 
 function Recipe(){
+    const id = window.location.href.split('/').pop();
+    const [recipe, setRecipe] = useState([])
+    const showRecipe = async () => {
+        const data = await RecipeService.getOneDoc(id);
+        setRecipe(data);
+    }
+    useEffect(()=>{
+        showRecipe();
+    }, [])
+
     return(
         <>
             <Header/>
             <section className="section-recipe">
                 <div className="section-recipe-info">
                     <div className="section-recipe-title">
-                        <span>雞胸肉</span>
+                        <span>{recipe.dishName}</span>
                         <span>上傳者：版主</span>
                     </div>
                     <div className="section-recipe-figure-time">
@@ -79,8 +90,6 @@ function Recipe(){
                             <button className="btn-comment">送出</button>
                         </div>
                 </div>
-
-
             </article>
             <Footer/>
         </>

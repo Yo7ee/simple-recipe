@@ -11,7 +11,7 @@ function Header(){
             setUser(currentUser)
         },[])
     })
-
+    console.log(user)
     return (
         <header>
             <div className="header">

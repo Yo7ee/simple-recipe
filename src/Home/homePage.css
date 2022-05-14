@@ -83,15 +83,20 @@ h3{
     justify-content: space-between;
 }
 .dishCard{
-    width:270px;
-    height:260px;
+    width:290px;
+    height:380px;
     box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
+    line-height: 35px;
 }
 figure{
     background-color: #757575;
-    width:270px;
-    height:100px;
+    width:290px;
+    height:215px;
+}
+.dishCard-img{
+    width:290px;
+    height:215px;
 }
 figcaption{
     margin:5px auto;
@@ -101,6 +106,10 @@ figcaption{
     display:grid;
     grid-template-columns: 90px 90px 90px;
     padding-left: 10px;
+}
+.dishCard-user{
+    padding-left: 10px;
+    color:#757575;
 }
 footer{
     background: #757575;

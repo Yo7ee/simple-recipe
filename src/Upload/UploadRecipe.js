@@ -61,8 +61,8 @@ function UploadRecipe(){
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         try{
-            const imageUrl = await RecipeService.getImgUrl(fileSrc);
-            console.log(imageUrl)
+            const imgInfo = await RecipeService.getImgInfo(fileSrc);
+            console.log(imgInfo[0])
             const item = {
                 dishName,
                 preTime,
@@ -71,14 +71,14 @@ function UploadRecipe(){
                 "direction":textareaFields,
                 createdAt:Timestamp.now(),
                 author:{
-                    diplayName:auth.currentUser.displayName,
+                    displayName:auth.currentUser.displayName,
                     uid:auth.currentUser.uid,
                     email:auth.currentUser.email,
                 },
-                imageUrl:imageUrl,
+                imageUrl:imgInfo[0],
             }
-            await RecipeService.addDoc(item);
-            // navigate("/");
+            await RecipeService.setDoc(item, imgInfo[1]);
+            navigate("/");
         } catch(e){
             console.log("Error adding Item " + e)
         }
@@ -103,7 +103,7 @@ function UploadRecipe(){
                     ) : (
                     <div className="upload-img-cont">
                         <label className="label-upload-img">點此上傳照片</label>
-                        <input className="input-dish-pic" type="file" accept="image/*" onChange={handleUploadFile}/>
+                        <input className="input-dish-pic" type="file" accept="image/*, .heic" onChange={handleUploadFile}/>
                     </div>
                     )}
                 </div>
