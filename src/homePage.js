@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home/homePage.css";
 import search from "./icon/search.png";
 import Header from "./Home/Header";
 import Article from "./Home/Article";

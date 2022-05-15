@@ -12,21 +12,18 @@ function Article(){
     useEffect(()=>{
         showDish();
     }, [])
-    
     const handleOnclick = (e) => {
 
     }
-
     return (
         <article className="article-article">
             <div className="article-cont">
                 {
                     dish.map((item) => {
-                        console.log(item)
                         return (
-                            <Link to={`/recipe/${item.id}`} key={item.id} className="dishCard" onClick={(e)=>handleOnclick(e)}>
+                            <Link to={`/recipe/${item.id}`} key={item.id} className="dishCard">
                                 <figure>
-                                    <img className="dishCard-img" src={item.imageUrl}/>
+                                    {/* <img className="dishCard-img" src={item.imageUrl}/> */}
                                 </figure>
                                 <figcaption>{item.dishName}</figcaption>
                                 <div className="dishCard-time">

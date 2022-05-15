@@ -13,6 +13,18 @@ class RecipeService {
     addDoc = (item) => {
         return addDoc(recipeColRef, item);
     };
+    setCommentDoc = (id, item) => {
+        const docRef = doc(db, 'recipe', id);
+        const commentRef = collection(docRef, 'comment');
+        const commentDocRef = doc(commentRef);
+        return setDoc(commentDocRef, item);
+    }
+    getCommentDoc = async() => {
+        const q  = query(commentRef, orderBy("createdAt", "asc"));
+        const querySnapshot = await getDocs(q);
+        const dataArr = querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
+        return dataArr;
+    }
     getDoc = async () => {
         const q  = query(recipeColRef, orderBy("createdAt", "asc"));
         const querySnapshot = await getDocs(q);
@@ -22,6 +34,7 @@ class RecipeService {
     getOneDoc = async (id) => {
         const itemDoc = doc(db, 'recipe', id);
         const docSnap = await getDoc(itemDoc);
+        console.log(docSnap.data())
         return docSnap.data();
     }
     deleteDoc = (id) => {

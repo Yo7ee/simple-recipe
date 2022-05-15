@@ -14,6 +14,10 @@
     width:570px;
     height:350px;
 }
+.section-recipe-img{
+    width:100%;
+    height:100%;
+}
 .section-recipe-time{
     width:350px;
     height:350px;
