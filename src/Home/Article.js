@@ -27,67 +27,14 @@ function Article(){
                                 </figure>
                                 <figcaption>{item.dishName}</figcaption>
                                 <div className="dishCard-time">
-                                    <p>prep.</p>
-                                    <p>cook</p>
-                                    <p>total</p>
-                                    <p>{item.preTime}mins</p>
-                                    <p>{item.cookTime}mins</p>
-                                    <p>{parseInt(item.preTime)+parseInt(item.cookTime)}mins</p>
+                                    <p>總烹煮時間</p>
+                                    <p>{parseInt(item.preTime)+parseInt(item.cookTime)}分鐘</p>
                                 </div>
-                                <div className="dishCard-user">{item.author.diplayName}</div>
+                                <div className="dishCard-user">{item.author.displayName}</div>
                             </Link>
                         )
                     })
                 }
-                
-                <div className="dishCard">
-                    <figure></figure>
-                    <figcaption>雞胸肉</figcaption>
-                    <div className="dishCard-time">
-                        <p>prep.</p>
-                        <p>cook</p>
-                        <p>total</p>
-                        <p>5mins</p>
-                        <p>16mins</p>
-                        <p>21mins</p>
-                    </div>
-                </div>
-                <div className="dishCard">
-                    <figure></figure>
-                    <figcaption>雞胸肉</figcaption>
-                    <div className="dishCard-time">
-                        <p>prep.</p>
-                        <p>cook</p>
-                        <p>total</p>
-                        <p>5mins</p>
-                        <p>16mins</p>
-                        <p>21mins</p>
-                    </div>
-                </div>
-                <div className="dishCard">
-                    <figure></figure>
-                    <figcaption>雞胸肉</figcaption>
-                    <div className="dishCard-time">
-                        <p>prep.</p>
-                        <p>cook</p>
-                        <p>total</p>
-                        <p>5mins</p>
-                        <p>16mins</p>
-                        <p>21mins</p>
-                    </div>
-                </div>
-                <div className="dishCard">
-                    <figure></figure>
-                    <figcaption>雞胸肉</figcaption>
-                    <div className="dishCard-time">
-                        <p>prep.</p>
-                        <p>cook</p>
-                        <p>total</p>
-                        <p>5mins</p>
-                        <p>16mins</p>
-                        <p>21mins</p>
-                    </div>
-                </div>
             </div>
         </article>
     )

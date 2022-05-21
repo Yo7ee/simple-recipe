@@ -1,38 +1,32 @@
 .member-cont{
     display: flex;
     justify-content: center;
+    margin-top: 56px;
 }
+
 .signin-cont{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width:250px;
-    height:200px;
-    margin-top: 56px;
+    width:330px;
+    height:350px;
+    margin: 50px auto;
     border: solid 1px #757575;
 }
 .signup-cont{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width:250px;
-    height:250px;
-    margin-top: 56px;
+    width:330px;
+    height:350px;
+    margin: 50px auto;
     border: solid 1px #757575;
 }
 .signin-head-cont{
-    width:100%;
-    display: grid;
-    grid-template-columns: 80px 100px 30px 30px;
-    grid-template-areas: ". title . cross";
+    display: flex;
+    justify-content: center;
     align-items: center;
-}
-.signin-title{
-    grid-area: title;
-}
-.cross{
-    grid-area: cross;
-    cursor: pointer;
+    width:100%;
 }
 .form-signin{
     display:grid;
@@ -56,9 +50,20 @@
 } */
 button{
     cursor: pointer;
+    background-color: #FFFFFF;
+}
+.btn-submit{
+    color:#FFFFFF;
+    background-color: #BBA67C;
+    border-radius: 4px;
 }
 .error-message{
     text-align: center;
     width: 100%;
+    height: 0.5%;
     color:red;
+}
+.switch{
+    cursor: pointer;
+    color: #BBA67C;
 }

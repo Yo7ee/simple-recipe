@@ -6,70 +6,71 @@
 .section-recipe-info{
     width:1200px;
 }
+.section-recipe-title{
+    text-align: center;
+}
+.section-recipe-dishName{
+    font-size: 30px;
+}
+.section-recipe-user{
+    margin-left: 20px;
+}
+.section-recipe-uploadTime{
+    width:350px;
+    height:350px;
+    margin-left: 20px;
+}
 .section-recipe-figure-time{
-    display:flex;
-    justify-content: space-between;
+    display:grid;
+    justify-content: center;
 }
 .section-recipe-figure{
-    width:570px;
+    width:600px;
     height:350px;
 }
 .section-recipe-img{
     width:100%;
     height:100%;
-}
-.section-recipe-time{
-    width:350px;
-    height:350px;
-    border:solid 1px #757575;
+    object-fit: cover; /* 圖片放大不變形 */
 }
 .section-recipe-time-cont{
-    display:grid;
-    justify-content: center;
+    display:flex;
+    justify-content: space-evenly;
     width:100%;
     height:100%;
-    margin-top: 30px;
-    margin-left: 30px;
 }
 .article-recipe{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
 }
-.article-recipe-ingredient{
-    width: 1200px;
+.article-recipe-ingredient, .article-recipe-direction{
+    width: 800px;
     margin-top: 20px;
-    border-top: solid 1px #757575;
+    border-top: solid 2px #757575;
 }
-.ingredient{
+.ingredient, .direction, .comment{
     margin-top: 10px;
 }
-.ingredient-item{
+.ingredient-item, .direction-step{
     margin-left: 60px;
 }
-.item{
+.item, .step{
     margin-top: 20px;
 }
-.article-recipe-direction{
-    width: 1200px;
-    margin-top: 20px;
-    border-top: solid 1px #757575;
+.recipe-label{
+    margin-left: 20px;
 }
-.direction-step{
-    margin-left: 60px;
-}
-.step{
+.direction-step-content{
     margin-top: 20px;
 }
 .article-recipe-comment{
-    width: 1200px;
+    width: 800px;
     margin-top: 20px;
-    border-top: solid 1px #757575;
-    border-bottom: solid 1px #757575;
+    border-top: solid 2px #757575;
 }
 .comment-user-cont{
-    width: 1200px;
+    width: 800px;
     border-bottom: solid 1px #757575;
     margin-top: 20px;
 }
@@ -77,10 +78,14 @@
     margin-left: 60px;
 }
 .user-fig{
+    width:58px;
+    height:58px;
     border: solid 1px #757575;
     border-radius: 50%;
     font-size: 40px;
     margin-right: 10px;
+    display: inline-block;
+    text-align: center;
 }
 .user-name{
     margin-right: 10px;
@@ -88,13 +93,36 @@
 .content{
     margin:10px auto;
 }
-.input-comment{
-    width:320px;
-    height:20px;
-    border: solid 1px #757575;
-}
 .comment-blank-content{
     margin-left: 60px;
     margin-top: 20px;
     margin-bottom: 20px;
+    position: relative;
+    height:50px;
+}
+.input-comment{
+    position:absolute;
+    width:700px;
+    height:50px;
+    border: solid 1px #757575;
+    border-radius: 15px;
+}
+.btn-comment{
+    background-size: contain;
+    position: absolute;
+    left:89%;
+    top:20%;
+    width:30px;
+    height:30px;
+}
+.color-none{
+    fill:#BBA67C;
+}
+.color{
+    fill:#A17A55;
+}
+.errorComment{
+    color:red;
+    text-align: center;
+    margin: 10px auto;
 }

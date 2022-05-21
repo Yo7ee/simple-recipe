@@ -1,5 +1,5 @@
 import {db, storage} from "./firebase";
-import {collection, setDoc, addDoc, doc, query, orderBy, getDocs, getDoc} from "firebase/firestore";
+import {collection, setDoc, addDoc, doc, query, orderBy, getDocs, getDoc, onSnapshot} from "firebase/firestore";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
 
@@ -13,22 +13,25 @@ class RecipeService {
     addDoc = (item) => {
         return addDoc(recipeColRef, item);
     };
-    setCommentDoc = (id, item) => {
+    setCommentDoc = async (id, item) => {
         const docRef = doc(db, 'recipe', id);
-        const commentRef = collection(docRef, 'comment');
+        const commentRef =  collection(docRef, 'comment');
         const commentDocRef = doc(commentRef);
         return setDoc(commentDocRef, item);
     }
-    getCommentDoc = async() => {
+    getCommentDoc = async (id) => {
+        const docRef = doc(db, 'recipe', id);
+        const commentRef =  collection(docRef, 'comment');
         const q  = query(commentRef, orderBy("createdAt", "asc"));
         const querySnapshot = await getDocs(q);
         const dataArr = querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
         return dataArr;
-    }
+    };
     getDoc = async () => {
         const q  = query(recipeColRef, orderBy("createdAt", "asc"));
         const querySnapshot = await getDocs(q);
         const dataArr = querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
+        console.log(dataArr)
         return dataArr;
     };
     getOneDoc = async (id) => {

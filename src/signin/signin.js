@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import auth from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Header from "../Home/Header";
+import Footer from "../Home/Footer";
 import { Link, useNavigate } from "react-router-dom";
 
 function Signin(){
@@ -19,7 +20,7 @@ function Signin(){
         .catch((error)=>{
             switch(error.code){
                 case "auth/invalid-email":
-                    setErrorMessage("信箱格式不正確");
+                    setErrorMessage("信箱不可空白或信箱格式不正確");
                     break;
                 case "auth/wrong-password":
                     setErrorMessage("密碼錯誤");
@@ -40,14 +41,15 @@ function Signin(){
                     <div className="signin-title">登入帳號</div>
                 </div>
                 <form className="form-signin" onSubmit={handleSignin}>
-                    <input className="input-signin" type="text" value={email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}" onChange={(e) => setEmail(e.target.value)} placeholder="請輸入信箱" required/>
-                    <input className="input-signin" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="請輸入密碼" required/>
+                    <input className="input-signin" type="text" value={email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}" onChange={(e) => setEmail(e.target.value)} placeholder=" 請輸入信箱"/>
+                    <input className="input-signin" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder=" 請輸入密碼"/>
                     <button className="btn-submit">登入帳號</button>
                 </form>
-                <p className="error-message">{errorMessage ? errorMessage : ''}</p>
-                <Link to="/signup">我還沒有帳號，點此註冊</Link>
+                <p className="error-message">{errorMessage}</p>
+                我還沒有帳號，<Link to="/signup" className="switch">點此註冊</Link>
             </div>
         </div>
+        <Footer/>
         </>
     )
 }
