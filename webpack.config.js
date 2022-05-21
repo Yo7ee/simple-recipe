@@ -30,9 +30,9 @@ module.exports={
                 loader: "babel-loader",//只有一個loader，所以不用use
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
-                loader: 'file-loader',
-            }
+                test: /\.(png|jpg|gif|svg)$/i,
+                type:'asset/resource',
+            },
         ]
     }
 };
