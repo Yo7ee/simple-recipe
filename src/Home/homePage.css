@@ -153,3 +153,20 @@ footer{
     justify-content: center;
     align-items: center;
 }
+.loading{
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid #f3f3f3;
+    border-top: 6px solid #BBA67C;
+    border-radius: 100%;
+    margin: 10px auto;
+    animation: spin 1s infinite linear;
+}
+@keyframes spin{
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

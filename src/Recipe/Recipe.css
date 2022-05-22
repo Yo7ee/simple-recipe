@@ -14,11 +14,13 @@
 }
 .section-recipe-user{
     margin-left: 20px;
+    color:#757575;
 }
 .section-recipe-uploadTime{
     width:350px;
     height:350px;
     margin-left: 20px;
+    color:#757575;
 }
 .section-recipe-figure-time{
     display:grid;
@@ -56,13 +58,28 @@
     margin-left: 60px;
 }
 .item, .step{
+    display: flex;
+    align-items: center;
+    gap: 15px;
     margin-top: 20px;
+}
+.step-input-icon, .item-input-icon{
+    width:30px;
+    height:30px;
+    fill:#757575;
+}
+.item-input-check:checked ~ label > .item-input-icon{
+    fill:#BBA67C;
+}
+.step-input-check:checked ~ label > .step-input-icon{
+    fill:#BBA67C;
+}
+.step-input-check, .item-input-check{
+    display: none;
 }
 .recipe-label{
-    margin-left: 20px;
-}
-.direction-step-content{
-    margin-top: 20px;
+    display: flex;
+    gap: 15px;
 }
 .article-recipe-comment{
     width: 800px;
@@ -77,10 +94,14 @@
 .comment-user{
     margin-left: 60px;
 }
+.user{
+    display: flex;
+    align-items: center;
+}
 .user-fig{
-    width:58px;
-    height:58px;
-    border: solid 1px #757575;
+    width:35px;
+    height:35px;
+    border: solid 1px #BBA67C;
     border-radius: 50%;
     font-size: 40px;
     margin-right: 10px;
@@ -89,6 +110,11 @@
 }
 .user-name{
     margin-right: 10px;
+    font-weight: bold;
+}
+.date{
+    color:#757575;
+    font-size: 16px;
 }
 .content{
     margin:10px auto;

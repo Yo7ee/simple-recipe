@@ -144,7 +144,7 @@ function UploadRecipe(){
                     <p className="upload-describe">請描述烹煮方法，包含溫度及烹煮時間</p>
                     <div className="step-content-cont">
                         {textareaFields.map((textareaField, index) => (
-                            <div key={index} id={index}>
+                            <div key={index}>
                                 <div className="step">步驟{index+1}</div>
                                 <div className="step-content">
                                     <textarea className="input dish-direction" name="stepContent" value={textareaField.stepContent} onChange={(e) => handleChangeTextarea(index, e)}/>

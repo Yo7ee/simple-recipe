@@ -83,7 +83,7 @@
 .btn-submit-cont{
     width: 1150px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 20px;
 }
 .btn-submit{

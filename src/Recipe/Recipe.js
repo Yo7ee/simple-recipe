@@ -7,6 +7,7 @@ import RecipeService from "../database";
 import {Timestamp} from "firebase/firestore";
 import auth from "../firebase";
 import { useNavigate } from "react-router-dom";
+import member from "../icon/member.svg";
 
 function Recipe(){
     const id = window.location.href.split('/').pop();
@@ -65,6 +66,7 @@ function Recipe(){
             if(comment){
                 try {
                     const item = {
+                        displayPic:auth.currentUser.photoURL,
                         comment,
                         displayName:auth.currentUser.displayName,
                         createdAt:Timestamp.now()
@@ -117,7 +119,11 @@ function Recipe(){
                             ingre.map((item, index)=>
                                 (
                                 <div key={index} className="item">
-                                    <input type="checkbox" className="input-check"/><label className="recipe-label">{item.ingre}</label>
+                                    <input type="checkbox" className="item-input-check" id={"ingre"+index}/>
+                                    <label className="recipe-label" htmlFor={"ingre"+index}>
+                                    <svg  className="item-input-icon" viewBox="0 0 128 128"><title/><path d="M64,0a64,64,0,1,0,64,64A64.07,64.07,0,0,0,64,0Zm0,122a58,58,0,1,1,58-58A58.07,58.07,0,0,1,64,122Z"/><path d="M87.9,42.36,50.42,79.22,40.17,68.43a3,3,0,0,0-4.35,4.13l12.35,13a3,3,0,0,0,2.12.93h.05a3,3,0,0,0,2.1-.86l39.65-39a3,3,0,1,0-4.21-4.28Z"/></svg>
+                                    <div>{item.ingre}</div>
+                                    </label>
                                 </div>
                                 )
                             )
@@ -131,8 +137,13 @@ function Recipe(){
                             step.map((item, index)=>
                                 (
                                 <div key={index} className="step">
-                                    <input type="checkbox" className="input-check"/><label className="recipe-label">步驟 {index+1}</label>
+                                    <input type="checkbox" className="step-input-check" id={"step"+index}/>
+                                    <label className="recipe-label" htmlFor={"step"+index}>
+                                    <svg className="step-input-icon" viewBox="0 0 30 30"><path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.104,4,24,4z M21.707,11.707  l-7.56,7.56c-0.188,0.188-0.442,0.293-0.707,0.293s-0.52-0.105-0.707-0.293l-3.453-3.453c-0.391-0.391-0.391-1.023,0-1.414  s1.023-0.391,1.414,0l2.746,2.746l6.853-6.853c0.391-0.391,1.023-0.391,1.414,0S22.098,11.316,21.707,11.707z"/></svg>
+                                    <div>步驟 {index+1}</div>
                                     <p className="direction-step-content">{item.stepContent}</p>
+                                    </label>
+                                    
                                 </div>
                                 )
                             )
@@ -147,7 +158,7 @@ function Recipe(){
                                     <div key={index} className="comment-user-cont">
                                         <div className="comment-user">
                                             <div className="user">
-                                                <span className="user-fig">版</span>
+                                                <img className="user-fig" src={item.displayPic ? item.displayPic : member}/>
                                                 <span className="user-name">{item.displayName}</span>
                                                 <span className="date">{(new Date(item.createdAt.toDate())).toLocaleDateString()}</span>
                                             </div>

@@ -1,13 +1,20 @@
-import React from "react";
+import React, {createContext, useState} from "react";
 import "./Home/homePage.css";
 import search from "./icon/search.png";
 import Header from "./Home/Header";
 import Article from "./Home/Article";
 import Footer from "./Home/Footer";
+import Loading from "./Loading";
+import Loadingcontext from "./context";
 
 
 function HomePage(){
+    const [isLoading, setIsLoading] = useState(false)
+    console.log(isLoading)
     return (
+        // <Loadingcontext.Provider value={{isLoading, setIsLoading}}>
+        // {isLoading ? (<Loading/> 
+        // )   :   (
         <>
         <Header/>
         <section className="section-home">
@@ -23,6 +30,8 @@ function HomePage(){
         <Article/>
         <Footer/>
         </>
+        // )}
+        // </Loadingcontext.Provider>
     )
 }
 
