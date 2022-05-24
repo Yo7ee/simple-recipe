@@ -22,6 +22,23 @@
     margin-left: 20px;
     color:#757575;
 }
+.section-recipe-bookmark{
+    width:30px;
+    height:30px;
+    margin-left: 20px;
+    fill:#BBA67C;
+}
+.collected{
+    fill:#A17A55;
+}
+.section-recipe-heart{
+    width:30px;
+    height:30px;
+    fill:#757575;
+}
+.liked{
+    fill: rgb(196, 70, 70);
+}
 .section-recipe-figure-time{
     display:grid;
     justify-content: center;

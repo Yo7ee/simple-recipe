@@ -5,6 +5,9 @@
     padding:0;
     border:0;
 }
+html, body{
+    height:100%;
+}
 html{
     font-size: 20px;
     font-family: 'Noto Sans TC', sans-serif;
@@ -44,6 +47,8 @@ nav > a> li:hover, nav > li:hover{
 }
 a{
     text-decoration: none;
+}
+.header-link{
     color: black;
 }
 .userName{
@@ -60,7 +65,7 @@ a{
     justify-content: center;
     margin-top: 56px;
     width:100%;
-    background-image: url("../icon/cover.jpg");
+    background-image: url("../../icon/cover.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -111,6 +116,7 @@ h3{
     justify-content: space-around;
 }
 .dishCard{
+    color: #000000;
     width:290px;
     height:350px;
     border: solid 1px #E8E8E8;
@@ -124,6 +130,16 @@ figure{
     background-color: #757575;
     width:290px;
     height:215px;
+    position: relative;
+}
+.dishCard-bookmark{
+    position: absolute;
+    top:80%;
+    left:80%;
+    width:30px;
+    height:30px;
+    margin-left: 20px;
+    fill:#BBA67C;
 }
 .dishCard-img{
     width:290px;
@@ -139,8 +155,21 @@ figcaption{
     gap:20px;
     padding-left: 10px;
 }
+.dishCard-heartUser{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    padding-left: 10px;
+}
+.dishCard-heart-Icon{
+    width:25px;
+    height:25px;
+    fill: #EB6A7D;
+}
+.dishCard-heartNum{
+    margin:auto 140px auto 10px;
+}
 .dishCard-user{
-    text-align: right;
     padding-right: 10px;
     color:#757575;
 }
@@ -153,9 +182,19 @@ footer{
     justify-content: center;
     align-items: center;
 }
+.loading-cont{
+    background: #FFFFFF;
+    width: 100%;
+    height:100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
 .loading{
-    width: 2rem;
-    height: 2rem;
+    width: 60px;
+    height: 60px;
     border: 5px solid #f3f3f3;
     border-top: 6px solid #BBA67C;
     border-radius: 100%;

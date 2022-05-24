@@ -1,11 +1,11 @@
 import React, {createContext, useState} from "react";
-import "./Home/homePage.css";
+import "./Pages/Home/homePage.css";
 import search from "./icon/search.png";
-import Header from "./Home/Header";
-import Article from "./Home/Article";
-import Footer from "./Home/Footer";
+import Header from "./Pages/Home/Header";
+import Article from "./Pages/Home/Article";
+import Footer from "./Pages/Home/Footer";
 import Loading from "./Loading";
-import Loadingcontext from "./context";
+
 
 
 function HomePage(){

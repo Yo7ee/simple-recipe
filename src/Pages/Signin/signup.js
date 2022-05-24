@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import auth from "../firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import Header from "../Home/Header";
+import auth from "../../firebase";
+import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import Footer from "../Home/Footer";
 import {Link, useNavigate} from "react-router-dom";
 
@@ -12,14 +11,16 @@ const Signup = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [popup, setPopup] = useState(false);
     const handleSignup = (e) => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential)=>{
             updateProfile(userCredential.user, {
                 displayName:name
-            });
-            navigate(-2);//將使用者redirect到前兩個頁面
+            })
+        }).then(()=>{
+            setPopup(true);
         })
         .catch((error)=>{
             switch(error.code){
@@ -38,7 +39,11 @@ const Signup = () =>{
     }
     return(
         <>
-        <Header/>
+        <header>
+            <div className="header">
+                <Link to="/"><h1>Simple Recipe</h1></Link>
+            </div>
+        </header>
         <div className="member-cont">
             <div className="signup-cont">
                 <div className="signin-head-cont">
@@ -54,6 +59,16 @@ const Signup = () =>{
                 我有帳號，<Link to="/Signin" className="switch">點此登入</Link>
             </div>
         </div>
+        {popup ? (
+        <div className="popup">
+            <div className="popup-inner">
+                <p className="popup-title">註冊成功</p>
+                <Link to="/" className="popup-switch">點擊回首頁</Link>
+            </div>
+        </div>
+        )   :   (
+            null
+        )}
         <Footer/>
         </>
     )

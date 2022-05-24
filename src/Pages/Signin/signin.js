@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import auth from "../firebase";
+import auth from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Header from "../Home/Header";
 import Footer from "../Home/Footer";
@@ -15,6 +15,7 @@ function Signin(){
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential)=>{
             const displayName = userCredential.user.displayName;
+            
             navigate(-1);//將使用者redirect到前一個頁面
         })
         .catch((error)=>{

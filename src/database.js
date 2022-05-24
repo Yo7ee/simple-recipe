@@ -1,5 +1,5 @@
 import {db, storage} from "./firebase";
-import {collection, setDoc, addDoc, doc, query, orderBy, getDocs, getDoc, onSnapshot} from "firebase/firestore";
+import {collection, setDoc, addDoc, doc, query, orderBy, getDocs, getDoc, onSnapshot,deleteDoc, where, updateDoc, arrayUnion, arrayRemove} from "firebase/firestore";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
 
@@ -34,12 +34,21 @@ class RecipeService {
         console.log(dataArr)
         return dataArr;
     };
-    getOneDoc = async (id) => {
-        const itemDoc = doc(db, 'recipe', id);
-        const docSnap = await getDoc(itemDoc);
-        console.log(docSnap.data())
-        return docSnap.data();
+    getFilterDoc = async (name, filter) => {
+        console.log(name, filter)
+        const q = query(recipeColRef, where(name, "==", filter));
+        const querySnapshot = await getDocs(q);
+        console.log(querySnapshot)
+        const dataArr = querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
+        console.log(dataArr)
+        return dataArr;
     }
+    // getOneDoc = async (id) => {
+    //     const itemDoc = doc(db, 'recipe', id);
+    //     return onSnapshot((itemDoc), (snap)=>{
+    //         snap.data()
+    //     })
+    // }
     deleteDoc = (id) => {
         const itemDoc = doc(db, 'recipe', id);
         return deleteDoc(itemDoc);
@@ -54,6 +63,32 @@ class RecipeService {
         await uploadBytes(recipeImgRef, file, metadata)
         const url = await getDownloadURL(recipeImgRef)
         return [url, docRef];
+    }
+    update = async (isActice, colName, id, uid) => {
+        const itemDoc = doc(db, 'recipe', id);
+        if(isActice){
+            const docSnap = await updateDoc(itemDoc, 
+                {[colName] : arrayRemove(uid)
+            });
+        }else{
+            const docSnap = await updateDoc(itemDoc, 
+                {[colName] : arrayUnion(uid)
+            });
+        }
+        
+    }
+
+    updateAddBookmark = async (colName, id, uid) => {
+        const itemDoc = doc(db, 'recipe', id);
+        const docSnap = await updateDoc(itemDoc, 
+            {[colName] : arrayUnion(uid)
+        });
+    }
+    updateRemoveBookmark = async (colName, id, uid) => {
+        const itemDoc = doc(db, 'recipe', id);
+        const docSnap = await updateDoc(itemDoc, 
+            {[colName] : arrayRemove(uid)
+        });
     }
 };
 

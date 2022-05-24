@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import Footer from "../Home/Footer";
 import Header from "../Home/Header";
-import "./UploadRecipe.css";
-import cross from "../icon/cross.png";
-import RecipeService from "../database";
+import "../Upload/UploadRecipe.css";
+import cross from "../../icon/cross.png";
+import RecipeService from "../../database";
 import {Timestamp} from "firebase/firestore";
-import auth from "../firebase";
+import auth from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import Compressor from "compressorjs";
 
@@ -154,7 +154,7 @@ function UploadRecipe(){
                         ))}
                     </div>
                     <div className="btn-cont">
-                        <button className="btn-add step" onClick={(e) => handleAddStep(e)}>新增步驟</button>
+                        <button className="btn-add" onClick={(e) => handleAddStep(e)}>新增步驟</button>
                     </div>
                 </div>
                 <div className="btn-submit-cont">
