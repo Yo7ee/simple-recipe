@@ -3,9 +3,9 @@ import "../Home/homePage.css";
 import "./Recipe.css";
 import Header from "../Home/Header";
 import Footer from "../Home/Footer";
-import RecipeService from "../../database";
+import RecipeService from "../../utils/database";
 import {Timestamp, onSnapshot, doc} from "firebase/firestore";
-import auth, {db} from "../../firebase";
+import auth, {db} from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import member from "../../icon/member.svg";
 import UserContext from "../../Context/User";
@@ -17,7 +17,7 @@ function Recipe(){
     const [step, setStep] = useState([]);
     const [displayName, setDisplayName] = useState('');
     const [time, setTime] = useState('');
-    const {user, uid, setUid} = useContext(UserContext);
+    const {user, uid} = useContext(UserContext);
     
     const showRecipe = () => {
         onSnapshot((doc(db, 'recipe', id)), (doc)=>{

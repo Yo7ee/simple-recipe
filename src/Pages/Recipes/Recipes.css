@@ -1,0 +1,62 @@
+.recipes-filter{
+    background-color: #68b66c6b;
+    margin-top: 20px;
+    padding: 10px;
+}
+.wrap{
+    width:100%;
+    max-width: 1200px;
+    margin:0 auto;
+}
+.recipes-filter-cont{
+    border:solid 1px #757575;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+.recipes-filter-title{
+    white-space: nowrap;
+}
+.recipes-filter-list-cont{
+    display: flex;
+    align-items: center;
+    padding:10px 0;
+}
+.recipes-filter-list, .sort-list{
+    width:100%;
+}
+.filter-item{
+    list-style: none;
+    margin-left: 30px;
+    position: relative;
+    padding:2.5px 5px;
+}
+.active{
+    border:solid 1px #BBA67C;
+    color:#BBA67C;
+    border-radius: 5px;
+}
+.filter-item input, .sort-item input{
+    position: absolute;
+    opacity: 0;
+}
+.recipes-sort{
+    background-color: #68b66c6b;
+    padding: 10px;
+}
+.recipes-sort-cont{
+    padding: 20px;
+}
+.sort-list{
+    display:flex;
+}
+.sort-item{
+    border:solid 1px #757575;
+    border-radius: 5px;
+    background-color: #757575;
+    padding: 2.5px 5px;
+    margin-right: 20px;
+}
+i{
+    font-style: normal;
+}

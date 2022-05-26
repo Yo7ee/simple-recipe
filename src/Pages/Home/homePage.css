@@ -141,11 +141,20 @@ figure{
     margin-left: 20px;
     fill:#BBA67C;
 }
+.dishCard-heart{
+    position: absolute;
+    left:87%;
+    top:10%;
+    width:30px;
+    height:30px;
+    fill:#BBA67C;
+}
 .dishCard-img{
     width:290px;
     height:215px;
 }
 figcaption{
+    position: relative;
     margin:5px auto;
     padding-left: 10px;
 }
@@ -162,12 +171,20 @@ figcaption{
     padding-left: 10px;
 }
 .dishCard-heart-Icon{
-    width:25px;
-    height:25px;
-    fill: #EB6A7D;
+    width:20px;
+    height:20px;
+    fill: #757575;
 }
 .dishCard-heartNum{
-    margin:auto 140px auto 10px;
+    margin-left: 5px;
+}
+.dishCard-hot-Icon{
+    width:20px;
+    height:20px;
+    margin-left: 15px;
+}
+.dishCard-hotNum{
+    margin:auto 100px auto 5px;
 }
 .dishCard-user{
     padding-right: 10px;

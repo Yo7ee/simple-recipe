@@ -35,6 +35,10 @@
     border-bottom: solid 1px #757575;
     margin-top: 20px;
 }
+.myBookmark-none, .myRecipe-none{
+    width: 600px;
+    margin: 20px auto 20px auto;
+}
 .myRecipe-cont{
     width: 600px;
     display: flex;
@@ -71,5 +75,10 @@
     height:100%;
 }
 .myRecipe-btn-del{
+    margin-left: 100px;
+}
+.myBookmark{
+    width:30px;
+    height:30px;
     margin-left: 100px;
 }

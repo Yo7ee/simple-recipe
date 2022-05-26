@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./member.css";
 import { getAuth } from "firebase/auth";
-import RecipeService from "../../database";
+import RecipeService from "../../utils/database";
 import {Link} from "react-router-dom"
 
 function MyRecipes (){
@@ -24,11 +24,12 @@ function MyRecipes (){
         showMyRecipe();
     }, [])
     
-    //get data from db wyhere displayname===auth.currentuser.displayname
-    // and map data as below
     return (
         <>
         <div className="myRecipe-number">{myRecipeNumber} 篇食譜</div>
+        {myRecipeNumber == 0 &&
+            <div className="myRecipe-none">目前沒有新增的食譜</div>
+        }
         {
             myRecipe.map((item)=>{
                 return (

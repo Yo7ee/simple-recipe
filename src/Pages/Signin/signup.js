@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import auth from "../../firebase";
+import auth from "../../utils/firebase";
 import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import Footer from "../Home/Footer";
 import {Link, useNavigate} from "react-router-dom";
@@ -41,7 +41,7 @@ const Signup = () =>{
         <>
         <header>
             <div className="header">
-                <Link to="/"><h1>Simple Recipe</h1></Link>
+                <Link to="/" className="header-link"><h1>Simple Recipe</h1></Link>
             </div>
         </header>
         <div className="member-cont">

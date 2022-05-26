@@ -3,9 +3,9 @@ import Footer from "../Home/Footer";
 import Header from "../Home/Header";
 import "../Upload/UploadRecipe.css";
 import cross from "../../icon/cross.png";
-import RecipeService from "../../database";
+import RecipeService from "../../utils/database";
 import {Timestamp} from "firebase/firestore";
-import auth from "../../firebase";
+import auth from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import Compressor from "compressorjs";
 
@@ -83,6 +83,7 @@ function UploadRecipe(){
                     email:auth.currentUser.email,
                 },
                 imageUrl:imgInfo[0],
+                "hotCount":0,
             }
             await RecipeService.setDoc(item, imgInfo[1]);
             navigate("/");

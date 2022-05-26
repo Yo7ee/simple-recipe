@@ -27,6 +27,16 @@ class RecipeService {
         const dataArr = querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
         return dataArr;
     };
+        // getDoc = async () => {
+        //     const q  = query(recipeColRef, orderBy("createdAt", "asc"));
+        //     const unsubscribe = onSnapshot(q, (querySnapshot)=>{
+        //         const dish =[];
+        //         querySnapshot.forEach((doc)=>{
+        //             dish.push(doc.data())
+        //         })
+        //     });
+        //     return dish
+        // };
     getDoc = async () => {
         const q  = query(recipeColRef, orderBy("createdAt", "asc"));
         const querySnapshot = await getDocs(q);
@@ -37,6 +47,15 @@ class RecipeService {
     getFilterDoc = async (name, filter) => {
         console.log(name, filter)
         const q = query(recipeColRef, where(name, "==", filter));
+        const querySnapshot = await getDocs(q);
+        console.log(querySnapshot)
+        const dataArr = querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
+        console.log(dataArr)
+        return dataArr;
+    }
+    getFilterArray = async (name, filter) => {
+        console.log(name, filter)
+        const q = query(recipeColRef, where(name, "array-contains", filter));
         const querySnapshot = await getDocs(q);
         console.log(querySnapshot)
         const dataArr = querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
@@ -67,33 +86,28 @@ class RecipeService {
     update = async (isActice, colName, id, uid) => {
         const itemDoc = doc(db, 'recipe', id);
         if(isActice){
+            console.log("remove")
             const docSnap = await updateDoc(itemDoc, 
                 {[colName] : arrayRemove(uid)
             });
         }else{
+            console.log("add")
             const docSnap = await updateDoc(itemDoc, 
                 {[colName] : arrayUnion(uid)
             });
         }
-        
     }
-
-    updateAddBookmark = async (colName, id, uid) => {
+    updateHot = async (colName, count, id) => {
         const itemDoc = doc(db, 'recipe', id);
-        const docSnap = await updateDoc(itemDoc, 
-            {[colName] : arrayUnion(uid)
-        });
-    }
-    updateRemoveBookmark = async (colName, id, uid) => {
-        const itemDoc = doc(db, 'recipe', id);
-        const docSnap = await updateDoc(itemDoc, 
-            {[colName] : arrayRemove(uid)
-        });
+        const docSnap = await updateDoc(itemDoc,
+            {[colName] : count}
+        )
     }
 };
 
 
 export default new RecipeService();
+
 
 // querySnapshot.forEach((doc) => {
 //     console.log(doc.id, " => ", doc.data())
