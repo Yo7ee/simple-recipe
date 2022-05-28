@@ -54,6 +54,13 @@
     left:50%;
     transform: translate(-50%, -50%); /* 扣除本體後的置中 */
 }
+.cook-tool-item input{
+    opacity:0;
+}
+.checked{
+    color:#BBA67C;
+    border:solid 1px #BBA67C
+}
 .dish-ingredient, .dish-direction{
     width: 1000px;
 }

@@ -108,12 +108,21 @@ h3{
     display:flex;
     justify-content: center;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 .article-cont{
     width:1200px;
+    display: grid;
+}
+.article-title{
+    padding-bottom: 15px;
+    font-size: 24px;
+    font-weight: 700;
+}
+.wrap-dishCard{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .dishCard{
     color: #000000;
@@ -184,7 +193,7 @@ figcaption{
     margin-left: 15px;
 }
 .dishCard-hotNum{
-    margin:auto 100px auto 5px;
+    margin:auto 90px auto 5px;
 }
 .dishCard-user{
     padding-right: 10px;

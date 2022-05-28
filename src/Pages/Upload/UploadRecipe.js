@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Footer from "../Home/Footer";
 import Header from "../Home/Header";
 import "../Upload/UploadRecipe.css";
@@ -26,6 +26,8 @@ function UploadRecipe(){
 
     const [preTime, setPreTime] = useState('');
     const [cookTime, setCookTime] = useState('');
+    const [difficulty, setDifficulty] =useState(0);
+    const [tool, setTool] =useState(0);
 
     //食材
     const [inputFields, setInputFields] = useState([{ingre:''},]);
@@ -67,6 +69,17 @@ function UploadRecipe(){
     const navigate = useNavigate();
     const handleOnSubmit = async (e) => {
         e.preventDefault();
+        const totalTime = parseInt(preTime)+parseInt(cookTime);
+        let time = 0;
+        if ( totalTime < 30){
+            time = 0;
+        }else if( totalTime < 60){
+            time = 1;
+        }else if( totalTime < 120){
+            time= 2;
+        }else{
+            time= 3;
+        }
         try{
             const imgInfo = await RecipeService.getImgInfo(fileSrc);
             console.log(imgInfo[0])
@@ -74,6 +87,9 @@ function UploadRecipe(){
                 dishName,
                 preTime,
                 cookTime,
+                "totalTimeValue": time,
+                difficulty,
+                tool,
                 "ingredients":inputFields,
                 "direction":textareaFields,
                 createdAt:Timestamp.now(),
@@ -84,6 +100,8 @@ function UploadRecipe(){
                 },
                 imageUrl:imgInfo[0],
                 "hotCount":0,
+                "collectedBy":["0"],
+                "likedBy":["0"]
             }
             await RecipeService.setDoc(item, imgInfo[1]);
             navigate("/");
@@ -91,6 +109,7 @@ function UploadRecipe(){
             console.log("Error adding Item " + e)
         }
     }
+
 
     return (
         <>
@@ -124,6 +143,39 @@ function UploadRecipe(){
                     <div className="dish-cook-time">烹煮時間</div>
                     <input className="input dish-cook-time" type="number" onChange={(e)=>setCookTime(e.target.value)}/>
                     <div>分鐘</div>
+                </div>
+                <div className="dish-cont-flex">
+                    <div className="dish-cook-difficulty">烹煮難度</div>
+                    <label className={ difficulty === "0" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="difficulty" value="0" onChange={(e)=>setDifficulty(e.target.value)}/>簡單
+                    </label>
+                    <label className={ difficulty === "1" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="difficulty" value="1" onChange={(e)=>setDifficulty(e.target.value)}/>中等
+                    </label>
+                    <label className={ difficulty === "2" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="difficulty" value="2" onChange={(e)=>setDifficulty(e.target.value)}/>特級廚師
+                    </label>
+                </div>
+                <div className="dish-cont-flex">
+                    <div className="dish-cook-tool">烹煮用具</div>
+                    <label className={ tool === "0" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="tool" value="0" onChange={(e)=>setTool(e.target.value)}/>電鍋
+                    </label>
+                    <label className={ tool === "1" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="tool" value="1" onChange={(e)=>setTool(e.target.value)}/>烤箱
+                    </label>
+                    <label className={ tool === "2" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="tool" value="2" onChange={(e)=>setTool(e.target.value)}/>氣炸鍋
+                    </label>
+                    <label className={ tool === "3" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="tool" value="3" onChange={(e)=>setTool(e.target.value)}/>平底鍋
+                    </label>
+                    <label className={ tool === "4" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="tool" value="4" onChange={(e)=>setTool(e.target.value)}/>湯鍋
+                    </label>
+                    <label className={ tool === "5" ? "cook-tool-item checked" : "cook-tool-item"}>
+                        <input type="radio" name="tool" value="5" onChange={(e)=>setTool(e.target.value)}/>其他
+                    </label>
                 </div>
                 <div className="dish-cont-grid">
                     <div className="dish-ingredient">食材</div>

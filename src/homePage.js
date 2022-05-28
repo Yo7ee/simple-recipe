@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import "./Pages/Home/homePage.css";
 import search from "./icon/search.png";
 import Header from "./Pages/Home/Header";
@@ -18,6 +18,10 @@ function HomePage(){
         setKeyword(keyword);
         navigate(`/recipes?search=${keyword}`);
         }
+    useEffect(()=>{
+        setKeyword('')
+    }, [])
+    
 
     return (
         // <Loadingcontext.Provider value={{isLoading, setIsLoading}}>

@@ -36,6 +36,11 @@
     color:#BBA67C;
     border-radius: 5px;
 }
+.sort-item.active{
+    border:solid 1px #BBA67C;
+    background-color: #BBA67C;
+    color: #FFFFFF;
+}
 .filter-item input, .sort-item input{
     position: absolute;
     opacity: 0;
@@ -59,4 +64,7 @@
 }
 i{
     font-style: normal;
+}
+.filter-title{
+    padding-bottom: 15px;
 }
