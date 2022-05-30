@@ -2,17 +2,27 @@ import React, {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import UserContext from "../../Context/User";
 import RecipeService from "../../utils/database";
+import { onSnapshot, query, collection, where} from "@firebase/firestore";
+import {db} from "../../utils/firebase";
 
 function MyBookmarks (){
     const [myCollect, setMyCollect] = useState([]);
     const [myCollectNumber, setMyCollectNumber] = useState(0);
     const {uid} = useContext(UserContext);
 
-    const showMyCollect = async () => {
-        const data = await RecipeService.getFilterArray("collectedBy", uid);
-        console.log(data)
-        setMyCollect(data);
-        setMyCollectNumber(data.length);
+    // const showMyCollect = async () => {
+    //     const data = await RecipeService.getFilterArray("collectedBy", uid);
+    //     console.log(data)
+    //     setMyCollect(data);
+    //     setMyCollectNumber(data.length);
+    // }
+    const showMyCollect = () =>{
+        const q  = query((collection(db, 'recipe')), where("collectedBy", "array-contains", uid));
+        onSnapshot(q, (querySnapshot)=>{
+            const data =querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
+                setMyCollect(data);
+                setMyCollectNumber(data.length);
+            });
     }
 
     const handleToggle = async (isActive, colName, id) => {

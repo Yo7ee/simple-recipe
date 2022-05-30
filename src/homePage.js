@@ -31,11 +31,13 @@ function HomePage(){
         <Header/>
         <section className="section-home">
             <div className="section-home-info">
-                <h3>給想健康飲食的你</h3>
-                <p className="section-p">透過資訊整合，尋找輕鬆上手的烹煮步驟</p>
-                <div className="searchBar">
-                    <input className="input-search" value={keyword} onChange={(e)=>setKeyword(e.target.value)}></input>
-                    <button className="btn-search" onClick={handleSearch}><img className="search-icon" src={search}/></button>
+                <div className="section-home-content">
+                    <h3>給想健康飲食的你</h3>
+                    <p className="section-p">透過資訊整合，尋找輕鬆上手的烹煮步驟</p>
+                    <div className="searchBar">
+                        <input className="input-search" value={keyword} onChange={(e)=>setKeyword(e.target.value)}></input>
+                        <button className="btn-search" onClick={handleSearch}><img className="search-icon" src={search}/></button>
+                    </div>
                 </div>
             </div>
         </section>

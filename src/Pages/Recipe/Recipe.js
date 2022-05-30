@@ -31,9 +31,14 @@ function Recipe(){
             console.log((new Date(data.createdAt.toDate())).toLocaleDateString())
         })
     }
-
-    const handleToggle = async (isActive, colName) => {
-        await RecipeService.update(isActive, colName, id, uid);
+    const handleToggle = async (isActive, colName, e) => {
+        // e.preventDefault();
+        if (user){
+            await RecipeService.update(isActive, colName, id, uid);
+        console.log("toggle")
+        }else{
+            navigate("/signin");
+        }
     }
 
     const [commentList, setCommentList] = useState([]);
@@ -99,18 +104,8 @@ function Recipe(){
                         <span className="section-recipe-dishName">{recipe.dishName}</span>
                         <span className="section-recipe-user">上傳者：{displayName}</span>
                         <span className="section-recipe-uploadTime">上傳時間：{time}</span>
-                        {user ? (
-                        <>
-                        <svg viewBox="0 0 32 32" className={isCollected ? "section-recipe-bookmark collected" : "section-recipe-bookmark"} onClick={()=>handleToggle(isCollected, "collectedBy")}><path d="M23.8,2H8.2C6.5,2,5.1,3.4,5.1,5.1v24.6c0,0.2,0.2,0.3,0.4,0.3l10.4-4.5c0.1,0,0.2,0,0.2,0  L26.6,30c0.2,0.1,0.4-0.1,0.4-0.3V5.1C26.9,3.4,25.5,2,23.8,2z"/></svg>
-                        <svg viewBox="0 0 24 24" className={isLiked ? "section-recipe-heart liked" : "section-recipe-heart"} onClick={()=>handleToggle(isLiked, "likedBy")}><path d="M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z"/></svg>
-                        </>
-                        )   :   (
-                        <>
-                        <svg viewBox="0 0 32 32" className="section-recipe-bookmark" onClick={handleClickNoneUser}><path d="M23.8,2H8.2C6.5,2,5.1,3.4,5.1,5.1v24.6c0,0.2,0.2,0.3,0.4,0.3l10.4-4.5c0.1,0,0.2,0,0.2,0  L26.6,30c0.2,0.1,0.4-0.1,0.4-0.3V5.1C26.9,3.4,25.5,2,23.8,2z"/></svg>
-                        <svg viewBox="0 0 24 24" className="section-recipe-heart" onClick={handleClickNoneUser}><path d="M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z"/></svg>
-                        </>
-                        )}
-                        
+                        <svg viewBox="0 0 32 32" className={isCollected ? "section-recipe-bookmark collected" : "section-recipe-bookmark"} onClick={(e)=>handleToggle(e, isCollected, "collectedBy")}><path d="M23.8,2H8.2C6.5,2,5.1,3.4,5.1,5.1v24.6c0,0.2,0.2,0.3,0.4,0.3l10.4-4.5c0.1,0,0.2,0,0.2,0  L26.6,30c0.2,0.1,0.4-0.1,0.4-0.3V5.1C26.9,3.4,25.5,2,23.8,2z"/></svg>
+                        <svg viewBox="0 0 24 24" className={isLiked ? "section-recipe-heart liked" : "section-recipe-heart"} onClick={(e)=>handleToggle(e, isLiked, "likedBy")}><path d="M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z"/></svg>
                     </div>
                     <div className="section-recipe-figure-time">
                         <figure className="section-recipe-figure">
@@ -118,6 +113,7 @@ function Recipe(){
                         </figure>
                         <div className="section-recipe-time">
                             <div className="section-recipe-time-cont">
+                                <p>烹煮工具: {recipe.toolName}</p>
                                 <p>準備時間: {recipe.preTime} 分鐘</p>
                                 <p>烹煮時間: {recipe.cookTime} 分鐘</p>
                                 <p>總時間: {parseInt(recipe.preTime)+parseInt(recipe.cookTime)} 分鐘</p>

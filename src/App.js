@@ -17,7 +17,7 @@ import KeywordContext from "./Context/Keyword";
 
 function App(){
     const [user, setUser]=useState(null);
-    const [uid, setUid] =useState(1);
+    const [uid, setUid] =useState(0);
     const [keyword, setKeyword] = useState('');
     useEffect(()=>{
         onAuthStateChanged(auth, (currentUser)=>{

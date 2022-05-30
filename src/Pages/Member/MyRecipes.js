@@ -3,6 +3,8 @@ import "./member.css";
 import { getAuth } from "firebase/auth";
 import RecipeService from "../../utils/database";
 import {Link} from "react-router-dom"
+import { onSnapshot, query, collection, where} from "@firebase/firestore";
+import {db} from "../../utils/firebase";
 
 function MyRecipes (){
     const [myRecipe, setMyRecipe] = useState([]);
@@ -10,11 +12,20 @@ function MyRecipes (){
 
     const auth = getAuth();
     const userName = auth.currentUser.displayName;
-    const showMyRecipe = async () => {
-        const data = await RecipeService.getFilterDoc("author.displayName", userName);
-        setMyRecipe(data)
-        setMyRecipeNumber(data.length);
+    // const showMyRecipe = async () => {
+    //     const data = await RecipeService.getFilterDoc("author.displayName", userName);
+    //     setMyRecipe(data)
+    //     setMyRecipeNumber(data.length);
+    // }
+    const showMyRecipe = () =>{
+        const q  = query((collection(db, 'recipe')), where("author.displayName", "==", userName));
+        onSnapshot(q, (querySnapshot)=>{
+            const data =querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
+                setMyRecipe(data);
+                console.log(data)
+            });
     }
+    
     const handleDelRecipe = async (id) => {
         await RecipeService.deleteDoc(id);
         showMyRecipe;
@@ -42,7 +53,7 @@ function MyRecipes (){
                                 <p className="myRecipe-time">{parseInt(item.preTime)+parseInt(item.cookTime)}分鐘</p>
                             </div>
                         </Link>
-                        <button className="myRecipe-btn-del" onClick={(e)=>handleDelRecipe(item.id)}>刪除</button>
+                        <button className="myRecipe-btn-del" onClick={(e)=>handleDelRecipe(item.id)}><i className="fa-regular fa-trash-can fa-2x"></i></button>
                         <Link to={`/recipe/${item.id}`} className="myRecipe-link">
                             <figure className="myRecipe-fig">
                                 {/* <img className="myRecipe-img" src={item.imageUrl}/> */}

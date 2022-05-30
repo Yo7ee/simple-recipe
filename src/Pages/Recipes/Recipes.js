@@ -194,16 +194,23 @@ function Recipes(){
                                             <div>{item.dishName}</div>
                                             <svg viewBox="0 0 24 24" className={isLiked ? "dishCard-heart liked" : "dishCard-heart"} onClick={(e)=>handleToggle(isLiked, "likedBy", e, item.objectID)}><path d="M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z"/></svg>
                                         </figcaption>
+                                        <div className="dishCard-tool">{item.toolName}</div>
                                         <div className="dishCard-time">
                                             <p>總烹煮時間</p>
                                             <p>{parseInt(item.preTime)+parseInt(item.cookTime)}分鐘</p>
                                         </div>
                                         <div className="dishCard-heartUser">
-                                            <svg viewBox="0 0 24 24" className="dishCard-heart-Icon" ><path d="M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z"/></svg>
-                                            <div className="dishCard-heartNum">{item.likedBy?.length-1}</div>
-                                            <img className="dishCard-hot-Icon" src={hotIcon}/>
-                                            <div className="dishCard-hotNum">{item.hotCount}</div>
-                                            <div className="dishCard-user">{item.author.displayName}</div>
+                                            <div className="icon">
+                                                <p className="heartNum">
+                                                    <i class="fa-solid fa-heart"></i>
+                                                    {item.likedBy?.length-1}
+                                                </p>
+                                                <p className="hotNum">
+                                                    <i className="fa-brands fa-gripfire"></i>
+                                                    {item.hotCount}
+                                                </p>
+                                            </div>
+                                            <p className="user">{item.author.displayName}</p>
                                         </div>
                                     </Link>
                                 )
