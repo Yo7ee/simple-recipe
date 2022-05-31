@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import Footer from "../Home/Footer";
 import Header from "../Home/Header";
 import Ingredient from "./Componets/Ingredient";
 import Direction from "./Componets/Direction";
@@ -144,7 +143,6 @@ function UploadRecipe(){
     return (
         <>
         <Header/>
-        
         <div className="upload-cont">
             <h1 className="upload-title">新增食譜</h1>
             <form className="dish-info-cont" onSubmit={handleOnSubmit}>
@@ -256,7 +254,6 @@ function UploadRecipe(){
         )   :   (
             null
         )}
-        <Footer/>
         </>
     )
 }

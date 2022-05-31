@@ -27,7 +27,7 @@ function Direction (){
     }
 
     return (
-        <div className="dish-cont-grid">
+        <div className="dish-cont">
             <label className="dish-label">
                 烹煮步驟
                 <span className="upload-error-message">{error}</span>

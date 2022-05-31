@@ -22,11 +22,16 @@ function MyRecipes (){
         onSnapshot(q, (querySnapshot)=>{
             const data =querySnapshot.docs.map((doc)=>({...doc.data(), id:doc.id}));
                 setMyRecipe(data);
+                setMyRecipeNumber(data.length)
                 console.log(data)
             });
     }
-    
-    const handleDelRecipe = async (id) => {
+    const ingredientsList = (list) => {
+
+    }
+
+    const handleDelRecipe = async (id, e) => {
+        e.preventDefault();
         await RecipeService.deleteDoc(id);
         showMyRecipe;
     }
@@ -44,22 +49,22 @@ function MyRecipes (){
         {
             myRecipe.map((item)=>{
                 return (
-                    <div className="myRecipe-cont" key={item.id}>
-                        <Link to={`/recipe/${item.id}`} className="myRecipe-link">
-                            <div className="myRecipe-name">{item.dishName}</div>
+                    <Link to={`/recipe/${item.id}`} className="myRecipe-cont" key={item.id}>
+                        <div className="myRecipe-info">
+                            <div className="myRecipe-title">
+                                <div className="myRecipe-name">{item.dishName}</div>
+                                <button className="myRecipe-btn-del" onClick={(e)=>handleDelRecipe(item.id, e)}><i className="fa-regular fa-trash-can fa-2x"></i></button>
+                            </div>
                             <div className="myRecipe-ingre">食材</div>
                             <div className="myRecipe-time-cont">
-                                <p>總烹煮時間</p>
-                                <p className="myRecipe-time">{parseInt(item.preTime)+parseInt(item.cookTime)}分鐘</p>
+                                <i className="fa-regular fa-clock"></i>
+                                {parseInt(item.preTime)+parseInt(item.cookTime)}分鐘
                             </div>
-                        </Link>
-                        <button className="myRecipe-btn-del" onClick={(e)=>handleDelRecipe(item.id)}><i className="fa-regular fa-trash-can fa-2x"></i></button>
-                        <Link to={`/recipe/${item.id}`} className="myRecipe-link">
-                            <figure className="myRecipe-fig">
-                                {/* <img className="myRecipe-img" src={item.imageUrl}/> */}
-                            </figure>
-                        </Link>
-                    </div>
+                        </div>
+                        <figure className="myRecipe-fig">
+                            {/* <img className="myRecipe-img" src={item.imageUrl}/> */}
+                        </figure>
+                    </Link>
                 )
             })
         }

@@ -1,7 +1,13 @@
 .member-info-cont{
+    width: 80%;
+    margin: 90px auto 0 auto;
     margin-top: 90px;
     display: grid;
-    justify-content: center;
+    padding: 0 10px 0 10px;
+    box-sizing: border-box;
+}
+.wrap{
+    min-width: 250px;
 }
 .member-user{
     display: flex;
@@ -24,6 +30,7 @@
     display: flex;
     gap:10px;
     margin: 15px 0 15px 0;
+    position: relative;
 }
 .member-link{
     color: #757575;
@@ -31,25 +38,32 @@
 .member-link-active{
     color: #000000;
 }
+.signOut{
+    position: absolute;
+    right:0;
+    cursor: pointer;
+}
 .myRecipe-number{
     border-bottom: solid 1px #757575;
     margin-top: 20px;
 }
 .myBookmark-none, .myRecipe-none{
-    width: 600px;
+    width:100%;
     margin: 20px auto 20px auto;
 }
 .myRecipe-cont{
-    width: 600px;
+    width: 100%;
+    display: flex;
+    border-bottom: solid 1px #757575;
+    padding:20px 0 20px 0;
+    color: #000000;
+}
+.myRecipe-info{
+    flex:auto;
+}
+.myRecipe-title{
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: solid 1px #757575;
-    margin-top: 20px;
-    padding-bottom: 20px;
-}
-.myRecipe-link{
-    color:#000000;
 }
 .myRecipe-name{
     font-weight: bold;
@@ -62,6 +76,7 @@
     color: #757575;
     font-size: 16px;
     display: flex;
+    align-items: center;
 }
 .myRecipe-time{
     margin-left: 10px;
@@ -75,10 +90,25 @@
     height:100%;
 }
 .myRecipe-btn-del{
-    margin-left: 100px;
+    padding-right: 10px;
 }
 .myBookmark{
     width:30px;
     height:30px;
     margin-left: 100px;
+}
+
+@media (min-width:360px) and (max-width:600px){
+    .member-info-cont{
+        display: block;
+    }
+    .myBookmark-none, .myRecipe-none{
+        width:90%;
+    }
+    .myRecipe-btn-del{
+        margin-left: 0;
+    }
+    .myRecipe-fig{
+        width:50%;
+    }
 }

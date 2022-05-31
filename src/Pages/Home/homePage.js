@@ -1,37 +1,37 @@
-import React, {useContext} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import UserContext from "../../Context/User";
-import KeywordContext from "../../Context/Keyword";
+import React, {useState, useContext, useEffect} from "react";
+import "./homePage.css";
 import logo from "../../icon/logo.png";
-import logoMobile from "../../icon/logoMobile.png";
+import Article from "./Article";
+import Footer from "./Footer";
+import KeywordContext from "../../Context/Keyword";
+import { useNavigate, Link } from "react-router-dom";
+import UserContext from "../../Context/User";
 
-function Header(){
 
+function HomePage(){
+    const [isLoading, setIsLoading] = useState(false)
+    console.log(isLoading)
+    const navigate = useNavigate();
     const {user} = useContext(UserContext)
     const {keyword, setKeyword} = useContext(KeywordContext);
-    const navigate = useNavigate();
-    
     const handleSearch = () => {
         setKeyword(keyword);
         navigate(`/recipes?search=${keyword}`);
         }
-    
+
+
+    useEffect(()=>{
+        setKeyword('')
+    }, [])
+
     return (
+        // <Loadingcontext.Provider value={{isLoading, setIsLoading}}>
+        // {isLoading ? (<Loading/> 
+        // )   :   (
         <>
         <header>
             <div className="header">
-                <Link to="/" className="header-link">
-                    <img className="logo" src={logo} alt="簡單食譜 logo"/>
-                    <img className="logo-mobile" src={logoMobile} alt="簡單食譜 logo"/>
-                </Link>
-                <div className="header-searchBar">
-                    <div className="searchBar">
-                        <input className="input-search" value={keyword} onChange={(e)=>setKeyword(e.target.value)} placeholder="  輸入食譜、食材或創建者名稱"></input>
-                        <div className="btn-search">
-                            <i className="fa-solid fa-magnifying-glass" onClick={handleSearch}></i>
-                        </div>
-                    </div>
-                </div>
+                <Link to="/" className="header-link"><img className="home-logo" src={logo} alt="簡單食譜 logo"/></Link>
                 <nav className="header-nav">
                     <Link to="/recipes" className="header-link"><li>全部食譜</li></Link>
                     <Link to="/recipe/upload" className="header-link"><li>上傳食譜</li></Link>
@@ -75,8 +75,28 @@ function Header(){
                     )}
             </ul>
         </div>
+        <section className="section-home">
+            <div className="section-home-info">
+                <div className="section-home-content">
+                    <h3>給想健康飲食的你</h3>
+                    <p className="section-p">透過資訊整合，尋找輕鬆上手的烹煮步驟</p>
+                    <div className="header-searchBar">
+                        <div className="article-searchBar">
+                            <input className="input-search" value={keyword} onChange={(e)=>setKeyword(e.target.value)} placeholder="輸入食譜、食材或創建者名稱"></input>
+                            <div className="btn-search">
+                                <i className="fa-solid fa-magnifying-glass" onClick={handleSearch}></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <Article/>
+        <Footer/>
         </>
+        // )}
+        // </Loadingcontext.Provider>
     )
 }
 
-export default Header;
+export default HomePage;

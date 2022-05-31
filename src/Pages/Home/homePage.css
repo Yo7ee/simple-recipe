@@ -8,14 +8,13 @@
 }
 html, body{
     height:100%;
+    width: 100%;
 }
 html{
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Noto Sans TC', sans-serif;
 }
 header{
-    display:flex;
-    justify-content: center;
     position: fixed;
     top:0;
     z-index: 1;
@@ -25,9 +24,21 @@ header{
 }
 .header{
     display: flex;
-    width:1200px;
+    width:80%;
+    height: 60px;
+    max-width:1200px;
     justify-content: space-between;
     align-items: center;
+    margin:0 auto;
+}
+.logo, .home-logo{
+    width:150px;
+}
+.logo-mobile{
+    width:50px;
+}
+.logo-mobile{
+    display: none;
 }
 nav{
     display: flex;
@@ -61,6 +72,41 @@ a{
     text-align: center;
     padding:5px;
 }
+.searchBar{
+    display: flex;
+    align-items: center;
+    width:250px;
+    height:40px;
+    border:1px solid #757575;
+    border-radius: 5px;
+    position: relative;
+    background-color: #FFFFFF;
+}
+.article-searchBar{
+    display: flex;
+    align-items: center;
+    width:250px;
+    height:40px;
+    border-radius: 5px;
+    position: relative;
+    background-color: #FFFFFF;
+}
+.btn-search{
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.fa-magnifying-glass{
+    position: absolute;
+    right:-1px;
+    width: 40px;
+    height:40px;
+    line-height: 40px;
+    background-color: #BBA67C;
+    text-align: center;
+    color: #FFFFFF;
+    border-radius: 0px 5px 5px 0px;
+}
 .section-home{
     position: relative;
     display: flex;
@@ -75,11 +121,13 @@ a{
 }
 .section-home-info{
     position: absolute; 
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     height:100%;
 }
 .section-home-content{
     position: absolute;
+    left: 6%;
     color: #000000;
 }
 .section-cover{
@@ -92,20 +140,10 @@ h3{
 .section-p{
     margin-bottom: 20px;
 }
-.searchBar{
-    display:flex;
-    align-content: center;
-}
 .input-search{
-    width:350px;
-    height:40px;
-    border-radius: 5px 0px 0px 5px;
-}
-.btn-search{
-    height:40px;
-    width:40px;
-    background-color: #BBA67C;
-    border-radius: 0px 5px 5px 0px;
+    width:100%;
+    height: 100%;
+    margin: 0 10px;
 }
 .search-icon{
     height: 25px;
@@ -113,14 +151,10 @@ h3{
     cursor: pointer;
 }
 .article-article{
-    display:flex;
-    justify-content: center;
+    margin: 0 auto;
     margin-top: 20px;
-    flex-wrap: wrap;
-}
-.article-cont{
-    width:1200px;
-    display: grid;
+    max-width: 1300px;
+    width:90%;
 }
 .article-title{
     padding-bottom: 15px;
@@ -129,7 +163,7 @@ h3{
 }
 .wrap-dishCard{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 .dishCard{
@@ -196,14 +230,9 @@ figcaption{
     display: flex;
     gap: 10px;
 }
-.fa-heart, .fa-gripfire{
+.fa-heart, .fa-gripfire, .fa-kitchen-set{
     padding-right: 5px;
 }
-/* .dishCard-heart-Icon{
-    width:20px;
-    height:20px;
-    fill: #757575;
-} */
 .heartNum{
     margin-left: 5px;
 }
@@ -247,18 +276,100 @@ footer{
         transform:rotate(360deg);
     }
 }
+.header-mobile-nav{
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width:100%;
+    height: 60px;
+    z-index: 50;
+    background-color: #FFFFFF
+}
+.header-mobile-nav > ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    height: 100%;
+    align-items: center;
+}
+.header-mobile-nav > ul > a {
+    color: #757575;
+}
+.header-mobile-nav > ul > a > li {
+    display: grid;
+    justify-items: center;
+}
+.header-mobile-nav > ul > a > li > p {
+    font-size: 10px;
+}
+.fa-bowl-food, .fa-pen-to-square{
+    font-size: 35px;
+}
 
 @media (min-width:600px) and (max-width:1200px){
+    .header{
+        width:90%;
+    }
+    .header-link > h1 {
+        font-size: 20px;
+    }
     .section-home-info{
         position: relative;
     }
-    .article-cont{
+    .article-article{
         width: 90%;
     }
     .dishCard{
         width:40%;
+        margin-left: 20px;
     }
-    figure{
+    .article-figure{
         width:100%;
     }
+    .wrap-dishCard{
+        display: flex;
+        justify-content: space-between;
+        overflow-y: scroll;
+    }
+}
+
+@media (min-width:360px) and (max-width:730px){
+    .header{
+        justify-content: center;
+    }
+    .header-link > h1 {
+        font-size: 20px;
+    }
+    .header-nav{
+        display: none;
+    }
+    .logo-mobile{
+        display: block;
+    }
+    .logo{
+        display: none;
+    }
+    .section-home-content{
+        left:15%;
+    }
+    .header-mobile-nav{
+        display: block;
+    }
+    .article-article{
+        width: 90%;
+    }
+    .dishCard{
+        margin-left: 20px;
+    }
+    .wrap-dishCard{
+        display: flex;
+        justify-content: space-between;
+        overflow-y: scroll;
+        flex-wrap: nowrap;
+    }
+    footer{
+        display: none;
+    }
+
 }

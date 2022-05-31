@@ -5,7 +5,6 @@ import Loading from "../../Loading";
 import {db} from "../../utils/firebase";
 import { onSnapshot, query, orderBy, collection, limit } from "@firebase/firestore";
 import RecipeService from "../../utils/database";
-import hotIcon from "../../icon/hotIcon.svg";
 
 function Article(){
     const [hotCountDish, setHotCountDish] = useState([]);
@@ -64,7 +63,7 @@ function Article(){
                                 const isLiked = item.likedBy?.includes(uid);
                                 return (
                                     <Link to={`/recipe/${item.id}`} key={item.id} className="dishCard" onClick={()=>handleHotClink("hotCount", item.id, item.hotCount)}>
-                                        <figure>
+                                        <figure className="article-figure">
                                             {/* <img className="dishCard-img" src={item.imageUrl}/> */}
                                             <svg viewBox="0 0 32 32" className={isCollected ? "dishCard-bookmark collected" : "dishCard-bookmark"} onClick={(e)=>handleToggle(isCollected, "collectedBy", e, item.id)}><path d="M23.8,2H8.2C6.5,2,5.1,3.4,5.1,5.1v24.6c0,0.2,0.2,0.3,0.4,0.3l10.4-4.5c0.1,0,0.2,0,0.2,0  L26.6,30c0.2,0.1,0.4-0.1,0.4-0.3V5.1C26.9,3.4,25.5,2,23.8,2z"/></svg>
                                         </figure>
@@ -80,7 +79,7 @@ function Article(){
                                         <div className="dishCard-heartUser">
                                             <div className="icon">
                                                 <p className="heartNum">
-                                                    <i class="fa-solid fa-heart"></i>
+                                                    <i className="fa-solid fa-heart"></i>
                                                     {item.likedBy?.length-1}
                                                 </p>
                                                 <p className="hotNum">
@@ -121,7 +120,7 @@ function Article(){
                                         <div className="dishCard-heartUser">
                                             <div className="icon">
                                                 <p className="heartNum">
-                                                    <i class="fa-solid fa-heart"></i>
+                                                    <i className="fa-solid fa-heart"></i>
                                                     {item.likedBy?.length-1}
                                                 </p>
                                                 <p className="hotNum">

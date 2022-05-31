@@ -1,31 +1,24 @@
-.upload-title{
-    margin: 80px auto 30px auto;
-    text-align: center;
-}
 .upload-cont{
-    display: grid;
-    justify-content: center;
+    margin-top: 56px;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+.upload-title{
+    text-align: center;
+    padding: 50px 0;
 }
 .dish-info-cont{
     box-shadow: 1px 0.5px 10px 0px;
-    width:1200px;
-    margin-bottom: 50px;
-    display: grid;
-    row-gap: 20px;
+    max-width:1200px;
+    margin: 0 auto;
 }
 .dish-cont{
-    margin-left: 50px;
-    margin-top: 20px;
+    padding: 20px 50px;
 }
 .dish-label {
     display: flex;
     margin: 10px 0;
     align-items: center;
-}
-.dish-cont-grid{
-    display: grid;
-    margin-left: 50px;
-    margin-top: 20px;
 }
 .input{
     border:solid 1px #757575;
@@ -68,6 +61,10 @@
 }
 .mins{
     margin-left: 5px;
+}
+.difficulty, .tool{
+    position: relative;
+    top:10px;
 }
 .cook-tool-item{
     position: relative;
@@ -119,10 +116,8 @@
     background-color: #BBA67C;
 }
 .btn-submit-cont{
-    width: 1150px;
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
+    padding: 0 50px 20px 0;
+    text-align: end;
 }
 .btn-submit{
     width: 200px;
@@ -133,4 +128,40 @@
     color:red;
     font-size: 18px;
     margin-left: 20px;
+}
+
+@media (min-width:600px) and (max-width:1200px){
+    .dish-info-cont{
+        width:90%;
+    }
+}
+@media (min-width:360px) and (max-width:600px){
+    .dish-info-cont{
+        width:90%;
+    }
+    .dish-name{
+        width:100%;
+    }
+    .label-upload-img{
+        font-size: 18px;
+    }
+    .tool{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap:5px;
+    }
+    .cook-tool-item{
+        text-align: center;
+        font-size: 16px;
+    }
+    .ingre-content, .step-content{
+        margin-left: 0;
+    }
+    .dish-direction{
+        height:100px;
+    }
+    .btn-submit-cont{
+        padding: 0 0 20px 0;
+        text-align: center;
+    }
 }

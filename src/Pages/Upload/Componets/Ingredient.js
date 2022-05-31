@@ -30,7 +30,7 @@ function Ingredient (){
     }
 
     return (
-        <div className="dish-cont-grid">
+        <div className="dish-cont">
             <label className="dish-label">
                 食材
                 <span className="upload-error-message">{error}</span>
