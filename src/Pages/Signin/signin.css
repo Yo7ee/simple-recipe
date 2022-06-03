@@ -1,45 +1,47 @@
-.member-cont{
-    display: flex;
-    justify-content: center;
-    margin-top: 56px;
+.member-cont {
+	display: flex;
+	justify-content: center;
+	margin-top: 56px;
 }
-.signin-cont{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width:330px;
-    height:350px;
-    margin: 50px auto;
-    border: solid 1px #757575;
+.signin-cont {
+	width: 330px;
+	height: 350px;
+	margin: 50px auto;
+	border: solid 1px #757575;
 }
-.signup-cont{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width:330px;
-    height:350px;
-    margin: 50px auto;
-    border: solid 1px #757575;
+.signup-cont {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 330px;
+	height: 350px;
+	margin: 50px auto;
+	border: solid 1px #757575;
 }
-.signin-head-cont{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width:100%;
+.signin-head-cont {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
-.form-signin{
-    display:grid;
-    row-gap: 5px;
+.signin-title {
+	padding-top: 20px;
 }
-.input-name{
-    width:100%;
-    height:30px;
-    border:solid 1px #757575;
+.form-signin {
+	display: grid;
+	justify-content: center;
+	row-gap: 20px;
+	padding: 10px 30px 0 30px;
 }
-.input-signin{
-    width:100%;
-    height:30px;
-    border:solid 1px #757575;
+.input-name {
+	width: 100%;
+	height: 30px;
+	border: solid 1px #757575;
+}
+.input-signin {
+	width: 100%;
+	height: 30px;
+	border: solid 1px #757575;
 }
 /* .input-signin:valid{
     border:solid 1px #36d30fb4;
@@ -47,49 +49,82 @@
 .input-signin:invalid{
     border:solid 1px red;
 } */
-button{
-    cursor: pointer;
-    background-color: #FFFFFF;
+button {
+	cursor: pointer;
+	background-color: #ffffff;
 }
-.btn-submit{
-    color:#FFFFFF;
-    background-color: #BBA67C;
-    border-radius: 4px;
+.btn-submit {
+	color: #ffffff;
+	background-color: #bba67c;
+	border-radius: 4px;
 }
-.error-message{
-    text-align: center;
-    width: 100%;
-    height: 0.5%;
-    color:red;
+.error-message {
+	text-align: center;
+	width: 100%;
+	height: 0.5%;
+	color: red;
+	padding-bottom: 10px;
+	font-size: 14px;
 }
-.switch{
-    cursor: pointer;
-    color: #BBA67C;
+.no-account {
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
 }
-.popup{
-    width: 100%;
-    height:100%;
-    position: fixed;
-    top:0;
-    left:0;
-    background-color: rgba(0,0,0,0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.switch {
+	cursor: pointer;
+	color: #bba67c;
 }
-.popup-inner{
-    position: relative;
-    padding: 32px;
-    width: 30%;
-    max-width: 640px;
-    background-color: #fff;
+.split-line {
+	display: flex;
+	align-items: center;
 }
-.popup-title{
-    text-align: center;
+.split-line > span {
+	height: 1px;
+	display: block;
+	flex: auto;
+	background-color: #757575;
 }
-.popup-switch{
-    display: block;
-    text-align: center;
-    padding-top: 10px;
-    color:#BBA67C;
+.split-line > p {
+	padding: 10px 10px;
+}
+.google-signin-btn {
+	padding: 5px;
+	width: 60%;
+	box-shadow: 0 0 2px 0;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin: 0 auto;
+}
+.google-logo {
+	width: 30px;
+	height: 30px;
+}
+.popup {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.popup-inner {
+	position: relative;
+	padding: 32px;
+	width: 30%;
+	max-width: 640px;
+	background-color: #fff;
+}
+.popup-title {
+	text-align: center;
+}
+.popup-switch {
+	display: block;
+	text-align: center;
+	padding-top: 10px;
+	color: #bba67c;
 }

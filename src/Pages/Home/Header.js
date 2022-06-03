@@ -30,7 +30,7 @@ function Header() {
 								className='input-search'
 								value={keyword}
 								onChange={(e) => setKeyword(e.target.value)}
-								placeholder='  輸入食譜、食材或創建者名稱'></input>
+								placeholder=' 輸入食譜、食材或創建者名稱'></input>
 							<div className='btn-search'>
 								<i
 									className='fa-solid fa-magnifying-glass'
