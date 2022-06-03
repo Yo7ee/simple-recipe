@@ -110,6 +110,7 @@ a {
 	text-align: center;
 	color: #ffffff;
 	border-radius: 0px 5px 5px 0px;
+	cursor: pointer;
 }
 .section-home {
 	position: relative;

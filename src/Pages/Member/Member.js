@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import cross from "../../icon/cross.png";
 import Header from "../Home/Header";
 import Foorter from "../Home/Footer";
 import UserContext from "../../Context/User";

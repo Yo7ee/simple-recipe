@@ -31,8 +31,7 @@ function Recipe() {
 			console.log(new Date(data.createdAt.toDate()).toLocaleDateString());
 		});
 	};
-	const handleToggle = async (isActive, colName, e) => {
-		// e.preventDefault();
+	const handleToggle = async (isActive, colName) => {
 		if (user) {
 			await RecipeService.update(isActive, colName, id, uid);
 			console.log("toggle");
@@ -94,7 +93,7 @@ function Recipe() {
 
 	const isCollected = recipe.collectedBy?.includes(uid);
 	const isLiked = recipe.likedBy?.includes(uid);
-
+	console.log(isLiked, isCollected);
 	return (
 		<>
 			<Header />
@@ -116,7 +115,7 @@ function Recipe() {
 										? "section-recipe-bookmark collected"
 										: "section-recipe-bookmark"
 								}
-								onClick={(e) => handleToggle(e, isCollected, "collectedBy")}>
+								onClick={() => handleToggle(isCollected, "collectedBy")}>
 								<path d='M23.8,2H8.2C6.5,2,5.1,3.4,5.1,5.1v24.6c0,0.2,0.2,0.3,0.4,0.3l10.4-4.5c0.1,0,0.2,0,0.2,0  L26.6,30c0.2,0.1,0.4-0.1,0.4-0.3V5.1C26.9,3.4,25.5,2,23.8,2z' />
 							</svg>
 							<svg
@@ -126,7 +125,7 @@ function Recipe() {
 										? "section-recipe-heart liked"
 										: "section-recipe-heart"
 								}
-								onClick={(e) => handleToggle(e, isLiked, "likedBy")}>
+								onClick={() => handleToggle(isLiked, "likedBy")}>
 								<path d='M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z' />
 							</svg>
 						</div>
