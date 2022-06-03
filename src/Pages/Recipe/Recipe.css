@@ -1,13 +1,27 @@
 .section-recipe{
-    margin-top: 56px;
-    display: flex;
-    justify-content: center;
+    margin-top: 60px;
+    padding:10px 20px;
 }
-.section-recipe-info{
-    width:1200px;
+.section-recipe-cont{
+    max-width:1200px;
+    width:100%;
+    margin: 0 auto;
+}
+.section-recipe-title-info{
+    display:flex;
+    justify-content: center;
+    max-width:1200px;
+    width:100%;
 }
 .section-recipe-title{
-    text-align: center;
+    text-align: left;
+    width:20%;
+}
+.section-recipe-info{
+    display:flex;
+    align-items:end;
+    width:auto;
+    font-size:16px;
 }
 .section-recipe-dishName{
     font-size: 30px;
@@ -17,8 +31,6 @@
     color:#757575;
 }
 .section-recipe-uploadTime{
-    width:350px;
-    height:350px;
     margin-left: 20px;
     color:#757575;
 }
@@ -39,14 +51,11 @@
 .liked{
     fill: rgb(196, 70, 70);
 }
-.section-recipe-figure-time{
-    display:grid;
-    justify-content: center;
-    justify-items: center;
-}
 .section-recipe-figure{
-    width:600px;
+    max-width:700px;
+    width:100%;
     height:350px;
+    margin: 0 auto;
 }
 .section-recipe-img{
     width:100%;
@@ -64,17 +73,25 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 0 20px;
 }
-.article-recipe-ingredient, .article-recipe-direction{
-    width: 800px;
+.article-recipe-preprare, .article-recipe-ingredient, .article-recipe-direction{
+    max-width: 800px;
+    width: 100%;
     margin-top: 20px;
     border-top: solid 2px #757575;
 }
-.ingredient, .direction, .comment{
+.prepare, .ingredient, .direction, .comment{
     margin-top: 10px;
 }
-.ingredient-item, .direction-step{
+.prepare-item, .ingredient-item, .direction-step{
     margin-left: 60px;
+}
+.prepare-item{
+    display:grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    margin-top:20px;
 }
 .item, .step{
     display: flex;
@@ -82,7 +99,7 @@
     gap: 15px;
     margin-top: 20px;
 }
-.step-input-icon, .item-input-icon{
+.fa-square-check, .item-input-icon{
     width:30px;
     height:30px;
     fill:#757575;
@@ -90,8 +107,8 @@
 .item-input-check:checked ~ label > .item-input-icon{
     fill:#BBA67C;
 }
-.step-input-check:checked ~ label > .step-input-icon{
-    fill:#BBA67C;
+.step-input-check:checked ~ label > .step-cont > .fa-square-check{
+    color:#BBA67C;
 }
 .step-input-check, .item-input-check{
     display: none;
@@ -100,13 +117,18 @@
     display: flex;
     gap: 15px;
 }
+.step-cont{
+    display:flex;
+}
 .article-recipe-comment{
-    width: 800px;
+    max-width: 800px;
+    width:100%;
     margin-top: 20px;
     border-top: solid 2px #757575;
 }
 .comment-user-cont{
-    width: 800px;
+    max-width: 800px;
+    width:100%;
     border-bottom: solid 1px #757575;
     margin-top: 20px;
 }
@@ -147,7 +169,8 @@
 }
 .input-comment{
     position:absolute;
-    width:700px;
+    max-width:700px;
+    width: 100%;
     height:50px;
     border: solid 1px #757575;
     border-radius: 15px;
@@ -170,4 +193,33 @@
     color:red;
     text-align: center;
     margin: 10px auto;
+}
+@media (min-width:600px) and (max-width:1200px){
+    .section-recipe-dishName{
+        font-size:20px;
+    }
+}
+@media (min-width:360px) and (max-width:600px) {
+    .section-recipe-title-info, .recipe-label{
+        display:block;
+    }
+    .section-recipe-title {
+        width:50%;
+    }
+    .section-recipe-user{
+        margin-left:0;
+    }
+    .section-recipe-user, .section-recipe-uploadTime{
+        font-size:14px;
+    }
+    .section-recipe-cont{
+        flex-wrap:wrap;
+    }
+    .section-recipe-heart, .section-recipe-bookmark{
+        width:20px;
+        height:20px;
+    }
+    .prepare-item, .ingredient-item, .direction-step{
+        margin-left: 14px;
+    }
 }
