@@ -96,6 +96,7 @@ button {
 	justify-content: center;
 	gap: 15px;
 	margin: 0 auto;
+	cursor: pointer;
 }
 .google-logo {
 	width: 30px;

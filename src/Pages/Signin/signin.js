@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import auth, { provider } from "../../utils/firebase";
 import {
 	signInWithEmailAndPassword,
-	signInWithRedirect,
-	getRedirectResult,
+	signInWithPopup,
+	GoogleAuthProvider,
 } from "firebase/auth";
 import Header from "../Home/Header";
 import Footer from "../Home/Footer";
@@ -39,10 +39,25 @@ function Signin() {
 			});
 	};
 	const handleGoogleSignin = () => {
-		signInWithRedirect(auth, provider);
-		navigate(-2); //將使用者redirect到前一個頁面
-		// getRedirectResult(auth)
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				navigate(-1); //將使用者redirect到前一個頁面
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				setErrorMessage(errorMessage);
+				// The email of the user's account used.
+				const email = error.customData.email;
+				// The AuthCredential type that was used.
+				const credential = GoogleAuthProvider.credentialFromError(error);
+				// ...
+			});
+
+		// await getRedirectResult(auth)
 		// 	.then((result) => {
+		// 		console.log(result);
 		// 		// This gives you a Google Access Token. You can use it to access Google APIs.
 		// 		const credential = GoogleAuthProvider.credentialFromResult(result);
 		// 		const token = credential.accessToken;
