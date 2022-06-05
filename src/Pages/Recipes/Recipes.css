@@ -18,11 +18,12 @@
 }
 .recipes-dishCard {
 	color: #000000;
-	width: 290px;
+	width: 260px;
 	height: 375px;
 	border: solid 1px #e8e8e8;
 	margin-bottom: 30px;
 	line-height: 35px;
+	border-radius: 5px;
 }
 .recipes-filter-cont,
 .recipes-sort-cont {
@@ -183,14 +184,14 @@ i {
 	}
 	.filter-sort-mobile-btn {
 		display: flex;
-		position: absolute;
+		position: fixed;
 		left: 50%;
 		bottom: 90px;
 		transform: translateX(-50%);
 		background-color: #ffffff;
 		border-radius: 20px;
 		box-shadow: 0px 0px 5px;
-		z-index: 100;
+		z-index: 99;
 	}
 	.filter-sort-mobile-btn.hide {
 		display: none;

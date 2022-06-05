@@ -25,7 +25,7 @@ header {
 }
 .header {
 	display: flex;
-	width: 80%;
+	width: 100%;
 	height: 60px;
 	max-width: 1200px;
 	justify-content: space-between;
@@ -132,7 +132,7 @@ a {
 }
 .section-home-content {
 	position: absolute;
-	left: 6%;
+	left: 0;
 	color: #000000;
 }
 .section-cover {
@@ -160,7 +160,7 @@ h3 {
 	margin: 0 auto;
 	margin-top: 20px;
 	max-width: 1200px;
-	width: 90%;
+	width: 100%;
 }
 .article-title {
 	padding-bottom: 15px;
@@ -174,25 +174,27 @@ h3 {
 }
 .dishCard {
 	color: #000000;
-	width: 290px;
+	width: 260px;
 	height: 375px;
 	border: solid 1px #e8e8e8;
 	margin-bottom: 30px;
 	line-height: 35px;
+	border-radius: 5px;
 }
 .dishCard:hover {
 	box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.2);
 }
 figure {
 	background-color: #757575;
-	width: 290px;
+	width: 260px;
 	height: 215px;
 	position: relative;
+	border-radius: 5px;
 }
 .dishCard-bookmark {
 	position: absolute;
 	top: 80%;
-	right: 1%;
+	right: 4%;
 	width: 30px;
 	height: 30px;
 	margin-left: 20px;
@@ -200,7 +202,7 @@ figure {
 }
 .dishCard-heart {
 	position: absolute;
-	right: 1%;
+	right: 4%;
 	top: 10%;
 	width: 30px;
 	height: 30px;
@@ -209,6 +211,8 @@ figure {
 .dishCard-img {
 	width: 100%;
 	height: 100%;
+	border-radius: 5px 5px 0px 0px;
+	object-fit: cover;
 }
 figcaption {
 	position: relative;
@@ -217,6 +221,7 @@ figcaption {
 }
 .dishCard-tool {
 	padding-left: 10px;
+	color: #757575;
 }
 .dishCard-time {
 	display: grid;
@@ -224,6 +229,7 @@ figcaption {
 	gap: 20px;
 	padding-left: 10px;
 	margin-top: 5px;
+	color: #757575;
 }
 .dishCard-heartUser {
 	display: flex;
@@ -320,7 +326,7 @@ footer {
 	font-size: 18px;
 }
 
-@media (min-width: 730px) and (max-width: 1200px) {
+@media (min-width: 1040px) and (max-width: 1200px) {
 	.header {
 		width: 90%;
 	}
@@ -329,6 +335,9 @@ footer {
 	}
 	.section-home-info {
 		position: relative;
+	}
+	.section-home-content {
+		left: 6%;
 	}
 	.article-article {
 		width: 90%;
@@ -347,7 +356,7 @@ footer {
 		flex-wrap: nowrap;
 	}
 }
-@media (min-width: 360px) and (max-width: 730px) {
+@media (min-width: 360px) and (max-width: 1040px) {
 	.header {
 		justify-content: center;
 	}

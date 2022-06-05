@@ -117,7 +117,10 @@ function Article() {
 										<path d='M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z' />
 									</svg>
 								</figcaption>
-								<div className='dishCard-tool'>{item.toolName}</div>
+								<div className='dishCard-tool'>
+									<i className='fa-solid fa-kitchen-set'></i>
+									{item.toolName}
+								</div>
 								<div className='dishCard-time'>
 									<p>總烹煮時間</p>
 									<p>{parseInt(item.preTime) + parseInt(item.cookTime)}分鐘</p>
@@ -182,7 +185,10 @@ function Article() {
 										<path d='M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z' />
 									</svg>
 								</figcaption>
-								<div className='dishCard-tool'>{item.toolName}</div>
+								<div className='dishCard-tool'>
+									<i className='fa-solid fa-kitchen-set'></i>
+									{item.toolName}
+								</div>
 								<div className='dishCard-time'>
 									<p>總烹煮時間</p>
 									<p>{parseInt(item.preTime) + parseInt(item.cookTime)}分鐘</p>

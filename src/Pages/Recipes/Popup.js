@@ -93,7 +93,7 @@ function FilterPopup() {
 											handleFiltering(setTool(`tool:${e.target.value}`));
 										}}
 									/>
-									烤箱
+									電鍋
 								</label>
 								<label
 									className={
@@ -107,7 +107,7 @@ function FilterPopup() {
 											handleFiltering(setTool(`tool:${e.target.value}`));
 										}}
 									/>
-									電鍋
+									烤箱
 								</label>
 								<label
 									className={
