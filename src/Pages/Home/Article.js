@@ -45,7 +45,6 @@ function Article() {
 				id: doc.id,
 			}));
 			setHeartDish(data);
-			console.log(data);
 			setIsLoading(false);
 		});
 	};
@@ -76,7 +75,10 @@ function Article() {
 	) : (
 		<article className='article-article'>
 			<div className='article-cont'>
-				<div className='article-title'>最熱門點擊</div>
+				<div className='article-title'>
+					<i className='fa-brands fa-gripfire'></i>
+					最熱門點擊
+				</div>
 				<div className='wrap-dishCard'>
 					{hotCountDish.map((item) => {
 						const isCollected = item.collectedBy?.includes(uid);
@@ -144,7 +146,10 @@ function Article() {
 				</div>
 			</div>
 			<div className='article-cont'>
-				<div className='article-title'>最喜愛排名</div>
+				<div className='article-title'>
+					<i className='fa-solid fa-heart'></i>
+					最喜愛排名
+				</div>
 				<div className='wrap-dishCard'>
 					{heartDish.map((item) => {
 						const isCollected = item.collectedBy?.includes(uid);

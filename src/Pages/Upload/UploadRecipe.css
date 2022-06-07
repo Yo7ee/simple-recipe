@@ -2,6 +2,7 @@
 	margin-top: 56px;
 	margin-bottom: 50px;
 	padding-bottom: 50px;
+	background-color: #f9f9f9;
 }
 .upload-title {
 	text-align: center;
@@ -11,9 +12,10 @@
 	box-shadow: 1px 0.5px 10px 0px;
 	max-width: 1200px;
 	margin: 0 auto;
+	background-color: #fff;
 }
 .dish-cont {
-	padding: 20px 50px;
+	padding: 20px 80px;
 }
 .dish-label {
 	display: flex;
@@ -28,6 +30,15 @@
 	font-size: 18px;
 	text-align: center;
 }
+.input-dish-name {
+	border: solid 1px #757575;
+	border-radius: 5px;
+	height: 35px;
+	width: 100%;
+	max-width: 400px;
+	font-size: 18px;
+	text-align: center;
+}
 .upload-img-cont {
 	position: relative;
 	width: 100%;
@@ -36,10 +47,16 @@
 	cursor: pointer;
 	border: solid 1px #757575;
 	border-radius: 5px;
+	background-color: #eee;
+}
+.upload-img-info-cont {
+	display: flex;
+	align-items: center;
 }
 .input-dish-pic {
 	opacity: 0;
 	position: absolute;
+	left: 0;
 	width: 100%;
 	height: 100%;
 	cursor: pointer;
@@ -48,12 +65,24 @@
 	width: 100%;
 	height: 100%;
 	z-index: 1;
+	object-fit: cover;
+	background-color: #f2efe9;
 }
 .label-upload-img {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%); /* 扣除本體後的置中 */
+}
+.upload-img-info {
+	border-radius: 5px;
+	padding: 5px 10px;
+	height: 80px;
+	width: 100%;
+	max-width: 250px;
+	background-color: #f1efea;
+	color: #757575;
+	margin-left: 50px;
 }
 .time {
 	display: flex;
@@ -137,6 +166,12 @@
 @media (min-width: 600px) and (max-width: 1200px) {
 	.dish-info-cont {
 		width: 90%;
+	}
+	.upload-img-info-cont {
+		display: block;
+	}
+	.upload-img-info {
+		margin-top: 5%;
 	}
 }
 @media (min-width: 360px) and (max-width: 600px) {

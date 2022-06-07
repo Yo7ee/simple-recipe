@@ -4,33 +4,62 @@ import UserContext from "../../Context/User";
 import RecipeService from "../../utils/database";
 import Header from "../Home/Header";
 import Footer from "../Home/Footer";
-import { algolia } from "../../utils/algolia";
+import { algolia, client } from "../../utils/algolia";
 import KeywordContext from "../../Context/Keyword";
 import ResultContext from "../../Context/Result";
 import "../Recipes/Recipes.css";
 import FilterPopup from "./Popup";
+import firebase, { db } from "../../utils/firebase";
+import {
+	onSnapshot,
+	doc,
+	query,
+	orderBy,
+	collection,
+	limit,
+	where,
+	getFirestore,
+	documentId,
+} from "@firebase/firestore";
 
 function Recipes() {
 	const { uid } = useContext(UserContext);
 	const { keyword, setKeyword } = useContext(KeywordContext);
 	const [results, setResults] = useState([]);
-	console.log("recipes", keyword);
+	const [check, setCheck] = useState(false);
+	const [isCollected, setIsCollected] = useState("");
 	const handleSearch = () => {
 		algolia.search(keyword).then((result) => {
 			setResults(result.hits);
-			console.log("alglia", result.hits);
+			console.log("search", result.hits);
+			setCheck(false);
+			const data = result.hits.map((hit) => ({
+				id: hit.objectID,
+			}));
+			const idTest = data[0].id;
+			const idTest1 = data[1].id;
+			console.log(data[0].id);
+			const q = query(
+				collection(db, "recipe"),
+				where(documentId(), "==", idTest1)
+			);
+			console.log(q);
 		});
 	};
 
 	useEffect(() => {
 		handleSearch();
-		console.log("results", results);
 	}, [keyword]);
 
 	const handleToggle = async (isActive, colName, e, id) => {
 		e.preventDefault();
 		await RecipeService.update(isActive, colName, id, uid);
 		console.log("test");
+		if (isCollected) {
+			setIsCollected(false);
+		} else {
+			setIsCollected(true);
+		}
 	};
 
 	const handleHotClink = async (colName, id, count) => {
@@ -50,7 +79,6 @@ function Recipes() {
 					<div className='filter-title'>篩選結果有 {results.length} 個食譜</div>
 					<div className='recipes-wrap-dishCard'>
 						{results.map((item) => {
-							console.log("render");
 							const isCollected = item.collectedBy?.includes(uid);
 							const isLiked = item.likedBy?.includes(uid);
 							return (

@@ -21,7 +21,7 @@ function Signin() {
 			.then((userCredential) => {
 				const displayName = userCredential.user.displayName;
 
-				navigate(-1); //將使用者redirect到前一個頁面
+				navigate("/me/recipes"); //將使用者redirect到會員頁面
 			})
 			.catch((error) => {
 				switch (error.code) {
@@ -41,7 +41,7 @@ function Signin() {
 	const handleGoogleSignin = () => {
 		signInWithPopup(auth, provider)
 			.then((result) => {
-				navigate(-1); //將使用者redirect到前一個頁面
+				navigate("me/recipes"); //將使用者redirect到會員頁面
 			})
 			.catch((error) => {
 				// Handle Errors here.
@@ -54,29 +54,6 @@ function Signin() {
 				const credential = GoogleAuthProvider.credentialFromError(error);
 				// ...
 			});
-
-		// await getRedirectResult(auth)
-		// 	.then((result) => {
-		// 		console.log(result);
-		// 		// This gives you a Google Access Token. You can use it to access Google APIs.
-		// 		const credential = GoogleAuthProvider.credentialFromResult(result);
-		// 		const token = credential.accessToken;
-
-		// 		// The signed-in user info.
-		// 		const user = result.user;
-
-		// 	})
-		// 	.catch((error) => {
-		// 		// Handle Errors here.
-		// 		const errorCode = error.code;
-		// 		const errorMessage = error.message;
-		// 		setErrorMessage(errorMessage);
-		// 		// The email of the user's account used.
-		// 		const email = error.customData.email;
-		// 		// The AuthCredential type that was used.
-		// 		const credential = GoogleAuthProvider.credentialFromError(error);
-		// 		// ...
-		// 	});
 	};
 	return (
 		<>

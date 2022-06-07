@@ -101,7 +101,7 @@ function Recipe() {
 				<div className='section-recipe-cont'>
 					<div className='section-recipe-title-info'>
 						<div className='section-recipe-title'>
-							<span className='section-recipe-dishName'>{recipe.dishName}</span>
+							<h1 className='section-recipe-dishName'>{recipe.dishName}</h1>
 						</div>
 						<div className='section-recipe-info'>
 							<span className='section-recipe-user'>上傳者：{displayName}</span>
@@ -139,7 +139,8 @@ function Recipe() {
 			</section>
 			<article className='article-recipe'>
 				<div className='article-recipe-preprare'>
-					<div className='prepare'>行前須知</div>
+					<i className='fa-solid fa-clock'></i>
+					<h2 className='prepare'>行前須知</h2>
 					<div className='prepare-item'>
 						<p>烹煮工具: {recipe.toolName}</p>
 						<p>
@@ -151,7 +152,8 @@ function Recipe() {
 					</div>
 				</div>
 				<div className='article-recipe-ingredient'>
-					<div className='ingredient'>食材</div>
+					<i className='fa-solid fa-cubes-stacked'></i>
+					<h2 className='ingredient'>食材</h2>
 					<div className='ingredient-item'>
 						{ingre.map((item, index) => (
 							<div key={index} className='item'>
@@ -161,11 +163,7 @@ function Recipe() {
 									id={"ingre" + index}
 								/>
 								<label className='recipe-label' htmlFor={"ingre" + index}>
-									<svg className='item-input-icon' viewBox='0 0 128 128'>
-										<title />
-										<path d='M64,0a64,64,0,1,0,64,64A64.07,64.07,0,0,0,64,0Zm0,122a58,58,0,1,1,58-58A58.07,58.07,0,0,1,64,122Z' />
-										<path d='M87.9,42.36,50.42,79.22,40.17,68.43a3,3,0,0,0-4.35,4.13l12.35,13a3,3,0,0,0,2.12.93h.05a3,3,0,0,0,2.1-.86l39.65-39a3,3,0,1,0-4.21-4.28Z' />
-									</svg>
+									<i className='fa-solid fa-check'></i>
 									<div>{item.ingre}</div>
 								</label>
 							</div>
@@ -173,7 +171,8 @@ function Recipe() {
 					</div>
 				</div>
 				<div className='article-recipe-direction'>
-					<div className='direction'>烹煮方法</div>
+					<i className='fa-solid fa-utensils'></i>
+					<h2 className='direction'>烹煮方法</h2>
 					<div className='direction-step'>
 						{step.map((item, index) => (
 							<div key={index} className='step'>
@@ -184,7 +183,7 @@ function Recipe() {
 								/>
 								<label className='recipe-label' htmlFor={"step" + index}>
 									<div className='step-cont'>
-										<i className='fa-solid fa-square-check'></i>
+										<i className='fa-solid fa-circle-check'></i>
 										<div>步驟 {index + 1}</div>
 									</div>
 									<p className='direction-step-content'>{item.stepContent}</p>
@@ -194,15 +193,17 @@ function Recipe() {
 					</div>
 				</div>
 				<div className='article-recipe-comment'>
-					<div className='comment'>實作心得</div>
+					<i className='fa-solid fa-comment'></i>
+					<h2 className='comment'>實作心得</h2>
 					{commentList.map((item, index) => (
 						<div key={index} className='comment-user-cont'>
 							<div className='comment-user'>
 								<div className='user'>
-									<img
-										className='user-fig'
-										src={item.displayPic ? item.displayPic : member}
-									/>
+									{item.displayPic ? (
+										<img className='user-fig' src={item.displayPic} />
+									) : (
+										<i className='fa-solid fa-user'></i>
+									)}
 									<span className='user-name'>{item.displayName}</span>
 									<span className='date'>
 										{new Date(item.createdAt.toDate()).toLocaleDateString()}

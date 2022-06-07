@@ -26,7 +26,7 @@ function HomePage() {
 		// <Loadingcontext.Provider value={{isLoading, setIsLoading}}>
 		// {isLoading ? (<Loading/>
 		// )   :   (
-		<>
+		<div>
 			<header>
 				<div className='header'>
 					<Link to='/' className='header-link'>
@@ -121,7 +121,7 @@ function HomePage() {
 			</section>
 			<Article />
 			<Footer />
-		</>
+		</div>
 		// )}
 		// </Loadingcontext.Provider>
 	);

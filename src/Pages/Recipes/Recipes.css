@@ -176,7 +176,7 @@ i {
 	.confirm-btn {
 		display: block;
 		position: absolute;
-		bottom: 5%;
+		bottom: 15px;
 		background-color: #bba67c;
 		color: #ffffff;
 		padding: 5px;

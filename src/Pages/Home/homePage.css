@@ -10,6 +10,7 @@ html,
 body {
 	height: 100%;
 	width: 100%;
+	color: #555;
 }
 html {
 	font-size: 18px;
@@ -65,7 +66,7 @@ a {
 	text-decoration: none;
 }
 .header-link {
-	color: black;
+	color: #555;
 }
 .userName {
 	color: #ffffff;
@@ -167,13 +168,16 @@ h3 {
 	font-size: 24px;
 	font-weight: 700;
 }
+.article-cont {
+	position: relative;
+}
 .wrap-dishCard {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
 .dishCard {
-	color: #000000;
+	color: #333;
 	width: 260px;
 	height: 375px;
 	border: solid 1px #e8e8e8;
@@ -189,7 +193,12 @@ figure {
 	width: 260px;
 	height: 215px;
 	position: relative;
-	border-radius: 5px;
+}
+.article-figure {
+	border-radius: 5px 5px 0px 0px;
+}
+figcaption {
+	font-size: 20px;
 }
 .dishCard-bookmark {
 	position: absolute;
@@ -221,7 +230,7 @@ figcaption {
 }
 .dishCard-tool {
 	padding-left: 10px;
-	color: #757575;
+	color: #666;
 }
 .dishCard-time {
 	display: grid;
@@ -229,7 +238,7 @@ figcaption {
 	gap: 20px;
 	padding-left: 10px;
 	margin-top: 5px;
-	color: #757575;
+	color: #666;
 }
 .dishCard-heartUser {
 	display: flex;
@@ -246,13 +255,23 @@ figcaption {
 .fa-gripfire,
 .fa-kitchen-set {
 	padding-right: 5px;
+	color: #666;
+}
+.article-title > .fa-gripfire,
+.article-title > .fa-heart {
+	font-size: 28px;
+	color: #000;
 }
 .heartNum {
 	margin-left: 5px;
+	color: #000;
+}
+.hotNum {
+	color: #000;
 }
 .user {
 	padding-right: 10px;
-	color: #757575;
+	color: #666;
 }
 footer {
 	background: #757575;
@@ -330,9 +349,6 @@ footer {
 	.header {
 		width: 90%;
 	}
-	.header-link > h1 {
-		font-size: 20px;
-	}
 	.section-home-info {
 		position: relative;
 	}
@@ -359,9 +375,6 @@ footer {
 @media (min-width: 360px) and (max-width: 1040px) {
 	.header {
 		justify-content: center;
-	}
-	.header-link > h1 {
-		font-size: 20px;
 	}
 	.header-nav {
 		display: none;

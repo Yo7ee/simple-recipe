@@ -118,8 +118,7 @@ button {
 .popup-inner {
 	position: relative;
 	padding: 32px;
-	width: 30%;
-	max-width: 640px;
+	width: 260px;
 	background-color: #fff;
 	text-align: center;
 }

@@ -13,6 +13,8 @@ import DirectionField from "./Context/DirectionField";
 
 function UploadRecipe() {
 	const [popup, setPopup] = useState(false);
+	const [successPopup, setSuccessPopup] = useState(false);
+	const [docRef, setDocRef] = useState("");
 	const [dishName, setDishName] = useState("");
 	const [dishError, setDishError] = useState("");
 	const handleDishName = (e) => {
@@ -27,13 +29,18 @@ function UploadRecipe() {
 	const handleUploadFile = (e) => {
 		e.preventDefault();
 		const file = e.target.files.item(0);
-		new Compressor(file, {
-			quality: 0.5,
-			success: (compressResult) => {
-				console.log(compressResult);
-				setFileSrc(compressResult);
-			},
-		});
+		console.log(file, fileSrc);
+		if (file.size > 1000000) {
+			setPopup(true);
+		} else {
+			new Compressor(file, {
+				quality: 0.6,
+				success: (compressResult) => {
+					console.log(compressResult);
+					setFileSrc(URL.createObjectURL(compressResult));
+				},
+			});
+		}
 	};
 
 	const [preTime, setPreTime] = useState("");
@@ -59,18 +66,6 @@ function UploadRecipe() {
 			setCookTimeError("時間不可空白且為數字格式");
 		}
 	};
-
-	const totalTime = parseInt(preTime) + parseInt(cookTime);
-	let time = 0;
-	if (totalTime < 30) {
-		time = 0;
-	} else if (totalTime < 60) {
-		time = 1;
-	} else if (totalTime < 120) {
-		time = 2;
-	} else {
-		time = 3;
-	}
 
 	const [difficulty, setDifficulty] = useState("0");
 	const handleDifficulty = (e) => {
@@ -103,7 +98,7 @@ function UploadRecipe() {
 		e.preventDefault();
 		const checkArray = [
 			dishName.length,
-			URL.createObjectURL(fileSrc).length,
+			fileSrc.length,
 			preTime.length,
 			cookTime.length,
 			difficulty.length,
@@ -111,10 +106,21 @@ function UploadRecipe() {
 			inputFields.length,
 			stepFields.length,
 		];
+		const totalTime = parseInt(preTime) + parseInt(cookTime);
+		let time = 0;
+		if (totalTime < 30) {
+			time = 0;
+		} else if (totalTime < 60) {
+			time = 1;
+		} else if (totalTime < 120) {
+			time = 2;
+		} else {
+			time = 3;
+		}
 		if (checkArray.every((item) => item >= 1)) {
 			try {
 				const imgInfo = await RecipeService.getImgInfo(fileSrc);
-				console.log(imgInfo[0]);
+				console.log(imgInfo[1].id);
 				const item = {
 					dishName,
 					preTime,
@@ -137,7 +143,8 @@ function UploadRecipe() {
 					likedBy: ["0"],
 				};
 				await RecipeService.setDoc(item, imgInfo[1]);
-				navigate("/");
+				setDocRef(imgInfo[1].id); //imgInfo[1]=docRef
+				setSuccessPopup(true);
 			} catch (e) {
 				console.log("Error adding Item " + e);
 			}
@@ -148,6 +155,9 @@ function UploadRecipe() {
 	};
 	const handleErrorSubmit = () => {
 		setPopup(false);
+	};
+	const handleSuccesSubmit = () => {
+		navigate(`/recipe/${docRef}`);
 	};
 
 	return (
@@ -163,7 +173,7 @@ function UploadRecipe() {
 						</label>
 						<div>
 							<input
-								className='input dish-name'
+								className='input-dish-name'
 								type='text'
 								onChange={(e) => handleDishName(e.target.value)}
 							/>
@@ -171,24 +181,26 @@ function UploadRecipe() {
 					</div>
 					<div className='dish-cont'>
 						<label className='dish-label'>食譜照片</label>
-						{fileSrc ? (
+						<div className='upload-img-info-cont'>
 							<div className='upload-img-cont'>
-								<img
-									className='upload-img'
-									src={URL.createObjectURL(fileSrc)}
-								/>
-							</div>
-						) : (
-							<div className='upload-img-cont'>
-								<label className='label-upload-img'>點此上傳照片</label>
+								{fileSrc ? (
+									<img className='upload-img' src={fileSrc} />
+								) : (
+									<label className='label-upload-img'>點此上傳照片</label>
+								)}
 								<input
 									className='input-dish-pic'
 									type='file'
-									accept='image/*, .heic'
+									accept='image/*'
 									onChange={handleUploadFile}
 								/>
 							</div>
-						)}
+							<div className='upload-img-info'>
+								<p className='img-info'>1. 此為食譜封面照</p>
+								<p className='img-info'>2. 建議圖片尺寸比例為3:2</p>
+								<p className='img-info'>3. 檔案須小於1MB</p>
+							</div>
+						</div>
 					</div>
 					<div className='dish-cont'>
 						<label className='dish-label'>
@@ -367,8 +379,18 @@ function UploadRecipe() {
 			{popup ? (
 				<div className='popup'>
 					<div className='popup-inner'>
-						<p className='popup-title'>資料填寫尚未完成或格式錯誤</p>
+						<p className='popup-title'>
+							資料填寫尚未完成或格式錯誤或照片容量大於1MB
+						</p>
 						<button onClick={handleErrorSubmit}>確認</button>
+					</div>
+				</div>
+			) : null}
+			{successPopup ? (
+				<div className='popup'>
+					<div className='popup-inner'>
+						<p className='popup-title'>食譜上傳成功</p>
+						<button onClick={handleSuccesSubmit}>前往食譜頁面</button>
 					</div>
 				</div>
 			) : null}

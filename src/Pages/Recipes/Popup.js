@@ -17,27 +17,38 @@ function FilterPopup() {
 
 	//Sorting
 	const [sorting, setSorting] = useState(0);
+
+	//Combine filter and sorting
+	const [filterItem, setFilterItem] = useState([]);
 	const handleFiltering = () => {
 		//運用array, filter, join將判斷結果轉換為algolia filters格式
 		const array = [tool, difficulty, time];
 		const filterArray = array.filter((item) => item != "");
 		const item = filterArray.join(" AND ");
-		console.log(item);
+		setFilterItem(item);
+		// client.clearCache().then(()=>{
+
+		// })
 		algolia
 			.search(keyword, {
 				filters: item,
 			})
 			.then((result) => {
 				setResults(result.hits);
+				console.log("filter", keyword, item, result.hits);
 			});
 	};
 	const handleSorting = (replica) => {
 		const indexName = replica;
+		console.log(replica);
 		client
 			.initIndex(indexName)
-			.search(keyword)
+			.search(keyword, {
+				filters: filterItem,
+			})
 			.then((result) => {
 				setResults(result.hits);
+				console.log("sorting", result.hits);
 			});
 	};
 
