@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../Home/Header";
 import Ingredient from "./Componets/Ingredient";
 import Direction from "./Componets/Direction";
@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Compressor from "compressorjs";
 import IngredientsFieldContext from "./Context/IngredientsField";
 import DirectionField from "./Context/DirectionField";
+import UserContext from "../../Context/User";
 
 function UploadRecipe() {
 	const [popup, setPopup] = useState(false);
@@ -17,6 +18,13 @@ function UploadRecipe() {
 	const [docRef, setDocRef] = useState("");
 	const [dishName, setDishName] = useState("");
 	const [dishError, setDishError] = useState("");
+	const { user } = useContext(UserContext);
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (!user) {
+			navigate("/signin");
+		}
+	}, []);
 	const handleDishName = (e) => {
 		if (e) {
 			setDishName(e);
@@ -93,7 +101,7 @@ function UploadRecipe() {
 	//步驟
 	const [stepFields, setStepFields] = useState([{ stepContent: "" }]);
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const handleOnSubmit = async (e) => {
 		e.preventDefault();
 		const checkArray = [

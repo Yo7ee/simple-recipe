@@ -1,18 +1,18 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	//建置的模式
 	mode: "development", //預設production(上線模式)
 	//入口
 	entry: "./src/index.js",
-	//輸出，__dirname表示現在檔案的工作路徑，後面接想讓輸出的檔案放到哪個資料夾
+	//輸出，path.resolve是把相對路徑轉成絕對路徑，__dirname表示現在檔案的工作路徑，後面接想讓輸出的檔案放到哪個資料夾
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "public"),
-		// publicPath: "/",
 	},
 	devServer: {
+		//實際執行檔的根目錄
 		static: {
 			directory: path.join(__dirname, "./public"),
 		},
@@ -41,10 +41,10 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: "./public/index.html",
-			filename: "./index.html",
-		}),
-	],
+	// plugins: [
+	// 	new HtmlWebpackPlugin({
+	// 		template: "./public/index.html",
+	// 		filename: "./index.html",
+	// 	}),
+	// ],
 };

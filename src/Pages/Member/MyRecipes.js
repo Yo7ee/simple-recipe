@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./member.css";
 import { getAuth } from "firebase/auth";
 import RecipeService from "../../utils/database";
 import { Link } from "react-router-dom";
 import { onSnapshot, query, collection, where } from "@firebase/firestore";
 import { db } from "../../utils/firebase";
+import UserContext from "../../Context/User";
 
 function MyRecipes() {
 	const [myRecipe, setMyRecipe] = useState([]);
@@ -12,6 +13,7 @@ function MyRecipes() {
 
 	const auth = getAuth();
 	const userName = auth.currentUser.displayName;
+	const { user } = useContext(UserContext);
 	// const showMyRecipe = async () => {
 	//     const data = await RecipeService.getFilterDoc("author.displayName", userName);
 	//     setMyRecipe(data)
@@ -20,7 +22,7 @@ function MyRecipes() {
 	const showMyRecipe = () => {
 		const q = query(
 			collection(db, "recipe"),
-			where("author.displayName", "==", userName)
+			where("author.displayName", "==", user.displayName)
 		);
 		onSnapshot(q, (querySnapshot) => {
 			const data = querySnapshot.docs.map((doc) => ({

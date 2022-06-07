@@ -13,12 +13,14 @@ import auth from "./utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import UserContext from "./Context/User";
 import KeywordContext from "./Context/Keyword";
+import Loading from "./Loading";
 
 function App() {
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState(undefined);
 	const [uid, setUid] = useState(0);
 	const [keyword, setKeyword] = useState("");
 	const [direction, setDirection] = useState("down");
+
 	useEffect(() => {
 		onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
@@ -26,6 +28,7 @@ function App() {
 		});
 		window.addEventListener("scroll", handleWindowOffset);
 	}, []);
+	console.log("app", user);
 
 	let oldOffset = 0;
 	const handleWindowOffset = () => {
@@ -36,7 +39,9 @@ function App() {
 		}
 		oldOffset = window.scrollY;
 	};
-	return (
+	return user === undefined ? (
+		<Loading />
+	) : (
 		<UserContext.Provider value={{ user, setUser, uid, setUid }}>
 			<KeywordContext.Provider
 				value={{ keyword, setKeyword, direction, setDirection }}>
@@ -45,17 +50,26 @@ function App() {
 						<Route path='/' element={<HomePage />} />
 						<Route path='/recipes' element={<Recipes />} />
 						<Route path='/recipes/search=:keyword' element={<Recipes />} />
-						<Route path='/signin' element={<Signin />} />
-						<Route path='/signup' element={<Signup />} />
+						<Route path='/recipe/:recipeId' element={<Recipe />} />
 						<Route
 							path='/recipe/upload'
 							element={user ? <UploadRecipe /> : <Navigate to='/signin' />}
 						/>
-						<Route path='/recipe/:recipeId' element={<Recipe />} />
-						<Route path='/me' element={<Member />}>
+						<Route
+							path='/me'
+							element={user ? <Member /> : <Navigate to='/signin' />}>
 							<Route path='recipes' element={<MyRecipes />} />
 							<Route path='bookmarks' element={<MyBookmarks />} />
 						</Route>
+
+						<Route
+							path='/signin'
+							element={user ? <Navigate to='/me/recipes' /> : <Signin />}
+						/>
+						<Route
+							path='/signup'
+							element={user ? <Navigate to='/me/recipes' /> : <Signup />}
+						/>
 					</Routes>
 				</BrowserRouter>
 			</KeywordContext.Provider>

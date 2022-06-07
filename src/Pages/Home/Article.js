@@ -70,9 +70,7 @@ function Article() {
 		showDish();
 	}, []);
 
-	return isLoading ? (
-		<Loading />
-	) : (
+	return (
 		<article className='article-article'>
 			<div className='article-cont'>
 				<div className='article-title'>
