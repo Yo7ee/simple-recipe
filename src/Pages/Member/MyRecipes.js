@@ -6,19 +6,17 @@ import { Link } from "react-router-dom";
 import { onSnapshot, query, collection, where } from "@firebase/firestore";
 import { db } from "../../utils/firebase";
 import UserContext from "../../Context/User";
+import { ContentLoading } from "../Loading/Loading";
 
 function MyRecipes() {
 	const [myRecipe, setMyRecipe] = useState([]);
 	const [myRecipeNumber, setMyRecipeNumber] = useState(0);
+	const [pageLoading, setPageLoading] = useState(true);
 
 	const auth = getAuth();
 	const userName = auth.currentUser.displayName;
 	const { user } = useContext(UserContext);
-	// const showMyRecipe = async () => {
-	//     const data = await RecipeService.getFilterDoc("author.displayName", userName);
-	//     setMyRecipe(data)
-	//     setMyRecipeNumber(data.length);
-	// }
+
 	const showMyRecipe = () => {
 		const q = query(
 			collection(db, "recipe"),
@@ -32,13 +30,14 @@ function MyRecipes() {
 			setMyRecipe(data);
 			setMyRecipeNumber(data.length);
 			console.log(data);
+			setPageLoading(false);
 		});
 	};
 	const ingredientsList = (list) => {};
 
-	const handleDelRecipe = async (id, e) => {
+	const handleDelRecipe = (id, e) => {
 		e.preventDefault();
-		await RecipeService.deleteDoc(id);
+		RecipeService.deleteDoc(id);
 		showMyRecipe;
 	};
 
@@ -46,7 +45,9 @@ function MyRecipes() {
 		showMyRecipe();
 	}, []);
 
-	return (
+	return pageLoading ? (
+		<ContentLoading />
+	) : (
 		<>
 			<div className='myRecipe-number'>{myRecipeNumber} 篇食譜</div>
 			{myRecipeNumber == 0 && (
@@ -67,7 +68,10 @@ function MyRecipes() {
 									<i className='fa-regular fa-trash-can fa-2x'></i>
 								</button>
 							</div>
-							<div className='myRecipe-ingre'>食材</div>
+							<div className='myRecipe-ingre'>
+								<i className='fa-solid fa-kitchen-set'></i>
+								{item.toolName}
+							</div>
 							<div className='myRecipe-time-cont'>
 								<i className='fa-regular fa-clock'></i>
 								{parseInt(item.preTime) + parseInt(item.cookTime)}分鐘

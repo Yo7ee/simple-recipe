@@ -13,6 +13,7 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	background-color: #fff;
+	width: 100%;
 }
 .dish-cont {
 	padding: 20px 80px;
@@ -35,14 +36,15 @@
 	border-radius: 5px;
 	height: 35px;
 	width: 100%;
-	max-width: 400px;
+	max-width: 450px;
 	font-size: 18px;
 	text-align: center;
 }
 .upload-img-cont {
 	position: relative;
 	width: 100%;
-	max-width: 400px;
+	max-width: 450px;
+	min-width: 450px;
 	height: 250px;
 	cursor: pointer;
 	border: solid 1px #757575;
@@ -116,7 +118,8 @@
 }
 .dish-ingredient,
 .dish-direction {
-	width: 1000px;
+	max-width: 1000px;
+	width: 100%;
 	text-align: left;
 	resize: none;
 }
@@ -162,27 +165,45 @@
 	font-size: 18px;
 	margin-left: 20px;
 }
-
-@media (min-width: 600px) and (max-width: 1200px) {
+@media (min-width: 360px) and (max-width: 1200px) {
 	.dish-info-cont {
 		width: 90%;
 	}
+}
+@media (min-width: 600px) and (max-width: 990px) {
 	.upload-img-info-cont {
 		display: block;
 	}
 	.upload-img-info {
 		margin-top: 5%;
+		margin-left: 0;
 	}
 }
-@media (min-width: 360px) and (max-width: 600px) {
-	.dish-info-cont {
-		width: 90%;
+@media (min-width: 360px) and (max-width: 690px) {
+	.dish-cont {
+		padding: 20px 30px;
 	}
 	.dish-name {
 		width: 100%;
 	}
+	.input-dish-name {
+		max-width: 500px;
+	}
+	.upload-img-info-cont {
+		display: block;
+	}
 	.label-upload-img {
 		font-size: 18px;
+	}
+	.upload-img-cont {
+		min-width: 0;
+		max-width: 500px;
+	}
+	.upload-img-info {
+		margin-top: 5%;
+		margin-left: 0;
+		width: 93%;
+		font-size: 16px;
 	}
 	.tool {
 		display: grid;
@@ -193,9 +214,16 @@
 		text-align: center;
 		font-size: 16px;
 	}
+	.tool > .cook-tool-item {
+		margin-right: 0;
+	}
 	.ingre-content,
 	.step-content {
 		margin-left: 0;
+	}
+	.dish-ingredient,
+	.dish-direction {
+		min-width: 250px;
 	}
 	.dish-direction {
 		height: 100px;

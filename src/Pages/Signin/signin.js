@@ -41,7 +41,7 @@ function Signin() {
 	const handleGoogleSignin = () => {
 		signInWithPopup(auth, provider)
 			.then((result) => {
-				navigate("me/recipes"); //將使用者redirect到會員頁面
+				navigate("/me/recipes"); //將使用者redirect到會員頁面
 			})
 			.catch((error) => {
 				// Handle Errors here.

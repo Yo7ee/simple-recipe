@@ -13,7 +13,7 @@ import auth from "./utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import UserContext from "./Context/User";
 import KeywordContext from "./Context/Keyword";
-import Loading from "./Loading";
+import { Loading } from "./Pages/Loading/Loading";
 
 function App() {
 	const [user, setUser] = useState(undefined);
@@ -28,7 +28,6 @@ function App() {
 		});
 		window.addEventListener("scroll", handleWindowOffset);
 	}, []);
-	console.log("app", user);
 
 	let oldOffset = 0;
 	const handleWindowOffset = () => {

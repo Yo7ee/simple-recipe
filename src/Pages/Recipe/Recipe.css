@@ -1,6 +1,6 @@
 .section-recipe {
 	margin-top: 60px;
-	padding: 10px 20px;
+	padding: 15px 20px 10px 20px;
 }
 .section-recipe-cont {
 	max-width: 1200px;
@@ -39,15 +39,18 @@
 	width: 30px;
 	height: 30px;
 	margin-left: 20px;
-	fill: #bba67c;
+	fill: #888;
+	cursor: pointer;
 }
 .collected {
-	fill: #a17a55;
+	color: #94c9a9;
+	fill: #94c9a9;
 }
 .section-recipe-heart {
 	width: 30px;
 	height: 30px;
-	fill: #757575;
+	fill: #888;
+	cursor: pointer;
 }
 .liked {
 	fill: rgb(196, 70, 70);
@@ -82,8 +85,8 @@
 .article-recipe-ingredient,
 .article-recipe-direction,
 .article-recipe-comment {
-	max-width: 800px;
-	width: 100%;
+	max-width: 1300px;
+	width: 90%;
 	margin-top: 20px;
 	border-top: solid 2px #000;
 	position: relative;
@@ -162,8 +165,6 @@
 	margin-bottom: 5px;
 }
 .comment-user-cont {
-	max-width: 800px;
-	width: 100%;
 	border-bottom: solid 1px #757575;
 	margin-top: 20px;
 }
@@ -208,11 +209,12 @@
 }
 .input-comment {
 	position: absolute;
-	max-width: 800px;
+	/* max-width: 1300px; */
 	width: 100%;
 	height: 50px;
 	border: solid 1px #757575;
 	border-radius: 15px;
+	text-indent: 10px; /*For the space between input border and input word*/
 }
 .btn-comment {
 	background-size: contain;

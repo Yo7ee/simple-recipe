@@ -15,7 +15,12 @@ import {
 	arrayUnion,
 	arrayRemove,
 } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+	ref,
+	uploadBytes,
+	getDownloadURL,
+	deleteObject,
+} from "firebase/storage";
 
 const recipeColRef = collection(db, "recipe");
 
@@ -95,7 +100,16 @@ class RecipeService {
 	// }
 	deleteDoc = (id) => {
 		const itemDoc = doc(db, "recipe", id);
-		return deleteDoc(itemDoc);
+		deleteDoc(itemDoc);
+		const imgDoc = ref(storage, "Recipe-Img/" + id);
+		deleteObject(imgDoc)
+			.then(() => {
+				console.log("success");
+			})
+			.catch((error) => {
+				console.log(error);
+				return error;
+			});
 	};
 	getImgInfo = async (file) => {
 		const docRef = doc(recipeColRef);

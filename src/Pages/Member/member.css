@@ -1,5 +1,6 @@
 .member-info-cont {
 	width: 80%;
+	min-height: calc(100vh - 140px); /* For footer at the bottom */
 	margin: 90px auto 0 auto;
 	margin-top: 90px;
 	display: grid;
@@ -23,9 +24,9 @@
 	width: 50px;
 	height: 50px;
 	padding: 5px;
+	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	font-size: 24px;
 	font-weight: 600;
 }
@@ -40,8 +41,9 @@
 	list-style: none;
 	display: flex;
 	gap: 10px;
-	margin: 15px 0 15px 0;
+	padding: 15px 0 15px 0;
 	position: relative;
+	border-bottom: solid 1px #757575;
 }
 .member-link {
 	color: #757575;
@@ -55,7 +57,6 @@
 	cursor: pointer;
 }
 .myRecipe-number {
-	border-bottom: solid 1px #757575;
 	margin-top: 20px;
 }
 .myBookmark-none,
@@ -64,14 +65,22 @@
 	margin: 20px auto 20px auto;
 }
 .myRecipe-cont {
-	width: 100%;
+	width: 90%;
 	display: flex;
 	border-bottom: solid 1px #757575;
-	padding: 20px 0 20px 0;
+	padding: 20px;
 	color: #000000;
+	margin: 20px auto;
+	box-shadow: 0 0 3px;
+	box-sizing: border-box;
+	transition-duration: 0.3s;
+}
+.myRecipe-cont:hover {
+	transform: scale(1.01);
 }
 .myRecipe-info {
 	flex: auto;
+	overflow: hidden;
 }
 .myRecipe-title {
 	display: flex;
@@ -79,10 +88,17 @@
 }
 .myRecipe-name {
 	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	flex: auto;
 }
+.myRecipe-tool,
 .myRecipe-ingre {
 	color: #757575;
 	font-size: 18px;
+	display: flex;
+	align-items: center;
 }
 .myRecipe-time-cont {
 	color: #757575;
@@ -93,8 +109,29 @@
 .myRecipe-time {
 	margin-left: 10px;
 }
+.myRecipe-time-cont > .fa-clock {
+	position: unset;
+	padding-left: 0;
+	padding-right: 5px;
+	color: #757575;
+	font-size: 16px;
+}
+.myRecipe-ingre > .fa-cubes-stacked {
+	position: unset;
+	padding-left: 0;
+	padding-right: 5px;
+	color: #757575;
+	font-size: 16px;
+}
+.myRecipe-ingre-item {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	flex: auto;
+	white-space: nowrap;
+}
 .myRecipe-fig {
-	background: grey;
+	width: 200px;
+	height: 130px;
 }
 .myRecipe-img {
 	background: grey;
@@ -109,7 +146,16 @@
 	width: 30px;
 	height: 30px;
 }
-
+@media (max-width: 1025px) {
+	.member-info-cont .wrap {
+		width: 100%;
+	}
+}
+@media (max-width: 700px) {
+	.myRecipe-name {
+		width: 100px;
+	}
+}
 @media (min-width: 360px) and (max-width: 600px) {
 	.member-info-cont {
 		display: block;
@@ -121,10 +167,28 @@
 	.myRecipe-none {
 		width: 90%;
 	}
+	.myRecipe-cont {
+		padding: 10px;
+	}
 	.myRecipe-btn-del {
 		margin-left: 0;
 	}
+	.myRecipe-name {
+		font-size: 12px;
+	}
+	.myRecipe-title > .myBookmark {
+		width: 20px;
+		height: 20px;
+	}
+	.myRecipe-ingre,
+	.myRecipe-time-cont,
+	.myRecipe-time-cont > .fa-clock,
+	.fa-trash-can {
+		font-size: 10px;
+	}
 	.myRecipe-fig {
-		width: 50%;
+		max-width: 90px;
+		width: 100%;
+		max-height: 60px;
 	}
 }

@@ -7,8 +7,8 @@ import RecipeService from "../../utils/database";
 import { Timestamp, onSnapshot, doc } from "firebase/firestore";
 import auth, { db } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import member from "../../icon/member.svg";
 import UserContext from "../../Context/User";
+import { Loading } from "../Loading/Loading";
 
 function Recipe() {
 	const id = window.location.href.split("/").pop();
@@ -18,6 +18,7 @@ function Recipe() {
 	const [displayName, setDisplayName] = useState("");
 	const [time, setTime] = useState("");
 	const { user, uid } = useContext(UserContext);
+	const [pageLoading, setPageLoading] = useState(true);
 
 	const showRecipe = () => {
 		onSnapshot(doc(db, "recipe", id), (doc) => {
@@ -29,6 +30,7 @@ function Recipe() {
 			setDisplayName(data.author.displayName);
 			setTime(new Date(data.createdAt.toDate()).toLocaleDateString());
 			console.log(new Date(data.createdAt.toDate()).toLocaleDateString());
+			setPageLoading(false);
 		});
 	};
 	const handleToggle = async (isActive, colName) => {
@@ -94,7 +96,9 @@ function Recipe() {
 	const isCollected = recipe.collectedBy?.includes(uid);
 	const isLiked = recipe.likedBy?.includes(uid);
 	console.log(isLiked, isCollected);
-	return (
+	return pageLoading ? (
+		<Loading />
+	) : (
 		<>
 			<Header />
 			<section className='section-recipe'>
@@ -202,7 +206,7 @@ function Recipe() {
 									{item.displayPic ? (
 										<img className='user-fig' src={item.displayPic} />
 									) : (
-										<i className='fa-solid fa-user'></i>
+										<div className='userName'>{item.displayName[0]}</div>
 									)}
 									<span className='user-name'>{item.displayName}</span>
 									<span className='date'>
@@ -224,7 +228,7 @@ function Recipe() {
 							value={comment}
 							onClick={handleClickNoneUser}
 							onChange={handleKeyUpComment}
-							placeholder=' 寫下你的心得'
+							placeholder='寫下你的心得'
 						/>
 						<button className='btn-comment'>
 							{comment ? (

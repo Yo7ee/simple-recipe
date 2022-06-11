@@ -20,11 +20,7 @@ function UploadRecipe() {
 	const [dishError, setDishError] = useState("");
 	const { user } = useContext(UserContext);
 	const navigate = useNavigate();
-	useEffect(() => {
-		if (!user) {
-			navigate("/signin");
-		}
-	}, []);
+
 	const handleDishName = (e) => {
 		if (e) {
 			setDishName(e);
@@ -44,8 +40,8 @@ function UploadRecipe() {
 			new Compressor(file, {
 				quality: 0.6,
 				success: (compressResult) => {
-					console.log(compressResult);
-					setFileSrc(URL.createObjectURL(compressResult));
+					console.log(compressResult.size);
+					setFileSrc(compressResult);
 				},
 			});
 		}
@@ -91,6 +87,11 @@ function UploadRecipe() {
 		4: "湯鍋",
 		5: "其他",
 	};
+	const difficultyObj = {
+		0: "簡單",
+		1: "中等",
+		2: "特級廚師",
+	};
 	const handleTool = (e) => {
 		setTool(e);
 	};
@@ -106,7 +107,7 @@ function UploadRecipe() {
 		e.preventDefault();
 		const checkArray = [
 			dishName.length,
-			fileSrc.length,
+			fileSrc.size,
 			preTime.length,
 			cookTime.length,
 			difficulty.length,
@@ -114,6 +115,7 @@ function UploadRecipe() {
 			inputFields.length,
 			stepFields.length,
 		];
+		console.log(checkArray);
 		const totalTime = parseInt(preTime) + parseInt(cookTime);
 		let time = 0;
 		if (totalTime < 30) {
@@ -128,13 +130,14 @@ function UploadRecipe() {
 		if (checkArray.every((item) => item >= 1)) {
 			try {
 				const imgInfo = await RecipeService.getImgInfo(fileSrc);
-				console.log(imgInfo[1].id);
+				console.log(imgInfo);
 				const item = {
 					dishName,
 					preTime,
 					cookTime,
 					totalTimeValue: time,
 					difficulty,
+					difficultyName: difficultyObj[difficulty],
 					tool,
 					toolName: toolObj[tool],
 					ingredients: inputFields,
@@ -184,6 +187,7 @@ function UploadRecipe() {
 								className='input-dish-name'
 								type='text'
 								onChange={(e) => handleDishName(e.target.value)}
+								placeholder='請輸入你的食譜名稱'
 							/>
 						</div>
 					</div>
@@ -192,7 +196,10 @@ function UploadRecipe() {
 						<div className='upload-img-info-cont'>
 							<div className='upload-img-cont'>
 								{fileSrc ? (
-									<img className='upload-img' src={fileSrc} />
+									<img
+										className='upload-img'
+										src={URL.createObjectURL(fileSrc)}
+									/>
 								) : (
 									<label className='label-upload-img'>點此上傳照片</label>
 								)}

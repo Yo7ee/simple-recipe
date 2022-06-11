@@ -9,7 +9,6 @@ import UserContext from "../../Context/User";
 
 function HomePage() {
 	const [isLoading, setIsLoading] = useState(false);
-	console.log(isLoading);
 	const navigate = useNavigate();
 	const { user } = useContext(UserContext);
 	const { keyword, setKeyword, direction } = useContext(KeywordContext);
@@ -26,8 +25,8 @@ function HomePage() {
 		// <Loadingcontext.Provider value={{isLoading, setIsLoading}}>
 		// {isLoading ? (<Loading/>
 		// )   :   (
-		<div>
-			<header>
+		<div className='home'>
+			<header className={direction == "up" ? "header-hide" : null}>
 				<div className='header'>
 					<Link to='/' className='header-link'>
 						<img className='home-logo' src={logo} alt='簡單食譜 logo' />

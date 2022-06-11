@@ -1,0 +1,86 @@
+.loading-cont {
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.loading-cont > .fa-solid {
+	font-size: 50px;
+	padding: 5px;
+	color: #bba67c;
+}
+.loading-cont > .fa-solid {
+	color: #bba67c;
+	font-size: 70px;
+	border-radius: 100%;
+	margin: 10px 5px;
+	animation: jump 0.8s infinite ease-in-out;
+}
+.loading-cont i:nth-child(1) {
+	animation-delay: -0.21s;
+}
+.loading-cont i:nth-child(2) {
+	animation-delay: -0.14s;
+}
+.loading-cont i:nth-child(3) {
+	animation-delay: -0.07s;
+}
+.loading-cont i:nth-child(4) {
+	animation-delay: 0s;
+}
+@keyframes jump {
+	33% {
+		transform: translateY(100%);
+	}
+	66% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+.contentLoading-cont {
+	background: #ffffff;
+	width: 100%;
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	z-index: 10;
+}
+
+.contentLoading-cont > .fa-bowl-food {
+	font-size: 50px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	color: #bba67c;
+}
+.contentLoadingInner {
+	border: 5px solid #bba67c;
+	margin: 10px auto;
+	animation: spread 1s infinite linear;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+@keyframes spread {
+	from {
+		width: 70px;
+		height: 70px;
+	}
+	to {
+		width: 90px;
+		height: 90px;
+	}
+}
+.contentLoadingOuter {
+	width: 120px;
+	height: 120px;
+	border: 5px solid #f2efe9;
+	margin: 10px auto;
+	position: relative;
+}

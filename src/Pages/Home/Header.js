@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../../Context/User";
 import KeywordContext from "../../Context/Keyword";
 import logo from "../../icon/logo.png";
@@ -13,12 +13,11 @@ function Header() {
 	const handleSearch = () => {
 		setKeyword(keyword);
 		navigate(`/recipes?search=${keyword}`);
-		console.log("header", keyword);
 	};
 
 	return (
 		<>
-			<header>
+			<header className={direction == "up" ? "header-hide" : null}>
 				<div className='header'>
 					<Link to='/' className='header-link'>
 						<img className='logo' src={logo} alt='簡單食譜 logo' />
@@ -68,38 +67,48 @@ function Header() {
 					direction == "up" ? "header-mobile-nav hide" : "header-mobile-nav"
 				}>
 				<ul>
-					<Link to='/recipes'>
+					<NavLink
+						to='/recipes'
+						className={({ isActive }) => (isActive ? "selected" : null)}>
 						<li>
 							<i className='fa-solid fa-bowl-food'></i>
 							<p>全部食譜</p>
 						</li>
-					</Link>
-					<Link to='/recipe/upload'>
+					</NavLink>
+					<NavLink
+						to='/recipe/upload'
+						className={({ isActive }) => (isActive ? "selected" : null)}>
 						<li>
 							<i className='fa-solid fa-pen-to-square'></i>
 							<p>上傳食譜</p>
 						</li>
-					</Link>
+					</NavLink>
 					{user ? (
 						<>
 							{user.displayName ? (
-								<Link to='/me/recipes' className='header-link'>
+								<NavLink
+									to='/me/recipes'
+									className={({ isActive }) =>
+										isActive ? "header-link selected" : "header-link"
+									}>
 									<li>
-										<p className='userName'>{user.displayName[0]}</p>
+										<div className='userName'>{user.displayName[0]}</div>
 										<p>會員資料</p>
 									</li>
-								</Link>
+								</NavLink>
 							) : (
 								<li className='userName'></li>
 							)}
 						</>
 					) : (
-						<Link to='/signin'>
+						<NavLink
+							to='/signin'
+							className={({ isActive }) => (isActive ? "selected" : null)}>
 							<li>
 								<i className='fa-solid fa-user'></i>
 								<p>登入/註冊</p>
 							</li>
-						</Link>
+						</NavLink>
 					)}
 				</ul>
 			</div>

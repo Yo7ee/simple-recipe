@@ -36,7 +36,7 @@ module.exports = {
 				loader: "babel-loader", //只有一個loader，所以不用use
 			},
 			{
-				test: /\.(png|jpg|gif|svg)$/i,
+				test: /\.(png|jpg|gif|svg|ico)$/i,
 				type: "asset/resource",
 			},
 		],
