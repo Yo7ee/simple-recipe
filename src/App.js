@@ -65,10 +65,7 @@ function App() {
 							path='/signin'
 							element={user ? <Navigate to='/me/recipes' /> : <Signin />}
 						/>
-						<Route
-							path='/signup'
-							element={user ? <Navigate to='/me/recipes' /> : <Signup />}
-						/>
+						<Route path='/signup' element={<Signup />} />
 					</Routes>
 				</BrowserRouter>
 			</KeywordContext.Provider>

@@ -110,6 +110,7 @@ i {
 	max-width: 1200px;
 	width: 90%;
 	min-height: calc(100vh - 485px);
+	padding-bottom: 60px;
 }
 .filter-sort-mobile-btn {
 	display: none;

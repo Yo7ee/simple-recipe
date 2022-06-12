@@ -174,7 +174,6 @@ a {
 .article-cont {
 	position: relative;
 	margin-top: 30px;
-	margin-bottom: 30px;
 }
 .wrap-dishCard {
 	display: flex;
@@ -373,8 +372,6 @@ footer {
 	padding: 5px;
 	cursor: pointer;
 }
-.footer-copyright {
-}
 
 .header-mobile-nav {
 	display: none;
@@ -504,7 +501,9 @@ footer {
 	}
 	.article-article {
 		width: 100%;
+		padding-bottom: 60px;
 	}
+
 	.article-cont {
 		margin-left: 10px;
 	}

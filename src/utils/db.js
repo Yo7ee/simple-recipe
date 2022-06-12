@@ -22,9 +22,21 @@ import {
 	deleteObject,
 } from "firebase/storage";
 import { useEffect, useState } from "react";
-import MyRecipes from "../Pages/Member/MyRecipes";
 
 const recipeColRef = collection(db, "recipe");
+
+export async function getComment(id) {
+	const [commentList, setCommentList] = useState([]);
+	const docRef = doc(db, "recipe", id);
+	const commentRef = collection(docRef, "comment");
+	const q = query(commentRef, orderBy("createdAt", "asc"));
+	const querySnapshot = await getDocs(q);
+	const dataArr = querySnapshot.docs.map((doc) => ({
+		...doc.data(),
+		id: doc.id,
+	}));
+	return dataArr;
+}
 
 export function getMyRecipes(displayName) {
 	const [myRecipe, setMyRecipe] = useState([]);

@@ -20,7 +20,6 @@ function Signin() {
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				const displayName = userCredential.user.displayName;
-
 				navigate("/me/recipes"); //將使用者redirect到會員頁面
 			})
 			.catch((error) => {
@@ -70,14 +69,14 @@ function Signin() {
 							value={email}
 							pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}'
 							onChange={(e) => setEmail(e.target.value)}
-							placeholder=' 請輸入信箱'
+							placeholder=' guest@guest.com'
 						/>
 						<input
 							className='input-signin'
 							type='password'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							placeholder=' 請輸入密碼'
+							placeholder=' guest1'
 						/>
 						<button className='btn-submit'>登入帳號</button>
 					</form>

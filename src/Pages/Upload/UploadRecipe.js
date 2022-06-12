@@ -86,9 +86,6 @@ function UploadRecipe() {
 		1: "中等",
 		2: "特級廚師",
 	};
-	const handleTool = (e) => {
-		setTool(e);
-	};
 
 	//食材
 	const [inputFields, setInputFields] = useState([{ ingre: "" }]);
@@ -144,6 +141,7 @@ function UploadRecipe() {
 					hotCount: 0,
 					collectedBy: ["0"],
 					likedBy: ["0"],
+					likedValue: 0,
 				};
 				await RecipeService.setDoc(item, imgInfo[1]);
 				setDocRef(imgInfo[1].id); //imgInfo[1]=docRef
