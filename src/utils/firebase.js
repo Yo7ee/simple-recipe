@@ -32,17 +32,4 @@ const db = getFirestore(app);
 
 const storage = getStorage(app);
 
-// const docUpdate = functions.firestore
-// 	.document("recipe/{documentId}")
-// 	.onUpdate((change, context) => {
-// 		const beforeData = change.before.data();
-// 		const newData = change.after.data();
-// 		// if(beforeData===newData)
-// 		const object = {
-// 			objectID: context.params.documentID,
-// 			...newData,
-// 		};
-// 		console.log(change.data());
-// 	});
-
 export { auth as default, db, storage, provider };

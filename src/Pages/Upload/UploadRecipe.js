@@ -33,14 +33,12 @@ function UploadRecipe() {
 	const handleUploadFile = (e) => {
 		e.preventDefault();
 		const file = e.target.files.item(0);
-		console.log(file, fileSrc);
 		if (file.size > 1000000) {
 			setPopup(true);
 		} else {
 			new Compressor(file, {
 				quality: 0.6,
 				success: (compressResult) => {
-					console.log(compressResult.size);
 					setFileSrc(compressResult);
 				},
 			});
@@ -51,7 +49,6 @@ function UploadRecipe() {
 	const [preTimeError, setPreTimeError] = useState("");
 	const regex = /^\d+$/;
 	const handlePreTime = (e) => {
-		console.log(e);
 		if (regex.test(e)) {
 			setPreTime(e);
 			setPreTimeError("");
@@ -62,7 +59,6 @@ function UploadRecipe() {
 	const [cookTime, setCookTime] = useState("");
 	const [cookTimeError, setCookTimeError] = useState("");
 	const handleCookTime = (e) => {
-		console.log(e);
 		if (regex.test(e)) {
 			setCookTime(e);
 			setCookTimeError("");
@@ -76,9 +72,7 @@ function UploadRecipe() {
 		setDifficulty(e);
 	};
 	const [tool, setTool] = useState("0");
-	console.log(tool.length >= 1);
-	// For map
-	// const toolArray = ["電鍋", "烤箱", "氣炸鍋", "平底鍋", "湯鍋", "其他"];
+
 	const toolObj = {
 		0: "電鍋",
 		1: "烤箱",
@@ -115,7 +109,6 @@ function UploadRecipe() {
 			inputFields.length,
 			stepFields.length,
 		];
-		console.log(checkArray);
 		const totalTime = parseInt(preTime) + parseInt(cookTime);
 		let time = 0;
 		if (totalTime < 30) {
@@ -130,7 +123,6 @@ function UploadRecipe() {
 		if (checkArray.every((item) => item >= 1)) {
 			try {
 				const imgInfo = await RecipeService.getImgInfo(fileSrc);
-				console.log(imgInfo);
 				const item = {
 					dishName,
 					preTime,
@@ -160,7 +152,6 @@ function UploadRecipe() {
 				console.log("Error adding Item " + e);
 			}
 		} else {
-			console.log("error");
 			setPopup(true);
 		}
 	};
@@ -370,14 +361,6 @@ function UploadRecipe() {
 								其他
 							</label>
 						</div>
-						{/* map出來的變數會變成非變數，無法藉由setTool變更className
-                        {
-                            toolArray.map((item, index) => (
-                                <label key={index} className={ tool === index ? "cook-tool-item checked" : "cook-tool-item"}>
-                                    <input type="radio" name="tool" value={index} onChange={(e)=>handleTool(e.target.value)}/>{item}
-                                </label>
-                            ))
-                        } */}
 					</div>
 					<IngredientsFieldContext.Provider
 						value={{ inputFields, setInputFields }}>

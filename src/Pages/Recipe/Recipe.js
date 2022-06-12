@@ -23,20 +23,17 @@ function Recipe() {
 	const showRecipe = () => {
 		onSnapshot(doc(db, "recipe", id), (doc) => {
 			const data = doc.data();
-			console.log(data);
 			setRecipe(data);
 			setIngre(data.ingredients);
 			setStep(data.direction);
 			setDisplayName(data.author.displayName);
 			setTime(new Date(data.createdAt.toDate()).toLocaleDateString());
-			console.log(new Date(data.createdAt.toDate()).toLocaleDateString());
 			setPageLoading(false);
 		});
 	};
 	const handleToggle = async (isActive, colName) => {
 		if (user) {
 			await RecipeService.update(isActive, colName, id, uid);
-			console.log("toggle");
 		} else {
 			navigate("/signin");
 		}
@@ -68,7 +65,6 @@ function Recipe() {
 	const [errorComment, setErrorComment] = useState("");
 	const handleOnSubmit = async (e) => {
 		e.preventDefault();
-		console.log(auth.currentUser);
 		if (user) {
 			if (comment) {
 				try {
@@ -79,7 +75,6 @@ function Recipe() {
 						createdAt: Timestamp.now(),
 					};
 					await RecipeService.setCommentDoc(id, item);
-					console.log("leave comment");
 					showComment();
 				} catch (e) {
 					console.log("Error adding Item " + e);
@@ -95,7 +90,6 @@ function Recipe() {
 
 	const isCollected = recipe.collectedBy?.includes(uid);
 	const isLiked = recipe.likedBy?.includes(uid);
-	console.log(isLiked, isCollected);
 	return pageLoading ? (
 		<Loading />
 	) : (

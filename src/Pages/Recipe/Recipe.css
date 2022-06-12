@@ -155,6 +155,7 @@
 	display: none;
 }
 .recipe-label {
+	align-items: center;
 	display: flex;
 	gap: 15px;
 	cursor: pointer;
@@ -162,7 +163,6 @@
 .step-cont {
 	display: flex;
 	align-items: center;
-	margin-bottom: 5px;
 }
 .comment-user-cont {
 	border-bottom: solid 1px #757575;
@@ -198,12 +198,12 @@
 	font-size: 16px;
 }
 .content {
-	margin: 10px auto;
+	margin: 10px auto 10px 55px;
 }
 .comment-blank-content {
 	margin-left: 60px;
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 60px;
 	position: relative;
 	height: 50px;
 }
@@ -235,7 +235,7 @@
 	text-align: center;
 	margin: 10px auto;
 }
-@media (min-width: 360px) and (max-width: 800px) {
+@media (min-width: 360px) and (max-width: 880px) {
 	.section-recipe-title-info,
 	.step > .recipe-label {
 		display: block;
@@ -252,6 +252,7 @@
 	.section-recipe-user,
 	.section-recipe-uploadTime {
 		font-size: 14px;
+		margin-left: 5px;
 	}
 	.section-recipe-cont {
 		flex-wrap: wrap;
@@ -266,6 +267,10 @@
 	.direction-step,
 	.comment-user,
 	.comment-blank-content {
-		margin-left: 14px;
+		margin-left: 0;
+		font-size: 16px;
+	}
+	.step-cont {
+		margin-bottom: 5px;
 	}
 }

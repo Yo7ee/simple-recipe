@@ -2,40 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../Context/User";
 import RecipeService from "../../utils/database";
-import { onSnapshot, query, collection, where } from "@firebase/firestore";
-import { db } from "../../utils/firebase";
 import { ContentLoading } from "../Loading/Loading";
+import { getMyBookMarks } from "../../utils/db";
 
 function MyBookmarks() {
-	const [myCollect, setMyCollect] = useState([]);
 	const [myCollectNumber, setMyCollectNumber] = useState(0);
 	const { uid } = useContext(UserContext);
 	const [pageLoading, setPageLoading] = useState(true);
 
-	const showMyCollect = () => {
-		const q = query(
-			collection(db, "recipe"),
-			where("collectedBy", "array-contains", uid)
-		);
-		onSnapshot(q, (querySnapshot) => {
-			const data = querySnapshot.docs.map((doc) => ({
-				...doc.data(),
-				id: doc.id,
-			}));
-			setMyCollect(data);
-			setMyCollectNumber(data.length);
-			setPageLoading(false);
-		});
-	};
+	const myBookmarks = getMyBookMarks(uid); //return myBookmarks and loading value
 
 	const handleToggle = async (isActive, colName, id) => {
 		await RecipeService.update(isActive, colName, id, uid);
-		console.log("test");
 	};
 
 	useEffect(() => {
-		showMyCollect();
-	}, []);
+		setMyCollectNumber(myBookmarks[0].length);
+		setPageLoading(myBookmarks[1]);
+	}, [myBookmarks[0]]);
 
 	return pageLoading ? (
 		<ContentLoading />
@@ -45,7 +29,7 @@ function MyBookmarks() {
 			{myCollectNumber == 0 && (
 				<div className='myBookmark-none'>目前沒有收藏的食譜</div>
 			)}
-			{myCollect.map((item) => {
+			{myBookmarks[0].map((item) => {
 				const ingreArray = [];
 				const isCollected = item.collectedBy?.includes(uid);
 				item.ingredients.forEach((element) => {

@@ -4,7 +4,7 @@ import UserContext from "../../Context/User";
 import RecipeService from "../../utils/database";
 import Header from "../Home/Header";
 import Footer from "../Home/Footer";
-import { algolia, client } from "../../utils/algolia";
+import { algolia } from "../../utils/algolia";
 import KeywordContext from "../../Context/Keyword";
 import ResultContext from "../../Context/Result";
 import "../Recipes/Recipes.css";
@@ -19,7 +19,6 @@ function Recipes() {
 	const handleSearch = async () => {
 		const filterData = await algolia.search(keyword).then((result) => {
 			setResults(result.hits);
-			console.log("search", result.hits);
 			setPageLoading(false);
 		});
 	};

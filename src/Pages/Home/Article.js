@@ -46,7 +46,6 @@ function Article() {
 				id: doc.id,
 			}));
 			setHotCountDish(data);
-			console.log(data);
 		});
 		const q1 = query(
 			collection(db, "recipe"),
@@ -68,7 +67,6 @@ function Article() {
 		e.stopPropagation(); //For 冒泡效應
 		if (user) {
 			await RecipeService.update(isActive, colName, id, uid);
-			console.log("toggle");
 		} else {
 			navigate("/signin");
 		}

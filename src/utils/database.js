@@ -21,6 +21,7 @@ import {
 	getDownloadURL,
 	deleteObject,
 } from "firebase/storage";
+import { useEffect, useState } from "react";
 
 const recipeColRef = collection(db, "recipe");
 
@@ -48,16 +49,6 @@ class RecipeService {
 		}));
 		return dataArr;
 	};
-	// getDoc = async () => {
-	//     const q  = query(recipeColRef, orderBy("createdAt", "asc"));
-	//     const unsubscribe = onSnapshot(q, (querySnapshot)=>{
-	//         const dish =[];
-	//         querySnapshot.forEach((doc)=>{
-	//             dish.push(doc.data())
-	//         })
-	//     });
-	//     return dish
-	// };
 	getDoc = async () => {
 		const q = query(recipeColRef, orderBy("createdAt", "asc"));
 		const querySnapshot = await getDocs(q);
@@ -65,49 +56,34 @@ class RecipeService {
 			...doc.data(),
 			id: doc.id,
 		}));
-		console.log(dataArr);
 		return dataArr;
 	};
 	getFilterDoc = async (name, filter) => {
-		console.log(name, filter);
 		const q = query(recipeColRef, where(name, "==", filter));
 		const querySnapshot = await getDocs(q);
-		console.log(querySnapshot);
 		const dataArr = querySnapshot.docs.map((doc) => ({
 			...doc.data(),
 			id: doc.id,
 		}));
-		console.log(dataArr);
 		return dataArr;
 	};
 	getFilterArray = async (name, filter) => {
-		console.log(name, filter);
 		const q = query(recipeColRef, where(name, "array-contains", filter));
 		const querySnapshot = await getDocs(q);
-		console.log(querySnapshot);
 		const dataArr = querySnapshot.docs.map((doc) => ({
 			...doc.data(),
 			id: doc.id,
 		}));
-		console.log(dataArr);
 		return dataArr;
 	};
-	// getOneDoc = async (id) => {
-	//     const itemDoc = doc(db, 'recipe', id);
-	//     return onSnapshot((itemDoc), (snap)=>{
-	//         snap.data()
-	//     })
-	// }
+
 	deleteDoc = (id) => {
 		const itemDoc = doc(db, "recipe", id);
 		deleteDoc(itemDoc);
 		const imgDoc = ref(storage, "Recipe-Img/" + id);
 		deleteObject(imgDoc)
-			.then(() => {
-				console.log("success");
-			})
+			.then(() => {})
 			.catch((error) => {
-				console.log(error);
 				return error;
 			});
 	};
@@ -117,7 +93,6 @@ class RecipeService {
 		const metadata = {
 			contentType: file.type,
 		};
-		console.log(docRef);
 		await uploadBytes(recipeImgRef, file, metadata);
 		const url = await getDownloadURL(recipeImgRef);
 		return [url, docRef];
@@ -125,24 +100,15 @@ class RecipeService {
 	update = async (isActice, colName, id, uid) => {
 		const itemDoc = doc(db, "recipe", id);
 		if (isActice) {
-			console.log("remove");
 			const docSnap = await updateDoc(itemDoc, { [colName]: arrayRemove(uid) });
 		} else {
-			console.log("add");
 			const docSnap = await updateDoc(itemDoc, { [colName]: arrayUnion(uid) });
 		}
 	};
 	updateHot = async (colName, count, id) => {
 		const itemDoc = doc(db, "recipe", id);
-		console.log(count);
 		const docSnap = await updateDoc(itemDoc, { [colName]: count });
 	};
 }
 
 export default new RecipeService();
-
-// querySnapshot.forEach((doc) => {
-//     console.log(doc.id, " => ", doc.data())
-//     console.log(typeof(doc.data()))
-//     return doc.data();
-// });

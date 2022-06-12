@@ -2,7 +2,6 @@
 	width: 80%;
 	min-height: calc(100vh - 140px); /* For footer at the bottom */
 	margin: 90px auto 0 auto;
-	margin-top: 90px;
 	display: grid;
 	padding: 0 10px 0 10px;
 	box-sizing: border-box;
@@ -94,13 +93,8 @@
 	flex: auto;
 }
 .myRecipe-tool,
+.myRecipe-time-cont,
 .myRecipe-ingre {
-	color: #757575;
-	font-size: 18px;
-	display: flex;
-	align-items: center;
-}
-.myRecipe-time-cont {
 	color: #757575;
 	font-size: 16px;
 	display: flex;
@@ -130,6 +124,7 @@
 	white-space: nowrap;
 }
 .myRecipe-fig {
+	min-width: 200px;
 	width: 200px;
 	height: 130px;
 }
@@ -180,15 +175,19 @@
 		width: 20px;
 		height: 20px;
 	}
-	.myRecipe-ingre,
+	.myRecipe-tool,
+	.myRecipe-tool > .fa-kichen-set,
 	.myRecipe-time-cont,
 	.myRecipe-time-cont > .fa-clock,
+	.myRecipe-ingre,
+	.myRecipe-ingre > .fa-cubes-stacked,
 	.fa-trash-can {
 		font-size: 10px;
 	}
 	.myRecipe-fig {
-		max-width: 90px;
+		min-width: 105px;
+		max-width: 105px;
 		width: 100%;
-		max-height: 60px;
+		max-height: 70px;
 	}
 }

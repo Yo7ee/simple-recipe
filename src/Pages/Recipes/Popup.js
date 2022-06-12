@@ -35,12 +35,10 @@ function FilterPopup() {
 			})
 			.then((result) => {
 				setResults(result.hits);
-				console.log("filter", keyword, item, result.hits);
 			});
 	};
 	const handleSorting = (replica) => {
 		const indexName = replica;
-		console.log(replica);
 		client
 			.initIndex(indexName)
 			.search(keyword, {
@@ -48,7 +46,6 @@ function FilterPopup() {
 			})
 			.then((result) => {
 				setResults(result.hits);
-				console.log("sorting", result.hits);
 			});
 	};
 
