@@ -33,7 +33,7 @@ Simple Recipe 在前端開發的部分是使用 React 建構的，搭配套件 R
 
 ## Features
 
-### **:one: Keywords Searching & Filter/Sorting** </br>
+### :one: **Keywords Searching & Filter/Sorting** </br>
 
 User can search dish name, ingredients and uploader by Keywords, in the meanwhile, filter and sorting can assist further search.</br>
 使用關鍵字可以食譜名稱、食材、上傳者名稱並結合篩選及排序標籤快速搜尋想要的食譜。</br></br>
