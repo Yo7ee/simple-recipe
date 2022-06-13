@@ -8,12 +8,12 @@
 - [Skill Structure](#skill-structure)
 - [Component Planning](#component-planning)
 - [Features](#features)
-  - [#1 Keywords searching & Filter/Sorting](#:one:-keywords-searching-&-filter/sorting)
-  - [#2 Signin/Signup](#:two:-signin/signup)
-  - [#3 Collected/Liked recipe](#:three:-collected/liked-recipe)
-  - [#4 Leave comment for recipe](#:four:-leave-comment-for-recipe)
-  - [#5 Upload Recipe](#:five:-upload-recipe)
-  - [#6 Delete Recipe](#:six:-delete-recipe)
+  - [#1 Keywords searching & Filter/Sorting](#keywords-searching-&-filter/sorting)
+  - [#2 Signin/Signup](#-signin/signup)
+  - [#3 Collected/Liked recipe](#collected/liked-recipe)
+  - [#4 Leave comment for recipe](#leave-comment-for-recipe)
+  - [#5 Upload Recipe](#upload-recipe)
+  - [#6 Delete Recipe](#delete-recipe)
 
 ## **Live Demo**
 
@@ -36,37 +36,37 @@ Simple Recipe 在前端開發的部分是使用 React 建構的，搭配套件 R
 ### **:one: Keywords Searching & Filter/Sorting** </br>
 
 User can search dish name, ingredients and uploader by Keywords, in the meanwhile, filter and sorting can assist further search.</br>
-使用關鍵字可以食譜名稱、食材、上傳者名稱並結合篩選及排序標籤快速搜尋想要的食譜。</br>
+使用關鍵字可以食譜名稱、食材、上傳者名稱並結合篩選及排序標籤快速搜尋想要的食譜。</br></br>
 ![Imgur](https://i.imgur.com/Ed62lr1.gif)
 
 ### :two: **Signin/Signup**</br>
 
 Sign-up and sign-in to become member who got the right to collect, like and leave the comments to the recipe, and upload their own recipe.</br>
-使用者需成為會員才能將食譜收藏、點讚食譜、留言及上傳食譜。
+使用者需成為會員才能將食譜收藏、點讚食譜、留言及上傳食譜。</br></br>
 ![Imgur](https://i.imgur.com/2zyEyyL.gif)
 
 ### :three: **Collected/Liked recipe**</br>
 
 After collecting the recipe, it's showed at the member page and user can check it anytime.</br>
-收藏後的食譜會儲存於會員頁面，隨時可以查看。
+收藏後的食譜會儲存於會員頁面，隨時可以查看。</br></br>
 ![Imgur](https://i.imgur.com/bZVkkyU.gif)
 
 ### :four: **Leave comment for recipe**</br>
 
 User can leave the comments for recipe to interact with uploader.</br>
-藉由留言與其他使用者互動。
+藉由留言與其他使用者互動。</br></br>
 ![Imgur](https://i.imgur.com/dxZQ9MJ.gif)
 
 ### :five: **Upload Recipe**</br>
 
 To success upload recipe by filling in the detail of recipe, including upload image.</br>
-輸入食譜細節並上傳食譜照片即完成上傳。
+輸入食譜細節並上傳食譜照片即完成上傳。</br></br>
 ![Imgur](https://i.imgur.com/Zqj9ZNd.gif)
 
 ### :six: **Delete Recipe**</br>
 
 User own recipe can be deleted at the member page.</br>
-可至會員頁面將食譜刪除。
+可至會員頁面將食譜刪除。</br></br>
 ![Imgur](https://i.imgur.com/WYbXzXn.gif)
 
 ## Contact
