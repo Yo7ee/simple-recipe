@@ -4,16 +4,16 @@
 
 # Catalog
 
-- [Live Demo](#Live)
-- [Skill Structure](#Skill)
-- Component Planning
-- Features
-  - Keywords searching
-  - Filter/Sorting
-  - Signin/Signup
-  - Collected/Liked recipe
-  - Upload Recipe
-  - Delete Recipe
+- [Live Demo](#live-demo)
+- [Skill Structure](#skill-structure)
+- [Component Planning](#component-planning)
+- [Features](#features)
+  - [Keywords searching](#keywords-searching)
+  - [Filter/Sorting](#filter/sorting)
+  - [Signin/Signup](#signin/signup)
+  - [Collected/Liked recipe](#collected/liked-recipe)
+  - [Upload Recipe](#upload-recipe)
+  - [Delete Recipe](#delete-recipe)
 
 # Live Demo
 
@@ -34,14 +34,26 @@ Simple Recipe 在前端開發的部分是使用 React 建構的，搭配套件 R
 # Features
 
 1. Keywords Searching & Filter/Sorting </br>
+   User can search dish name, ingredients and uploader by Keywords, in the meanwhile, filter and sorting can assist further search.</br>
    使用關鍵字可以食譜名稱、食材、上傳者名稱並結合篩選及排序標籤快速搜尋想要的食譜。</br>
-   ![Imgur](https://i.imgur.com/Cml5Vf6.gif)
+   ![Imgur](https://i.imgur.com/Ed62lr1.gif)
 2. Signin/Signup</br>
+   Sign-up and sign-in to become member who got the right to collect, like and leave the comments to the recipe, and upload their own recipe.</br>
    使用者需成為會員才能將食譜收藏、點讚食譜、留言及上傳食譜。
-   ![Imgur](https://i.imgur.com/5xzZzHi.gif)
+   ![Imgur](https://i.imgur.com/2zyEyyL.gif)
 3. Collected/Liked recipe</br>
+   After collecting the recipe, it's showed at the member page and user can check it anytime.</br>
    收藏後的食譜會儲存於會員頁面，隨時可以查看。
+   ![Imgur](https://i.imgur.com/bZVkkyU.gif)
 4. Leave comment for recipe</br>
+   User can leave the comments for recipe to interact with uploader.</br>
    藉由留言與其他使用者互動。
-5. Upload Recipe/Delete Recipe</br>
-   輸入食譜細節並上傳食譜照片即完成上傳，也可至會員頁面將食譜刪除。
+   ![Imgur](https://i.imgur.com/dxZQ9MJ.gif)
+5. Upload Recipe</br>
+   To success upload recipe by filling in the detail of recipe, including upload image.</br>
+   輸入食譜細節並上傳食譜照片即完成上傳。
+   ![Imgur](https://i.imgur.com/Zqj9ZNd.gif)
+6. Delete Recipe</br>
+   User own recipe can be deleted at the member page.</br>
+   可至會員頁面將食譜刪除。
+   ![Imgur](https://i.imgur.com/WYbXzXn.gif)
