@@ -13,9 +13,9 @@
   - [#1 Keywords searching & Filter/Sorting](#1-keywords-searching-&-filter/sorting)
   - [#2 Signin/Signup](#2-signin/signup)
   - [#3 Collected/Liked recipe](#3-collected/liked-recipe)
-  - [#4 Leave comment for recipe](#leave-comment-for-recipe)
-  - [#4 Upload Recipe](#5-upload-recipe)
-  - [#5 Delete Recipe](#6-delete-recipe)
+  - [#4 Leave comment for recipe](#4-leave-comment-for-recipe)
+  - [#5 Upload Recipe](#5-upload-recipe)
+  - [#6 Delete Recipe](#6-delete-recipe)
 
 ## **Live Demo**
 
