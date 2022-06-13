@@ -37,7 +37,7 @@ Simple Recipe 在前端開發的部分是使用 React 建構的，搭配套件 R
 
 User can search dish name, ingredients and uploader by Keywords, in the meanwhile, filter and sorting can assist further search.</br>
 使用關鍵字可以食譜名稱、食材、上傳者名稱並結合篩選及排序標籤快速搜尋想要的食譜。</br></br>
-![Imgur](https://i.imgur.com/Ed62lr1.gif)
+![Imgur](https://i.imgur.com/womspDD.gif)
 
 ### :two: **Signin/Signup**</br>
 
@@ -61,7 +61,7 @@ User can leave the comments for recipe to interact with uploader.</br>
 
 To success upload recipe by filling in the detail of recipe, including upload image.</br>
 輸入食譜細節並上傳食譜照片即完成上傳。</br></br>
-![Imgur](https://i.imgur.com/Zqj9ZNd.gif)
+![Imgur](https://i.imgur.com/56jFWTH.gif)
 
 ### :six: **Delete Recipe**</br>
 
