@@ -46,6 +46,7 @@
 }
 .member-link {
 	color: #757575;
+	cursor: pointer;
 }
 .member-link-active {
 	color: #000000;

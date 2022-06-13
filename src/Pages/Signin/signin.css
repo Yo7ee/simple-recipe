@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 56px;
-	min-height: calc(100vh - 200px);
+	min-height: calc(100vh - 140px);
 }
 .signin-cont {
 	width: 330px;

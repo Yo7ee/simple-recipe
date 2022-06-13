@@ -271,6 +271,7 @@ figcaption > .dishName {
 	background-color: white;
 	padding: 5px;
 	transition-duration: 0.3s;
+	cursor: pointer;
 }
 .dishCard:hover:hover .dishCard-bookmark {
 	top: 80%;
@@ -287,6 +288,7 @@ figcaption > .dishName {
 	width: 30px;
 	height: 30px;
 	fill: #888;
+	cursor: pointer;
 }
 .dishCard-img,
 .choice-img {
