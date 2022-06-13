@@ -4,7 +4,7 @@
 
 # Catalog
 
-- [Live Demo](#LiveDemo)
+- [Live Demo](#Live)
 - [Skill Structure](#Skill)
 - Component Planning
 - Features
@@ -34,9 +34,11 @@ Simple Recipe 在前端開發的部分是使用 React 建構的，搭配套件 R
 # Features
 
 1. Keywords Searching & Filter/Sorting </br>
-   使用關鍵字可以食譜名稱、食材、上傳者名稱並結合篩選及排序標籤快速搜尋想要的食譜。
+   使用關鍵字可以食譜名稱、食材、上傳者名稱並結合篩選及排序標籤快速搜尋想要的食譜。</br>
+   ![Imgur](https://i.imgur.com/Cml5Vf6.gif)
 2. Signin/Signup</br>
    使用者需成為會員才能將食譜收藏、點讚食譜、留言及上傳食譜。
+   ![Imgur](https://i.imgur.com/5xzZzHi.gif)
 3. Collected/Liked recipe</br>
    收藏後的食譜會儲存於會員頁面，隨時可以查看。
 4. Leave comment for recipe</br>
