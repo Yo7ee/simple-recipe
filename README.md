@@ -62,7 +62,7 @@ User can leave the comments for recipe to interact with uploader.</br>
 
 To success upload recipe by filling in the detail of recipe, including upload image.</br>
 輸入食譜細節並上傳食譜照片即完成上傳。</br></br>
-![Imgur](https://i.imgur.com/eIGA72V.gif)
+![Imgur](https://i.imgur.com/56jFWTH.gif)
 
 ### :six: **Delete Recipe**</br>
 
