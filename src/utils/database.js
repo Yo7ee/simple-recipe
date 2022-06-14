@@ -97,11 +97,27 @@ class RecipeService {
 		const url = await getDownloadURL(recipeImgRef);
 		return [url, docRef];
 	};
-	update = async (isActice, colName, id, uid) => {
+	update = async (isActice, colName, id, uid, count) => {
 		const itemDoc = doc(db, "recipe", id);
 		if (isActice) {
+			if (colName === "likedBy") {
+				console.log("remove", count);
+				count--;
+				const docSnap = await updateDoc(itemDoc, {
+					[colName]: arrayRemove(uid),
+					likeValue: count,
+				});
+			}
 			const docSnap = await updateDoc(itemDoc, { [colName]: arrayRemove(uid) });
 		} else {
+			if (colName === "likedBy") {
+				console.log("add", count);
+				count++;
+				const docSnap = await updateDoc(itemDoc, {
+					[colName]: arrayUnion(uid),
+					likeValue: count,
+				});
+			}
 			const docSnap = await updateDoc(itemDoc, { [colName]: arrayUnion(uid) });
 		}
 	};

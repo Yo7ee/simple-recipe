@@ -49,7 +49,7 @@ function Article() {
 		});
 		const q1 = query(
 			collection(db, "recipe"),
-			orderBy("likedBy", "desc"),
+			orderBy("likeValue", "desc"),
 			limit(4)
 		);
 		onSnapshot(q1, (querySnapshot) => {
@@ -62,11 +62,12 @@ function Article() {
 		});
 	};
 
-	const handleToggle = async (isActive, colName, e, id) => {
+	const handleToggle = async (isActive, colName, e, id, count) => {
 		e.preventDefault(); //For Link 頁面跳轉
 		e.stopPropagation(); //For 冒泡效應
+		let currentCount = count - 1;
 		if (user) {
-			await RecipeService.update(isActive, colName, id, uid);
+			await RecipeService.update(isActive, colName, id, uid, currentCount);
 		} else {
 			navigate("/signin");
 		}
@@ -166,7 +167,13 @@ function Article() {
 											isLiked ? "dishCard-heart liked" : "dishCard-heart"
 										}
 										onClick={(e) =>
-											handleToggle(isLiked, "likedBy", e, item.id)
+											handleToggle(
+												isLiked,
+												"likedBy",
+												e,
+												item.id,
+												item.likedBy.length
+											)
 										}>
 										<path d='M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z' />
 									</svg>
@@ -183,7 +190,7 @@ function Article() {
 									<div className='icon'>
 										<p className='heartNum'>
 											<i className='fa-solid fa-heart'></i>
-											{item.likedBy?.length}
+											{item.likedBy?.length - 1}
 										</p>
 										<p className='hotNum'>
 											<i className='fa-brands fa-gripfire'></i>
@@ -237,7 +244,13 @@ function Article() {
 											isLiked ? "dishCard-heart liked" : "dishCard-heart"
 										}
 										onClick={(e) =>
-											handleToggle(isLiked, "likedBy", e, item.id)
+											handleToggle(
+												isLiked,
+												"likedBy",
+												e,
+												item.id,
+												item.likedBy.length
+											)
 										}>
 										<path d='M22.2,4.1c2.7,2.7,2.4,6.9-0.4,9.5l-8.4,7.9c-0.8,0.7-2.1,0.7-2.9,0l-8.4-7.9c-2.7-2.6-3-6.8-0.4-9.5   C4.6,1.4,9.2,1.3,12,4C14.8,1.3,19.4,1.4,22.2,4.1z' />
 									</svg>
@@ -254,7 +267,7 @@ function Article() {
 									<div className='icon'>
 										<p className='heartNum'>
 											<i className='fa-solid fa-heart'></i>
-											{item.likedBy?.length}
+											{item.likedBy?.length - 1}
 										</p>
 										<p className='hotNum'>
 											<i className='fa-brands fa-gripfire'></i>

@@ -26,9 +26,6 @@ function FilterPopup() {
 		const filterArray = array.filter((item) => item != "");
 		const item = filterArray.join(" AND ");
 		setFilterItem(item);
-		// client.clearCache().then(()=>{
-
-		// })
 		algolia
 			.search(keyword, {
 				filters: item,
@@ -379,7 +376,7 @@ function FilterPopup() {
 									type='radio'
 									name='sort'
 									onChange={() => {
-										handleSorting("likedBy_desc"), setSorting(3);
+										handleSorting("likeValue_desc"), setSorting(3);
 									}}
 								/>
 								<i>喜愛排名</i>
