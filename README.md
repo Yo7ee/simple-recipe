@@ -9,12 +9,12 @@ Simple Recipe website bring you to the healthy world, pick up the recipe by tool
 - [Skill Structure](#skill-structure)
 - [Component Planning](#component-planning)
 - [Features](#features)
-  - [#1 Keywords searching & Filter/Sorting](#keywords-searching-&-filter/sorting)
-  - [#2 Signin/Signup](#-signin/signup)
-  - [#3 Collected/Liked recipe](#-collected/liked-recipe)
-  - [#4 Leave comment for recipe](#-leave-comment-for-recipe)
-  - [#5 Upload Recipe](#-upload-recipe)
-  - [#6 Delete Recipe](#:six:-**delete-recipe**)
+  - [#1 Keywords searching & Filter/Sorting](#:one:-keywords-searching-&-filter/sorting)
+  - [#2 Signin/Signup](#:two:-signin/signup)
+  - [#3 Collected/Liked recipe](#:three:-collected/liked-recipe)
+  - [#4 Leave comment for recipe](#:four:-leave-comment-for-recipe)
+  - [#5 Upload Recipe](#:five:-upload-recipe)
+  - [#6 Delete Recipe](#:six:-delete-recipe)
 
 ## **Live Demo**
 
@@ -58,13 +58,13 @@ User can leave the comments for recipe to interact with uploader.</br></br>
 藉由留言與其他使用者互動。</br></br>
 ![Imgur](https://i.imgur.com/dxZQ9MJ.gif)
 
-### :five: **Upload Recipe**</br>
+### :five: **Upload recipe**</br>
 
 To success upload recipe by filling in the detail of recipe, including upload image.</br></br>
 輸入食譜細節並上傳食譜照片即完成上傳。</br></br>
 ![Imgur](https://i.imgur.com/56jFWTH.gif)
 
-### :six: **Delete Recipe**</br>
+### :six: **Delete recipe**</br>
 
 User own recipe can be deleted at the member page.</br></br>
 可至會員頁面將食譜刪除。</br></br>
