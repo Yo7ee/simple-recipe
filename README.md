@@ -9,7 +9,7 @@ Simple Recipe website bring you to the healthy world, pick up the recipe by tool
 - [Skill Structure](#skill-structure)
 - [Component Planning](#component-planning)
 - [Features](#features)
-  - [#1 Keywords searching & Filter/Sorting](#one-keywords-searching-filtersorting)
+  - [#1 Keywords searching & Filter/Sorting](#one-keywords-searching--filtersorting)
   - [#2 Signin/Signup](#two-signinsignup)
   - [#3 Collected/Liked recipe](#three-collectedliked-recipe)
   - [#4 Leave comment for recipe](#four-leave-comment-for-recipe)
