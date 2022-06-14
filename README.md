@@ -11,10 +11,10 @@ Simple Recipe website bring you to the healthy world, pick up the recipe by tool
 - [Features](#features)
   - [#1 Keywords searching & Filter/Sorting](#keywords-searching-&-filter/sorting)
   - [#2 Signin/Signup](#-signin/signup)
-  - [#3 Collected/Liked recipe](#collected/liked-recipe)
-  - [#4 Leave comment for recipe](#leave-comment-for-recipe)
-  - [#5 Upload Recipe](#upload-recipe)
-  - [#6 Delete Recipe](#delete-recipe)
+  - [#3 Collected/Liked recipe](#-collected/liked-recipe)
+  - [#4 Leave comment for recipe](#-leave-comment-for-recipe)
+  - [#5 Upload Recipe](#-upload-recipe)
+  - [#6 Delete Recipe](#:six:-**delete-recipe**)
 
 ## **Live Demo**
 
