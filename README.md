@@ -9,11 +9,11 @@ Simple Recipe website bring you to the healthy world, pick up the recipe by tool
 - [Skill Structure](#skill-structure)
 - [Component Planning](#component-planning)
 - [Features](#features)
-  - [#1 Keywords searching & Filter/Sorting](#:one:-keywords-searching-filter-sorting)
-  - [#2 Signin/Signup](#:two:-signin-signup)
-  - [#3 Collected/Liked recipe](#:three:-collected-liked-recipe)
-  - [#4 Leave comment for recipe](#:four:-leave-comment-for-recipe)
-  - [#5 Upload Recipe](#:five:-upload-recipe)
+  - [#1 Keywords searching & Filter/Sorting](#one-keywords-searching-filter-sorting)
+  - [#2 Signin/Signup](#two-signin-signup)
+  - [#3 Collected/Liked recipe](#three-collected-liked-recipe)
+  - [#4 Leave comment for recipe](#four-leave-comment-for-recipe)
+  - [#5 Upload Recipe](#five-upload-recipe)
   - [#6 Delete Recipe](#six-delete-recipe)
 
 ## **Live Demo**
