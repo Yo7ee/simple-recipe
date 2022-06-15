@@ -203,6 +203,7 @@ function UploadRecipe() {
 								<p className='img-info'>1. 此為食譜封面照</p>
 								<p className='img-info'>2. 建議圖片尺寸比例為3:2</p>
 								<p className='img-info'>3. 檔案須小於1MB</p>
+								<p className='img-info'>4. 建議iphone選取小於1MB的large選項</p>
 							</div>
 						</div>
 					</div>
@@ -376,7 +377,7 @@ function UploadRecipe() {
 				<div className='popup'>
 					<div className='popup-inner'>
 						<p className='popup-title'>
-							資料填寫尚未完成或格式錯誤或照片容量大於1MB
+							資料填寫尚未完成 或 格式錯誤 或 照片容量大於1MB
 						</p>
 						<button onClick={handleErrorSubmit}>確認</button>
 					</div>

@@ -122,6 +122,7 @@ button {
 	width: 260px;
 	background-color: #fff;
 	text-align: center;
+	border-radius: 5px;
 }
 .popup-title {
 	text-align: center;

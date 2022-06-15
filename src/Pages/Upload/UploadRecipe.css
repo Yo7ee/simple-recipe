@@ -79,9 +79,9 @@
 .upload-img-info {
 	border-radius: 5px;
 	padding: 5px 10px;
-	height: 80px;
+	height: 80%;
 	width: 100%;
-	max-width: 250px;
+	max-width: 320px;
 	background-color: #f1efea;
 	color: #757575;
 	margin-left: 50px;
@@ -123,7 +123,7 @@
 	text-align: left;
 	resize: none;
 }
-.corss {
+.cross {
 	cursor: pointer;
 }
 .ingre-content,
@@ -164,6 +164,9 @@
 	color: red;
 	font-size: 18px;
 	margin-left: 20px;
+}
+.popup-inner > button {
+	color: #bba67c;
 }
 @media (min-width: 360px) and (max-width: 1200px) {
 	.dish-info-cont {
