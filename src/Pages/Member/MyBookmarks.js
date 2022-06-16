@@ -12,7 +12,8 @@ function MyBookmarks() {
 
 	const myBookmarks = getMyBookMarks(uid); //return myBookmarks and loading value
 
-	const handleToggle = async (isActive, colName, id) => {
+	const handleToggle = async (e, isActive, colName, id) => {
+		e.preventDefault();
 		await RecipeService.update(isActive, colName, id, uid);
 	};
 
@@ -49,8 +50,8 @@ function MyBookmarks() {
 									className={
 										isCollected ? "myBookmark collected" : "myBookmark"
 									}
-									onClick={() =>
-										handleToggle(isCollected, "collectedBy", item.id)
+									onClick={(e) =>
+										handleToggle(e, isCollected, "collectedBy", item.id)
 									}>
 									<path d='M23.8,2H8.2C6.5,2,5.1,3.4,5.1,5.1v24.6c0,0.2,0.2,0.3,0.4,0.3l10.4-4.5c0.1,0,0.2,0,0.2,0  L26.6,30c0.2,0.1,0.4-0.1,0.4-0.3V5.1C26.9,3.4,25.5,2,23.8,2z' />
 								</svg>

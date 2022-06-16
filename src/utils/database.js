@@ -101,7 +101,6 @@ class RecipeService {
 		const itemDoc = doc(db, "recipe", id);
 		if (isActice) {
 			if (colName === "likedBy") {
-				console.log("remove", count);
 				count--;
 				const docSnap = await updateDoc(itemDoc, {
 					[colName]: arrayRemove(uid),
@@ -111,7 +110,6 @@ class RecipeService {
 			const docSnap = await updateDoc(itemDoc, { [colName]: arrayRemove(uid) });
 		} else {
 			if (colName === "likedBy") {
-				console.log("add", count);
 				count++;
 				const docSnap = await updateDoc(itemDoc, {
 					[colName]: arrayUnion(uid),

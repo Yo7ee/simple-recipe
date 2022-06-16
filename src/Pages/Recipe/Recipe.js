@@ -33,7 +33,6 @@ function Recipe() {
 	};
 	const handleToggle = async (isActive, colName) => {
 		let currentCount = recipe.likedBy.length - 1;
-		console.log(currentCount);
 		if (user) {
 			await RecipeService.update(isActive, colName, id, uid, currentCount);
 		} else {
