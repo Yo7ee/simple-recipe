@@ -51,6 +51,14 @@
 	align-items: center;
 	z-index: 10;
 }
+.contentLoading-cont.upload {
+	background: #757575;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	margin-top: 0;
+	height: 100vh;
+}
 
 .contentLoading-cont > .fa-bowl-food {
 	font-size: 50px;

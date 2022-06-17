@@ -11,6 +11,7 @@ import Compressor from "compressorjs";
 import IngredientsFieldContext from "./Context/IngredientsField";
 import DirectionField from "./Context/DirectionField";
 import UserContext from "../../Context/User";
+import { UploadLoading } from "../Loading/Loading";
 
 function UploadRecipe() {
 	const [popup, setPopup] = useState(false);
@@ -20,6 +21,7 @@ function UploadRecipe() {
 	const [dishError, setDishError] = useState("");
 	const { user } = useContext(UserContext);
 	const navigate = useNavigate();
+	const [uploadLoading, setUploadLoading] = useState(false);
 
 	const handleDishName = (e) => {
 		if (e) {
@@ -95,6 +97,7 @@ function UploadRecipe() {
 
 	// const navigate = useNavigate();
 	const handleOnSubmit = async (e) => {
+		setUploadLoading(true);
 		e.preventDefault();
 		const checkArray = [
 			dishName.length,
@@ -145,11 +148,13 @@ function UploadRecipe() {
 				};
 				await RecipeService.setDoc(item, imgInfo[1]);
 				setDocRef(imgInfo[1].id); //imgInfo[1]=docRef
+				setUploadLoading(false);
 				setSuccessPopup(true);
 			} catch (e) {
 				console.log("Error adding Item " + e);
 			}
 		} else {
+			setUploadLoading(false);
 			setPopup(true);
 		}
 	};
@@ -373,6 +378,7 @@ function UploadRecipe() {
 					</div>
 				</form>
 			</div>
+			{uploadLoading && <UploadLoading />}
 			{popup ? (
 				<div className='popup'>
 					<div className='popup-inner'>

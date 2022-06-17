@@ -21,3 +21,13 @@ export function ContentLoading() {
 		</div>
 	);
 }
+
+export function UploadLoading() {
+	return (
+		<div className='contentLoading-cont upload'>
+			<div className='contentLoadingInner'></div>
+			<i className='fa-solid fa-bowl-food'></i>
+			<div className='contentLoadingOuter'></div>
+		</div>
+	);
+}

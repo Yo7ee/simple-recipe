@@ -12,8 +12,8 @@ import google from "../../icon/google.png";
 
 function Signin() {
 	const navigate = useNavigate();
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("guest@guest.com");
+	const [password, setPassword] = useState("guest1");
 	const [errorMessage, setErrorMessage] = useState("");
 	const handleSignin = (e) => {
 		e.preventDefault();
