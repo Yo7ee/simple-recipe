@@ -1,5 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../Home/Header";
+import Difficulty from "./Componets/Difficulty";
+import Tool from "./Componets/Tool";
 import Ingredient from "./Componets/Ingredient";
 import Direction from "./Componets/Direction";
 import "../Upload/UploadRecipe.css";
@@ -8,9 +10,10 @@ import { Timestamp } from "firebase/firestore";
 import auth from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import Compressor from "compressorjs";
+import DifficultyField from "./Context/DifficultyField";
+import ToolField from "./Context/ToolField";
 import IngredientsFieldContext from "./Context/IngredientsField";
 import DirectionField from "./Context/DirectionField";
-import UserContext from "../../Context/User";
 import { UploadLoading } from "../Loading/Loading";
 
 function UploadRecipe() {
@@ -19,7 +22,6 @@ function UploadRecipe() {
 	const [docRef, setDocRef] = useState("");
 	const [dishName, setDishName] = useState("");
 	const [dishError, setDishError] = useState("");
-	const { user } = useContext(UserContext);
 	const navigate = useNavigate();
 	const [uploadLoading, setUploadLoading] = useState(false);
 
@@ -68,13 +70,16 @@ function UploadRecipe() {
 			setCookTimeError("時間不可空白且為數字格式");
 		}
 	};
-
+	//困難度
 	const [difficulty, setDifficulty] = useState("0");
-	const handleDifficulty = (e) => {
-		setDifficulty(e);
+	const difficultyObj = {
+		0: "簡單",
+		1: "中等",
+		2: "特級廚師",
 	};
-	const [tool, setTool] = useState("0");
 
+	//烹煮工具
+	const [tool, setTool] = useState("0");
 	const toolObj = {
 		0: "電鍋",
 		1: "烤箱",
@@ -83,11 +88,6 @@ function UploadRecipe() {
 		4: "湯鍋",
 		5: "其他",
 	};
-	const difficultyObj = {
-		0: "簡單",
-		1: "中等",
-		2: "特級廚師",
-	};
 
 	//食材
 	const [inputFields, setInputFields] = useState([{ ingre: "" }]);
@@ -95,7 +95,6 @@ function UploadRecipe() {
 	//步驟
 	const [stepFields, setStepFields] = useState([{ stepContent: "" }]);
 
-	// const navigate = useNavigate();
 	const handleOnSubmit = async (e) => {
 		setUploadLoading(true);
 		e.preventDefault();
@@ -127,6 +126,7 @@ function UploadRecipe() {
 					dishName,
 					preTime,
 					cookTime,
+					totalTime,
 					totalTimeValue: time,
 					difficulty,
 					difficultyName: difficultyObj[difficulty],
@@ -242,130 +242,12 @@ function UploadRecipe() {
 							<p className='mins'>分鐘</p>
 						</div>
 					</div>
-					<div className='dish-cont'>
-						<label className='dish-label'>烹煮難度</label>
-						<div className='difficulty'>
-							<label
-								className={
-									difficulty === "0"
-										? "cook-tool-item checked"
-										: "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='difficulty'
-									value='0'
-									onChange={(e) => setDifficulty(e.target.value)}
-								/>
-								簡單
-							</label>
-							<label
-								className={
-									difficulty === "1"
-										? "cook-tool-item checked"
-										: "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='difficulty'
-									value='1'
-									onChange={(e) => setDifficulty(e.target.value)}
-								/>
-								中等
-							</label>
-							<label
-								className={
-									difficulty === "2"
-										? "cook-tool-item checked"
-										: "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='difficulty'
-									value='2'
-									onChange={(e) => setDifficulty(e.target.value)}
-								/>
-								特級廚師
-							</label>
-						</div>
-					</div>
-					<div className='dish-cont'>
-						<label className='dish-label'>烹煮用具</label>
-						<div className='tool'>
-							<label
-								className={
-									tool === "0" ? "cook-tool-item checked" : "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='tool'
-									value='0'
-									onChange={(e) => setTool(e.target.value)}
-								/>
-								電鍋
-							</label>
-							<label
-								className={
-									tool === "1" ? "cook-tool-item checked" : "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='tool'
-									value='1'
-									onChange={(e) => setTool(e.target.value)}
-								/>
-								烤箱
-							</label>
-							<label
-								className={
-									tool === "2" ? "cook-tool-item checked" : "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='tool'
-									value='2'
-									onChange={(e) => setTool(e.target.value)}
-								/>
-								氣炸鍋
-							</label>
-							<label
-								className={
-									tool === "3" ? "cook-tool-item checked" : "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='tool'
-									value='3'
-									onChange={(e) => setTool(e.target.value)}
-								/>
-								平底鍋
-							</label>
-							<label
-								className={
-									tool === "4" ? "cook-tool-item checked" : "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='tool'
-									value='4'
-									onChange={(e) => setTool(e.target.value)}
-								/>
-								湯鍋
-							</label>
-							<label
-								className={
-									tool === "5" ? "cook-tool-item checked" : "cook-tool-item"
-								}>
-								<input
-									type='radio'
-									name='tool'
-									value='5'
-									onChange={(e) => setTool(e.target.value)}
-								/>
-								其他
-							</label>
-						</div>
-					</div>
+					<DifficultyField.Provider value={{ difficulty, setDifficulty }}>
+						<Difficulty />
+					</DifficultyField.Provider>
+					<ToolField.Provider value={{ tool, setTool }}>
+						<Tool />
+					</ToolField.Provider>
 					<IngredientsFieldContext.Provider
 						value={{ inputFields, setInputFields }}>
 						<Ingredient />
