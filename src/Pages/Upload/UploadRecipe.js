@@ -15,6 +15,7 @@ import ToolField from "./Context/ToolField";
 import IngredientsFieldContext from "./Context/IngredientsField";
 import DirectionField from "./Context/DirectionField";
 import { UploadLoading } from "../Loading/Loading";
+import Popup from "../Signin/Popup";
 
 function UploadRecipe() {
 	const [popup, setPopup] = useState(false);
@@ -167,7 +168,7 @@ function UploadRecipe() {
 
 	return (
 		<>
-			<Header />
+			<Header isHome='false' />
 			<div className='upload-cont'>
 				<h1 className='upload-title'>新增食譜</h1>
 				<form className='dish-info-cont' onSubmit={handleOnSubmit}>
@@ -262,22 +263,20 @@ function UploadRecipe() {
 			</div>
 			{uploadLoading && <UploadLoading />}
 			{popup ? (
-				<div className='popup'>
-					<div className='popup-inner'>
-						<p className='popup-title'>
-							資料填寫尚未完成 或 格式錯誤 或 照片容量大於1MB
-						</p>
-						<button onClick={handleErrorSubmit}>確認</button>
-					</div>
-				</div>
+				<Popup
+					title='資料填寫尚未完成 或 格式錯誤 或 照片容量大於1MB'
+					type='button'
+					label='確認'
+					handleClick={handleErrorSubmit}
+				/>
 			) : null}
 			{successPopup ? (
-				<div className='popup'>
-					<div className='popup-inner'>
-						<p className='popup-title'>食譜上傳成功</p>
-						<button onClick={handleSuccesSubmit}>前往食譜頁面</button>
-					</div>
-				</div>
+				<Popup
+					title='食譜上傳成功'
+					type='button'
+					label='前往食譜頁面'
+					handleClick={handleSuccesSubmit}
+				/>
 			) : null}
 		</>
 	);

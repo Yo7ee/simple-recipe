@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import UserContext from "../../Context/User";
 import RecipeService from "../../utils/database";
 
 function Card({ title, className, data, uid }) {
 	const navigate = useNavigate();
+	const { user } = useContext(UserContext);
 	const handleToggle = async (isActive, colName, e, id, count) => {
 		e.preventDefault(); //For Link 頁面跳轉
 		e.stopPropagation(); //For 冒泡效應

@@ -1,15 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import "./homePage.css";
-import logo from "../../icon/logo.png";
 import Article from "./Article";
 import Footer from "./Footer";
 import KeywordContext from "../../Context/Keyword";
-import { Link } from "react-router-dom";
 import { Nav, MobileNav } from "./Nav";
+import Logo from "./Logo";
 import SearchBar from "./SearchBar";
+import Header from "./Header";
 
 function HomePage() {
-	const { setKeyword, direction } = useContext(KeywordContext);
+	const { setKeyword } = useContext(KeywordContext);
 
 	useEffect(() => {
 		setKeyword("");
@@ -17,20 +17,7 @@ function HomePage() {
 
 	return (
 		<div className='home'>
-			<header className={direction == "up" ? "header-hide" : null}>
-				<div className='header'>
-					<Link to='/' className='header-link'>
-						<img className='home-logo' src={logo} alt='簡單食譜 logo' />
-					</Link>
-					<Nav />
-				</div>
-			</header>
-			<div
-				className={
-					direction == "up" ? "header-mobile-nav hide" : "header-mobile-nav"
-				}>
-				<MobileNav />
-			</div>
+			<Header isHome='true' />
 			<section className='section-home'>
 				<div className='section-home-info'>
 					<div className='section-home-content'>

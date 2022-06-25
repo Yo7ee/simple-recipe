@@ -50,7 +50,7 @@ function Recipe() {
 		<Loading />
 	) : (
 		<>
-			<Header />
+			<Header isHome='false' />
 			<section className='section-recipe'>
 				<div className='section-recipe-cont'>
 					<div className='section-recipe-title-info'>

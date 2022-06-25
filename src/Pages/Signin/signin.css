@@ -46,11 +46,11 @@
 	border: solid 1px #757575;
 	border-radius: 5px;
 }
-/* .input-signin:valid{
-    border:solid 1px #36d30fb4;
+/* .input-signin:valid {
+	border: solid 1px #36d30fb4;
 }
-.input-signin:invalid{
-    border:solid 1px red;
+.input-signin:invalid {
+	border: solid 1px red;
 } */
 button {
 	cursor: pointer;

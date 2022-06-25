@@ -41,7 +41,7 @@ function MyRecipes() {
 		setMyRecipeNumber(myRecipe[0].length);
 		setPageLoading(myRecipe[1]);
 	}, [myRecipe[0]]);
-
+	console.log(myRecipe[0]);
 	return pageLoading ? (
 		<ContentLoading />
 	) : (

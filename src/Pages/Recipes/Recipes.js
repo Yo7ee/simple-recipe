@@ -37,7 +37,7 @@ function Recipes() {
 		<Loading />
 	) : (
 		<>
-			<Header />
+			<Header isHome='false' />
 			<ResultContext.Provider value={{ results, setResults }}>
 				<FilterPopup />
 			</ResultContext.Provider>

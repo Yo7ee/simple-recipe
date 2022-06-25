@@ -1,24 +1,17 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import KeywordContext from "../../Context/Keyword";
-import logo from "../../icon/logo.png";
-import logoMobile from "../../icon/logoMobile.png";
 import { MobileNav, Nav } from "./Nav";
+import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 
-function Header() {
+function Header({ isHome }) {
 	const { direction } = useContext(KeywordContext);
-	const navigate = useNavigate();
-
 	return (
 		<>
 			<header className={direction == "up" ? "header-hide" : null}>
 				<div className='header'>
-					<Link to='/' className='header-link'>
-						<img className='logo' src={logo} alt='簡單食譜 logo' />
-						<img className='logo-mobile' src={logoMobile} alt='簡單食譜 logo' />
-					</Link>
-					<SearchBar className='searchBar' />
+					<Logo isHome={isHome} />
+					{isHome === "false" && <SearchBar className='searchBar' />}
 					<Nav />
 				</div>
 			</header>

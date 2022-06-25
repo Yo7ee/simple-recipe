@@ -12,55 +12,16 @@ import {
 	limit,
 	where,
 } from "@firebase/firestore";
+import { getFeatureDish, getHotCountDish, getHeartDish } from "../../utils/db";
 import RecipeService from "../../utils/database";
 
 function Article() {
-	const [hotCountDish, setHotCountDish] = useState([]);
-	const [heartDish, setHeartDish] = useState([]);
-	const [choiceDish, setChoiceDish] = useState([]);
 	const [pageLoading, setPageLoading] = useState(true);
 	const { uid } = useContext(UserContext);
 
-	const showDish = async () => {
-		const choice = query(
-			collection(db, "recipe"),
-			where("toolName", "==", "烤箱"),
-			orderBy("createdAt", "asc"),
-			limit(5)
-		);
-		onSnapshot(choice, (querySnapshot) => {
-			const data = querySnapshot.docs.map((doc) => ({
-				...doc.data(),
-				id: doc.id,
-			}));
-			setChoiceDish(data);
-		});
-		const q = query(
-			collection(db, "recipe"),
-			orderBy("hotCount", "desc"),
-			limit(4)
-		);
-		onSnapshot(q, (querySnapshot) => {
-			const data = querySnapshot.docs.map((doc) => ({
-				...doc.data(),
-				id: doc.id,
-			}));
-			setHotCountDish(data);
-		});
-		const q1 = query(
-			collection(db, "recipe"),
-			orderBy("likeValue", "desc"),
-			limit(4)
-		);
-		onSnapshot(q1, (querySnapshot) => {
-			const data = querySnapshot.docs.map((doc) => ({
-				...doc.data(),
-				id: doc.id,
-			}));
-			setHeartDish(data);
-			setPageLoading(false);
-		});
-	};
+	const choiceDish = getFeatureDish();
+	const hotCountDish = getHotCountDish();
+	const heartDish = getHeartDish();
 
 	const handleHotClink = async (colName, id, count) => {
 		let currentCount = count;
@@ -69,9 +30,8 @@ function Article() {
 	};
 
 	useEffect(() => {
-		showDish();
-	}, []);
-
+		setPageLoading(heartDish[1]);
+	}, [choiceDish, hotCountDish, heartDish]);
 	return pageLoading ? (
 		<Loading />
 	) : (
@@ -125,7 +85,7 @@ function Article() {
 			<Card
 				title='最喜愛排名'
 				className='fa-solid fa-heart'
-				data={heartDish}
+				data={heartDish[0]}
 				uid={uid}
 			/>
 		</article>

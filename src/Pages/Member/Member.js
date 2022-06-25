@@ -15,7 +15,7 @@ function Member() {
 	};
 	return (
 		<>
-			<Header />
+			<Header isHome='false' />
 			<div className='member-info-cont'>
 				<div className='wrap'>
 					<div className='member-user'>

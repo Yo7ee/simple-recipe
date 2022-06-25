@@ -56,7 +56,7 @@ function Signin() {
 	};
 	return (
 		<>
-			<Header />
+			<Header isHome='false' />
 			<div className='member-cont'>
 				<div className='signin-cont'>
 					<div className='signin-head-cont'>

@@ -3,8 +3,8 @@ import auth from "../../utils/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import Footer from "../Home/Footer";
 import { Link } from "react-router-dom";
-import logo from "../../icon/logo.png";
-import logoMobile from "../../icon/logoMobile.png";
+import Popup from "./Popup";
+import Logo from "../Home/Logo";
 
 const Signup = () => {
 	const [name, setName] = useState("");
@@ -42,10 +42,7 @@ const Signup = () => {
 		<>
 			<header>
 				<div className='header'>
-					<Link to='/' className='header-link'>
-						<img className='logo' src={logo} alt='簡單食譜 logo' />
-						<img className='logo-mobile' src={logoMobile} alt='簡單食譜 logo' />
-					</Link>
+					<Logo isHome='true' />
 				</div>
 			</header>
 			<div className='member-cont'>
@@ -86,16 +83,7 @@ const Signup = () => {
 					</Link>
 				</div>
 			</div>
-			{popup ? (
-				<div className='popup'>
-					<div className='popup-inner'>
-						<p className='popup-title'>註冊成功</p>
-						<Link to='/' className='popup-switch'>
-							點擊回首頁
-						</Link>
-					</div>
-				</div>
-			) : null}
+			{popup ? <Popup title='註冊成功' type='link' label='點擊回首頁' /> : null}
 			<Footer />
 		</>
 	);

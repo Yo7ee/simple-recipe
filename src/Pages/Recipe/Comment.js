@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import RecipeService from "../../utils/database";
 import auth from "../../utils/firebase";
 import { Timestamp } from "firebase/firestore";
+import Popup from "../Signin/Popup";
 
 function CommentList() {
 	const id = window.location.href.split("/").pop();
@@ -54,7 +55,7 @@ function CommentList() {
 	};
 	useEffect(() => {
 		showComment();
-	});
+	}, []);
 	return (
 		<div className='article-recipe-comment'>
 			<i className='fa-solid fa-comment'></i>
@@ -103,12 +104,11 @@ function CommentList() {
 				</button>
 			</form>
 			{popup ? (
-				<div className='popup'>
-					<div className='popup-inner'>
-						<p className='popup-title'>留言不可空白</p>
-						<button onClick={handleErrorSubmit}>確認</button>
-					</div>
-				</div>
+				<Popup
+					title='留言不可空白'
+					label='確認'
+					handleClick={handleErrorSubmit}
+				/>
 			) : null}
 		</div>
 	);
