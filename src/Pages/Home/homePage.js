@@ -3,8 +3,6 @@ import "./homePage.css";
 import Article from "./Article";
 import Footer from "./Footer";
 import KeywordContext from "../../Context/Keyword";
-import { Nav, MobileNav } from "./Nav";
-import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Header from "./Header";
 

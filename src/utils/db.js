@@ -1,27 +1,12 @@
-import { db, storage } from "./firebase";
+import { db } from "./firebase";
 import {
 	collection,
-	setDoc,
-	addDoc,
-	doc,
 	query,
 	orderBy,
-	getDocs,
-	getDoc,
 	onSnapshot,
-	deleteDoc,
 	limit,
 	where,
-	updateDoc,
-	arrayUnion,
-	arrayRemove,
 } from "firebase/firestore";
-import {
-	ref,
-	uploadBytes,
-	getDownloadURL,
-	deleteObject,
-} from "firebase/storage";
 import { useEffect, useState } from "react";
 
 const recipeColRef = collection(db, "recipe");

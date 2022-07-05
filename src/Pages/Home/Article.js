@@ -1,17 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import UserContext from "../../Context/User";
 import Card from "./Card";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
-import { db } from "../../utils/firebase";
-import {
-	onSnapshot,
-	query,
-	orderBy,
-	collection,
-	limit,
-	where,
-} from "@firebase/firestore";
 import { getFeatureDish, getHotCountDish, getHeartDish } from "../../utils/db";
 import RecipeService from "../../utils/database";
 
@@ -28,7 +19,6 @@ function Article() {
 		currentCount++;
 		await RecipeService.updateHot(colName, currentCount, id);
 	};
-
 	useEffect(() => {
 		setPageLoading(heartDish[1]);
 	}, [choiceDish, hotCountDish, heartDish]);
