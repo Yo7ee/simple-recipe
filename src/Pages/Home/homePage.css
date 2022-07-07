@@ -532,6 +532,7 @@ footer {
 	}
 	.choice-link {
 		flex: none;
+		pointer-events: none;
 	}
 	.choice-dishName {
 		bottom: 50px;
