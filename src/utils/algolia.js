@@ -1,6 +1,6 @@
 import algoliasearch from "algoliasearch";
 
-const client = algoliasearch("S2BKECZ1D0", "e4820a93dffeee4d3f0bd35eb5a0bd51");
+const client = algoliasearch("5YJHICKYMP", "52c0eb4752f4037925f1d52e09c0b587");
 
 const algolia = client.initIndex("simpleRecipe");
 
