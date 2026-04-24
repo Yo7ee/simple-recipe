@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Home/homePage.css";
 import "./Recipe.css";
 import Header from "../Home/Header";
@@ -18,6 +19,7 @@ function Recipe() {
 	const [displayName, setDisplayName] = useState("");
 	const [time, setTime] = useState("");
 	const { user, uid } = useContext(UserContext);
+	const navigate = useNavigate();
 	const [pageLoading, setPageLoading] = useState(true);
 
 	const showRecipe = () => {
